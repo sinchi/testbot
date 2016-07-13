@@ -28,7 +28,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-          kittenMessage(event.sender.id, event.message.text);
+
           var what = event.message.text;
             switch(what){
               case "pizza fruit de mer":
@@ -38,6 +38,7 @@ app.post('/webhook', function (req, res) {
                                   "نصف ملعقة صغيرة ملح" +
                                   "ملعقة كبيرة سكر" ;
                 sendMessage(event.sender.id, {text: message});
+                  kittenMessage(event.sender.id, event.message.text);
                 break;
               case "7ot":
                 sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
