@@ -28,7 +28,16 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: "wa ti fin a : " + event.message.text});
+          let what = event.message.text.toLowerCase();
+            switch(what){
+              case "pizza":
+                sendMessage(event.sender.id, {text: "Achemn pizza bghiti ?"});
+                break;
+              case "7ot":
+                sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
+              break;
+            }
+
         }
     }
     res.sendStatus(200);
