@@ -89,7 +89,7 @@ function fatafeat(recipientId, text){
         $('div.details').filter(function(){
            var childs = $(this).children();
            childs.filter(function(){
-             cosole.log($(this).text());
+             console.log($(this).text());
              sendMessage(recipientId, {text: $(this).text() });
            })
 
