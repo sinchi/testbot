@@ -89,7 +89,7 @@ function fatafeat(recipientId, text){
         $('div.details').filter(function(){
            console.log("data" + $(this).children().first().text());
 
-          //sendMessage(recipientId, {text: data.children().first().text()});
+          sendMessage(recipientId, {text: $(this).children().first().text() });
             //console.log('fatafeat');
         });
         console.log('okokoko');
