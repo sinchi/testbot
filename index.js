@@ -88,6 +88,7 @@ function fatafeat(recipientId, text){
         var $ = cheerio.load(html);
         var details = $('.container.wasafat').find('.item').find('.details');
         var img = $('.container.wasafat').find('.item').find('.pic').find('img');
+        console.log("taille images:  " + img.length);
         var index = 0;
         details.filter(function(){
           message = {
