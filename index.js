@@ -114,6 +114,7 @@ function fatafeat(recipientId, text){
           };
 
           sendMessage(recipientId, message);
+          console.log(img.get(index).src);
           index++;
         });
         console.log('okokoko');
