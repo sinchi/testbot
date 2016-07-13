@@ -36,6 +36,9 @@ app.post('/webhook', function (req, res) {
               case "7ot":
                 sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
               break;
+              default:
+                sendMessage(event.sender.id, {text: "" + event.message.text});
+              break;
             }
 
         }
