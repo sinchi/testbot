@@ -28,29 +28,31 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
+          if (!kittenMessage(event.sender.id, event.message.text)) {
+               sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+           }
+          // var what = event.message.text;
+          //   switch(what){
+          //     case "pizza fruit de mer":
+          //       var message = "العجينة" +
+          //                         "300 جرام طحين" +
+          //                         "3 ملعقة كبيرة زيت زيتون" +
+          //                         "نصف ملعقة صغيرة ملح" +
+          //                         "ملعقة كبيرة سكر" ;
+          //       sendMessage(event.sender.id, {text: message});
+          //         kittenMessage(event.sender.id, event.message.text);
+          //       break;
+          //     case "7ot":
+          //       sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
+          //     break;
+          //     default:
+          //       sendMessage(event.sender.id, {text: "" + event.message.text});
+          //     break;
+          //   }
 
-          var what = event.message.text;
-            switch(what){
-              case "pizza fruit de mer":
-                var message = "العجينة" +
-                                  "300 جرام طحين" +
-                                  "3 ملعقة كبيرة زيت زيتون" +
-                                  "نصف ملعقة صغيرة ملح" +
-                                  "ملعقة كبيرة سكر" ;
-                sendMessage(event.sender.id, {text: message});
-                  kittenMessage(event.sender.id, event.message.text);
-                break;
-              case "7ot":
-                sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
-              break;
-              default:
-                sendMessage(event.sender.id, {text: "" + event.message.text});
-              break;
-            }
-
-        } else if (event.postback) {
-    console.log("Postback received: " + JSON.stringify(event.postback));
-}
+            } else if (event.postback) {
+              console.log("Postback received: " + JSON.stringify(event.postback));
+          }
     }
     res.sendStatus(200);
 });
