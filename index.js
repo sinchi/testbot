@@ -31,6 +31,7 @@ app.post('/webhook', function (req, res) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                sendMessage(event.sender.id, {text: event.message.text});
            }
+           fatafeat(event.sender.id, "بيتزا");
           // var what = event.message.text;
           //   switch(what){
           //     case "pizza fruit de mer":
@@ -77,6 +78,27 @@ function sendMessage(recipientId, message) {
     });
 };
 
+//send rich message with fatafeat
+function fatafeat(recipientId, text){
+    var fatafeat = "http://www.fatafeat.com/search/recipes?keyword=" + text + "+"
+    request({
+        url: fatafeat,
+      //  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'GET',
+        // json: {
+        //     recipient: {id: recipientId},
+        //     message: message,
+        // }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+        console.log(body);
+    });
+
+}
 
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
