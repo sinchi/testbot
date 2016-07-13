@@ -89,8 +89,8 @@ function fatafeat(recipientId, text){
         $('.title').filter(function(){
           var data = $(this);
           // console.log(data.children().first().text());
-           console.log(data.children().first());
-          sendMessage(recipientId, {text: data.children().first()});
+           console.log("data" + data.children().first().text());
+          sendMessage(recipientId, {text: data.children().first().text()});
 
         });
 
