@@ -87,6 +87,8 @@ function fatafeat(recipientId, text){
       if(!error){
         var $ = cheerio.load(html);
         var details = $('.container.wasafat').find('.item').find('.details');
+        var img = $('.container.wasafat').find('.item').find('.pic').find('img');
+        var index = 0;
         details.filter(function(){
           message = {
               "attachment": {
@@ -96,7 +98,7 @@ function fatafeat(recipientId, text){
                       "elements": [{
                           "title": $(this).find('.name').text(),
                           "subtitle": $(this).find('.text').text(),
-                        //  "image_url": imageUrl ,
+                          "image_url": img.get(index).src ,
                           "buttons": [{
                               "type": "web_url",
                               "url": $(this).find('.link').text(),
@@ -112,7 +114,7 @@ function fatafeat(recipientId, text){
           };
 
           sendMessage(recipientId, message);
-
+          index++;
         });
         console.log('okokoko');
       }
