@@ -104,7 +104,7 @@ function fatafeat(recipientId, text){
                               }, {
                               "type": "postback",
                               "title": "J'aime",
-                              "payload": "User " + recipientId + " likes kitten " + imageUrl,
+                              "payload": "User " + recipientId + " likes kitten " ,
                           }]
                       }]
                   }
