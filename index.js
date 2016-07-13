@@ -82,7 +82,7 @@ function sendMessage(recipientId, message) {
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
-    var fatafeat = 'http://www.fatafeat.com/search/recipes?keyword=' + text + '+';
+    var fatafeat = 'http://www.fatafeat.com/search/recipes?keyword=';
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
