@@ -31,7 +31,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                //sendMessage(event.sender.id, {text: event.message.text});
-               fatafeat(event.sender.id, "بيتزا");
+               fatafeat(event.sender.id, event.message.text);
            }
 
           // var what = event.message.text;
@@ -86,7 +86,7 @@ function fatafeat(recipientId, text){
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.name').filter(function(){
+        $('.title').filter(function(){
           var data = $(this);
           // console.log(data.children().first().text());
            console.log("data" + data.text());
