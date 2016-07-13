@@ -88,12 +88,31 @@ function fatafeat(recipientId, text){
         var $ = cheerio.load(html);
         var details = $('.container.wasafat').find('.item').find('.details');
         details.filter(function(){
-          console.log($(this).find('.name').text());
-          console.log($(this).find('.link').text());
-          console.log($(this).find('.text').text());
-        //  sendMessage(recipientId, {text: $(this).find('.name').text() });
-          sendMessage(recipientId, {text:$(this).find('.link').text() });
-        //  sendMessage(recipientId, {text: $(this).find('.text').text() });
+          message = {
+              "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": [{
+                          "title": $(this).find('.name').text(),
+                          "subtitle": $(this).find('.text').text(),
+                          "image_url": imageUrl ,
+                          "buttons": [{
+                              "type": "web_url",
+                              "url": $(this).find('.link').text(),
+                              "title": "Voir"
+                              }, {
+                              "type": "postback",
+                              "title": "J'aime",
+                              "payload": "User " + recipientId + " likes kitten " + imageUrl,
+                          }]
+                      }]
+                  }
+              }
+          };
+
+          sendMessage(recipientId, message);
+
         });
         console.log('okokoko');
       }
