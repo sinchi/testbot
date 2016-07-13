@@ -86,12 +86,8 @@ function fatafeat(recipientId, text){
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.item').filter(function(){
-          var childs = $(this).children();
-          var details = childs.next().children();
-          // console.log(data.children().first().text());
-           console.log("data" + details.first().text());
-
+        $('.item.details').filter(function(){
+           console.log("data" + $(this).first().text());
           //sendMessage(recipientId, {text: data.children().first().text()});
             //console.log('fatafeat');
         });
