@@ -96,7 +96,7 @@ function fatafeat(recipientId, text){
                       "elements": [{
                           "title": $(this).find('.name').text(),
                           "subtitle": $(this).find('.text').text(),
-                          "image_url": imageUrl ,
+                        //  "image_url": imageUrl ,
                           "buttons": [{
                               "type": "web_url",
                               "url": $(this).find('.link').text(),
