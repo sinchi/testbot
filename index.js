@@ -82,15 +82,15 @@ function sendMessage(recipientId, message) {
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
-    var fatafeat = "http://www.imdb.com/title/tt1229340/";  ///search/recipes?keyword=" + text + "+"
+    var fatafeat = 'http://www.imdb.com/title/tt1229340/';  ///search/recipes?keyword=" + text + "+"
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.header').filter(function(){
+        $('.summary_text').filter(function(){
           var data = $(this);
           // console.log(data.children().first().text());
-           console.log("data" + data.children().first().text());
-          sendMessage(recipientId, {text: data.children().first().text()});
+           console.log("data" + data.text());
+          sendMessage(recipientId, {text: data.text()});
             console.log('fatafeat');
         });
 
