@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
+var cheerio = require('cheerio');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -81,21 +82,14 @@ function sendMessage(recipientId, message) {
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
     var fatafeat = "http://www.fatafeat.com/search/recipes?keyword=" + text + "+"
-    request({
-        url: fatafeat,
-      //  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-        method: 'GET',
-        // json: {
-        //     recipient: {id: recipientId},
-        //     message: message,
-        // }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending message: ', error);
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
-        }
-        console.log(body);
+    request(fatafeat, function(error, response, html){
+      if(!error){
+        var $ = cheerio.load(html);
+        $('.details').filter(function(){
+          var data = $(this);
+          console.log(data.children().first().text());
+        })
+      }
     });
 
 }
