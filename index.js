@@ -85,10 +85,13 @@ function fatafeat(recipientId, text){
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.details').filter(function(){
+        $('.title').filter(function(){
           var data = $(this);
           console.log(data.children().first().text());
-        })
+          console.log(data);
+        });
+
+        console.log('fatafeat request');
       }
     });
 
