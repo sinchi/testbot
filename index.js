@@ -91,13 +91,13 @@ function fatafeat(recipientId, text){
           // console.log(data.children().first().text());
            console.log("data" + data.children().first().text());
           sendMessage(recipientId, {text: data.children().first().text()});
-
+            console.log('fatafeat');
         });
 
       }
     });
 
-    console.log('fatafeat');
+
 }
 
 // send rich message with kitten
