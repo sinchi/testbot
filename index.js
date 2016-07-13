@@ -86,7 +86,7 @@ function fatafeat(recipientId, text){
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.title').filter(function(){
+        $('.zoomCss').filter(function(){
           var data = $(this);
           // console.log(data.children().first().text());
            console.log("data" + data.text());
