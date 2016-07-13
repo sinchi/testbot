@@ -9,7 +9,7 @@ app.listen((process.env.PORT || 3000));
 
 // Server frontpage
 app.get('/', function (req, res) {
-    res.send('This is TestBot Server');
+    res.send('Chhiwat hana server');
 });
 
 // Facebook Webhook
@@ -30,8 +30,13 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
           var what = event.message.text;
             switch(what){
-              case "pizza":
-                sendMessage(event.sender.id, {text: "Achemn pizza bghiti ?"});
+              case "pizza fruit de mer":
+                var message = "العجينة" +
+                                  "300 جرام طحين" +
+                                  "3 ملعقة كبيرة زيت زيتون" +
+                                  "نصف ملعقة صغيرة ملح" +
+                                  "ملعقة كبيرة سكر" ;
+                sendMessage(event.sender.id, {text: message});
                 break;
               case "7ot":
                 sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
