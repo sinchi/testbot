@@ -88,9 +88,12 @@ function fatafeat(recipientId, text){
         var $ = cheerio.load(html);
         $('div.details').filter(function(){
            var childs = $(this).children();
+           var pic = childs.first().find('img').attr('src');
+           console.log(pic);
            childs.filter(function(){
              var el = $(this).attr('class');
              if( el === "name" || el === "link" || el === "text"){
+
                console.log($(this).text());
                sendMessage(recipientId, {text: $(this).text() });
              }
