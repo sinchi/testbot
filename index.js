@@ -29,7 +29,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
-               sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+               sendMessage(event.sender.id, {text: event.message.text});
            }
           // var what = event.message.text;
           //   switch(what){
@@ -101,7 +101,7 @@ function kittenMessage(recipientId, text) {
                             "buttons": [{
                                 "type": "web_url",
                                 "url": imageUrl,
-                                "title": "Show kitten"
+                                "title": "Voir"
                                 }, {
                                 "type": "postback",
                                 "title": "I like this",
