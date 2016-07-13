@@ -92,6 +92,7 @@ function fatafeat(recipientId, text){
         });
 
         console.log('fatafeat request');
+        console.log(html);
       }
     });
 
