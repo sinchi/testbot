@@ -31,7 +31,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                //sendMessage(event.sender.id, {text: event.message.text});
-               fatafeat(event.sender.id, "");
+               fatafeat(event.sender.id, "بيتزا");
            }
 
           // var what = event.message.text;
@@ -82,11 +82,11 @@ function sendMessage(recipientId, message) {
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
-    var fatafeat = 'http://play.fatafeat.com/home/video/category/26728231/vidEcu2zBVnHD/';  ///search/recipes?keyword=" + text + "+"
+    var fatafeat = 'http://www.fatafeat.com/search/recipes?keyword=' + text + '+';
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.section-header').filter(function(){
+        $('.name').filter(function(){
           var data = $(this);
           // console.log(data.children().first().text());
            console.log("data" + data.text());
