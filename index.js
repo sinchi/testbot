@@ -90,12 +90,11 @@ function fatafeat(recipientId, text){
           var data = $(this);
           // console.log(data.children().first().text());
            console.log("data" + data.children().first().text());
-          sendMessage(recipientId, {text: data.children().first().text()});
-            console.log('fatafeat');
-        });
 
-      }else{
-        console.log(error);
+          //sendMessage(recipientId, {text: data.children().first().text()});
+            //console.log('fatafeat');
+        });
+        console.log('okokoko');
       }
     });
 
