@@ -82,14 +82,14 @@ function sendMessage(recipientId, message) {
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
-    var fatafeat = 'http://www.fatafeat.com/search/recipes?keyword=';
+    var fatafeat = 'http://www.fatafeat.com/recipes/search?keyword=&category=&season=&chef=&kitchen=&group=';
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
-        $('.details').filter(function(){
-          var data = $(this);
+        $('.item').filter(function(){
+          var childs = $(this).children();
           // console.log(data.children().first().text());
-           console.log("data" + data.children().first().text());
+           console.log("data" + childs.next().text());
 
           //sendMessage(recipientId, {text: data.children().first().text()});
             //console.log('fatafeat');
