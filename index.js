@@ -87,9 +87,13 @@ function fatafeat(recipientId, text){
       if(!error){
         var $ = cheerio.load(html);
         $('div.details').filter(function(){
-           console.log("data" + $(this).children().first().text());
+           var childs = $(this).children();
+           childs.filter(function(){
+             cosole.log($(this).text();
+             sendMessage(recipientId, {text: $(this).text() });
+           })
 
-          sendMessage(recipientId, {text: $(this).children().first().text() });
+
             //console.log('fatafeat');
         });
         console.log('okokoko');
