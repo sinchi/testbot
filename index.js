@@ -91,9 +91,9 @@ function fatafeat(recipientId, text){
           console.log($(this).find('.name').text());
           console.log($(this).find('.link').text());
           console.log($(this).find('.text').text());
-          sendMessage(recipientId, {text: $(this).find('.name').text() });
+        //  sendMessage(recipientId, {text: $(this).find('.name').text() });
           sendMessage(recipientId, {text:$(this).find('.link').text() });
-          sendMessage(recipientId, {text: $(this).find('.text').text() });
+        //  sendMessage(recipientId, {text: $(this).find('.text').text() });
         });
         console.log('okokoko');
       }
