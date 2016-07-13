@@ -92,7 +92,7 @@ function fatafeat(recipientId, text){
               "attachment": {
                   "type": "template",
                   "payload": {
-                      "template_type": "generic",
+                      "template_type": "receipt",
                       "elements": [{
                           "title": $(this).find('.name').text(),
                           "subtitle": $(this).find('.text').text(),
@@ -103,7 +103,7 @@ function fatafeat(recipientId, text){
                               "title": "Voir"
                               }, {
                               "type": "postback",
-                              "title": "J'aime",
+                              "title": "je le veux",
                               "payload": "User " + recipientId + " likes kitten " ,
                           }]
                       }]
