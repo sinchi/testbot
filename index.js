@@ -89,10 +89,9 @@ function fatafeat(recipientId, text){
           var data = $(this);
           console.log(data.children().first().text());
           console.log(data);
+          sendMessage(recipientId, {text: data});
         });
 
-        console.log('fatafeat request');
-        console.log(html);
       }
     });
 
