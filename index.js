@@ -123,8 +123,8 @@ function sendMessage(recipientId, message) {
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
-    sendSeen(recipientId);
-    sendEcrire(recipientId);
+  //  sendSeen(recipientId);
+  //  sendEcrire(recipientId);
     var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+text;
     console.log(fatafeat);
     request(fatafeat, function(error, response, html){
@@ -167,7 +167,7 @@ function fatafeat(recipientId, text){
                   }
               }
           };
-
+          console.log(message);
           sendMessage(recipientId, message);
           index++;
           console.log(imgUrl);
