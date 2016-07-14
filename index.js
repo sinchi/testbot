@@ -90,6 +90,7 @@ function fatafeat(recipientId, text){
         var img = $('.container.wasafat').find('.item').find('.pic').find('img');
         console.log("taille images:  " + img.length);
         var index = 0;
+        var imgUrl = img.get(index).src;
         details.filter(function(){
           message = {
               "attachment": {
@@ -99,7 +100,7 @@ function fatafeat(recipientId, text){
                       "elements": [{
                           "title": $(this).find('.name').text(),
                           "subtitle": $(this).find('.text').text(),
-                          "image_url": img.get(index).src ,
+                          "image_url": imgUrl ,
                           "buttons": [{
                               "type": "web_url",
                               "url": $(this).find('.link').text(),
@@ -107,16 +108,17 @@ function fatafeat(recipientId, text){
                               }, {
                               "type": "postback",
                               "title": "J'aime",
-                              "payload": "User " + recipientId + " likes repas "  + img.get(index).src,
+                              "payload": "User " + recipientId + " likes repas "  + imgUrl,
                           }]
                       }]
                   }
               }
           };
-
-          sendMessage(recipientId, message);
-          console.log(img.get(index).src);
           index++;
+          imgUrl = img.get(index).src;
+          sendMessage(recipientId, message);
+          console.log(imgUrl);
+
         });
         console.log('okokoko');
       }
