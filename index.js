@@ -143,7 +143,7 @@ function fatafeat(recipientId, text){
         });
         var index = 0;
 
-      //  console.log(img);
+        console.log(details);
 
         details.filter(function(){
           console.log('filter');
