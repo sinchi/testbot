@@ -188,8 +188,7 @@ function sendQuikMessage(recipientId) {
 
 //rihana Chhiwat
 function rihana(recipientId, text){
-  sendQuikMessage(recipientId);
-  return;
+  
   var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
   console.log(rihanaLink);
   request.get({uri: rihanaLink}, function(error, response, html){
