@@ -31,7 +31,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                //sendMessage(event.sender.id, {text: event.message.text});
-               if(event.message.text === "fatafeat")
+              // if(event.message.text === "fatafeat")
                   fatafeat(event.sender.id, event.message.text);
            }
 
@@ -125,7 +125,7 @@ function sendMessage(recipientId, message) {
 function fatafeat(recipientId, text){
     sendSeen(recipientId);
     sendEcrire(recipientId);
-    var fatafeat = 'http://www.fatafeat.com/recipes/search?keyword=&category=&season=&chef=&kitchen=&group=';
+    var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+text;
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
@@ -178,6 +178,9 @@ function fatafeat(recipientId, text){
 
 
 }
+
+
+
 
 // send rich message with kitten
 function kittenMessage(recipientId, text) {
