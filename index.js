@@ -71,7 +71,6 @@ function sendSeen(recipientId) {
         method: 'POST',
         json: {
             recipient: {id: recipientId},
-          //  message: message,
             sender_action:"mark_seen",
         }
     }, function(error, response, body) {
@@ -90,8 +89,7 @@ function sendEcrire(recipientId) {
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-            recipient: {id: recipientId},
-          //  message: message,
+            recipient: {id: recipientId},          
             sender_action:"typing_on",
         }
     }, function(error, response, body) {
