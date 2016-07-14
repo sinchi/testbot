@@ -177,7 +177,7 @@ function rihana(recipientId, text){
   var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
   console.log(rihanaLink);
   request(rihanaLink, function(error, response, html){
-    if(!error){
+    if(!error && response.statusCode == 200){
       var $ = cheerio.load('html');
       var articles = $('article');
       var images = articles.find('.post-thumbnail').find('img').map(function(){
@@ -192,7 +192,8 @@ function rihana(recipientId, text){
       return $(this).attr('href')
       })
       var items = [{}];
-      for(var i=0; i<titres.length; i++){
+      var i =0;
+      for(i=0; i<titres.length; i++){
         // message:{
         //    "text":"Pick a color:",
         //    "quick_replies":[
@@ -234,7 +235,9 @@ function rihana(recipientId, text){
         sendMessage(recipientId, message);
 
         }
-    }// end error
+    }else{
+      console.log('error' + error);
+    }
 
 
   })
