@@ -133,6 +133,24 @@ function sendEcrire(recipientId) {
 };
 
 // generic function sending messages
+function sendTypingOff(recipientId) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: recipientId},
+            sender_action:"typing_off",
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+// generic function sending messages
 function sendMessage(recipientId, message) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -188,7 +206,7 @@ function sendQuikMessage(recipientId) {
 
 //rihana Chhiwat
 function rihana(recipientId, text){
-  
+
   var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
   console.log(rihanaLink);
   request.get({uri: rihanaLink}, function(error, response, html){
@@ -271,7 +289,7 @@ function rihana(recipientId, text){
     }else{
       console.log('error' + error);
     }
-
+    sendTypingOff(recipientId);
 
   })
 }
