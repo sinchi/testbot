@@ -206,8 +206,14 @@ function sendQuikMessage(recipientId) {
 
 //rihana Chhiwat
 function rihana(recipientId, text){
+  var values = text.split(' ');
+  var rihanaLink = "";
+  if(values[0] === "regime"){
+    rihanaLink = 'http://chhiwat.ma/regime-et-minceur/recettes-pour-le-regime/page/'+ Number(values[1]) + "/";
+  }else if(values[0] === "rihana"){
+    rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
+  }
 
-  var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
   console.log(rihanaLink);
   request.get({uri: rihanaLink}, function(error, response, html){
     if(!error && response.statusCode == 200){
