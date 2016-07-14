@@ -89,7 +89,7 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback) {
               console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
-            console.log(event.message.mid);
+            console.log(event.message.metadata);
           }
     }
     res.sendStatus(200);
