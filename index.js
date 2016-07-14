@@ -91,7 +91,7 @@ function fatafeat(recipientId, text){
         var index = 0;
 
       //  console.log(img);
-        console.log(imgUrl);
+        
         details.filter(function(){
           var imgUrl = img.get(index).attribs['src'];
           message = {
