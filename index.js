@@ -72,7 +72,7 @@ app.post('/webhook', function (req, res) {
                             }
                         }
                     };
-                    sendVideo(message);
+                    sendVideo(recipientId, message);
 
               //sendMessage(event.sender.id, { text: event.message.text });
            }
