@@ -192,7 +192,7 @@ function rihana(recipientId, text){
       return $(this).attr('href')
     });
 
-      console.log(liens);
+      console.log(titres);
 
       for(var i=0; i<titres.length; i++){
         // message:{
