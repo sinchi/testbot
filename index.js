@@ -178,7 +178,7 @@ function rihana(recipientId, text){
   console.log(rihanaLink);
   request(rihanaLink, function(error, response, html){
     if(!error && response.statusCode == 200){
-      console.log(html);
+
       var $ = cheerio.load('html');
       var articles = $('article');
       var images = articles.find('.post-thumbnail').find('img').map(function(){
@@ -193,7 +193,7 @@ function rihana(recipientId, text){
       return $(this).attr('href')
     });
 
-      console.log(titres[0]);
+      console.log(articles);
 
       for(var i=0; i<titres.length; i++){
         // message:{
