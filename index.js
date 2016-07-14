@@ -91,6 +91,7 @@ function fatafeat(recipientId, text){
         console.log("taille images:  " + img.length);
         var index = 0;
         var imgUrl = img.get(index).src;
+        console.log(imgUrl);
         details.filter(function(){
           message = {
               "attachment": {
@@ -114,8 +115,7 @@ function fatafeat(recipientId, text){
                   }
               }
           };
-          index++;
-          imgUrl = img.get(index).src;
+        
           sendMessage(recipientId, message);
           console.log(imgUrl);
 
