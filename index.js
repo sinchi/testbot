@@ -42,23 +42,12 @@ app.get('/', function (req, res) {
 });
 
 // Facebook Webhook
-// app.get('/webhook', function (req, res) {
-//     if (req.query['hub.verify_token'] === 'chhiwathana') {
-//         res.send(req.query['hub.challenge']);
-//     } else {
-//         res.send('Invalid verify token');
-//     }
-// });
-
-app.get('/webhook', function(req, res) {
-  console.log(VALIDATION_TOKEN);
-  if (req.query['hub.verify_token'] === VALIDATION_TOKEN) {
-    console.log("Validating webhook");
-    res.status(200).send(req.query['hub.challenge']);
-  } else {
-    console.error("Failed validation. Make sure the validation tokens match.");
-    res.sendStatus(403);
-  }
+app.get('/webhook', function (req, res) {
+    if (req.query['hub.verify_token'] === VALIDATION_TOKEN) {
+        res.send(req.query['hub.challenge']);
+    } else {
+        res.send('Invalid verify token');
+    }
 });
 
 
@@ -74,8 +63,8 @@ app.post('/webhook', function (req, res) {
               // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
-              //    fatafeat(event.sender.id, event.message.text);
-              sendMessage(event.sender.id, { text: event.message.text });
+                  fatafeat(event.sender.id, event.message.text);
+              //sendMessage(event.sender.id, { text: event.message.text });
            }
 
           // var what = event.message.text;
@@ -168,7 +157,7 @@ function sendMessage(recipientId, message) {
 function fatafeat(recipientId, text){
   //  sendSeen(recipientId);
   //  sendEcrire(recipientId);
-    var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+text;
+    var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+Number(text);
     console.log(fatafeat);
     request(fatafeat, function(error, response, html){
       if(!error){
