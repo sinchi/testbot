@@ -152,6 +152,26 @@ function sendMessage(recipientId, message) {
     });
 };
 
+// generic function sending messages
+function sendQuikMessage(recipientId, message) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: recipientId},
+            message: message,
+
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
 //rihana Chhiwat
 function rihana(recipientId, text){
   var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
@@ -173,7 +193,22 @@ function rihana(recipientId, text){
       })
       var items = [{}];
       for(var i=0; i<titres.length; i++){
-        message = {
+        // message:{
+        //    "text":"Pick a color:",
+        //    "quick_replies":[
+        //      {
+        //        "content_type":"text",
+        //        "title":"Red",
+        //        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+        //      },
+        //      {
+        //        "content_type":"text",
+        //        "title":"Green",
+        //        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+        //      }
+        //    ]
+        //  };
+      var  message = {
             "attachment": {
                 "type": "template",
                 "payload": {
@@ -229,7 +264,7 @@ function fatafeat(recipientId, text){
 
     var d =  details.map(function(){
           var imgUrl = img.get(index).attribs['src'];
-          message = {
+        var  message = {
               "attachment": {
                   "type": "template",
                   "payload": {
