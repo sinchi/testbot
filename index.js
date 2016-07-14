@@ -91,7 +91,7 @@ function fatafeat(recipientId, text){
         var index = 0;
 
       //  console.log(img);
-        
+
         details.filter(function(){
           var imgUrl = img.get(index).attribs['src'];
           message = {
@@ -143,6 +143,7 @@ function kittenMessage(recipientId, text) {
             message = {
                 "attachment": {
                     "type": "template",
+                    "sender_action":"typing_on",
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
