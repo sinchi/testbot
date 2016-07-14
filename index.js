@@ -337,65 +337,35 @@ function rihana(recipientId, text){
     });
 
       console.log("articles : " + articles.length);
-
+      var elements = [{}];
       for(var i=0; i<titres.length; i++){
-        // message:{
-        //    "text":"Pick a color:",
-        //    "quick_replies":[
-        //      {
-        //        "content_type":"text",
-        //        "title":"Red",
-        //        "payload": {
-        //     "template_type": "generic",
-        //     "elements": [{
-        //         "title": titres[i],
-        //         "subtitle": $(this).find('.text').text(),
-        //         "image_url":  images[i],
-        //         "buttons": [{
-        //             "type": "web_url",
-        //             "url": liens[i],
-        //             "title": "Voir"
-        //             }, {
-        //             "type": "postback",
-        //             "title": "J'aime",
-        //             "payload": "User " + recipientId + " likes repas "  + images[i],
-        //         }]
-        //     }]
-        // }
-        //      },
-        //      {
-        //        "content_type":"text",
-        //        "title":"Green",
-        //        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-        //      }
-        //    ]
-        //  };
-      var  message = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                        "title": titres[i],
-                        "subtitle": $(this).find('.text').text(),
-                        "image_url":  images[i],
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": liens[i],
-                            "title": "Voir"
-                            }, {
-                            "type": "postback",
-                            "title": "J'aime",
-                            "payload": "User " + recipientId + " likes repas "  + images[i],
-                        }]
-                    }]
-                }
+        elements[i] = {
+          "title": titres[i],
+          "subtitle": $(this).find('.text').text(),
+          "image_url":  images[i],
+          "buttons": [{
+              "type": "web_url",
+              "url": liens[i],
+              "title": "Voir"
+              }, {
+              "type": "postback",
+              "title": "J'aime",
+              "payload": "User " + recipientId + " likes repas "  + images[i],
+          }]
+      };
+
+
+  }
+  var  message = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": elements
             }
-        };
-
-        sendMessage(recipientId, message);
-
         }
+    };
+    sendMessage(recipientId, message);
     }else{
       console.log('error' + error);
     }
