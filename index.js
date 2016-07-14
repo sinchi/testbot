@@ -63,7 +63,17 @@ app.post('/webhook', function (req, res) {
               // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
-                  rihana(event.sender.id, event.message.text);
+                //  rihana(event.sender.id, event.message.text);
+                  var  message = {
+                        "attachment": {
+                            "type": "video",
+                            "payload": {
+                                "url":"https://petersapparel.com/bin/clip.mp4"
+                            }
+                        }
+                    };
+                    sendVideo(message);
+
               //sendMessage(event.sender.id, { text: event.message.text });
            }
 
@@ -191,6 +201,25 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+
+function sendVideo(recipientId, message){
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: {
+          recipient: {id: recipientId},
+          message: message,
+
+      }
+  }, function(error, response, body) {
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
+  });
+}
 
 // generic function sending messages
 function sendQuikMessage(recipientId) {
