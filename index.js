@@ -186,14 +186,15 @@ function rihana(recipientId, text){
 
       var titres = articles.find('.post-box-title a').map(function(){
       return $(this).text()
-      })
+    });
 
       var liens = articles.find('a').map(function(){
       return $(this).attr('href')
-      })
-      var items = [{}];
-      var i =0;
-      for(i=0; i<titres.length; i++){
+    });
+
+      console.log(liens);
+
+      for(var i=0; i<titres.length; i++){
         // message:{
         //    "text":"Pick a color:",
         //    "quick_replies":[
