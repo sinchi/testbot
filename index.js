@@ -60,6 +60,26 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
 });
 
+/ generic function sending messages
+function sendSeen(recipientId) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: recipientId},
+          //  message: message,
+            sender_action:"mark_seen",
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
 // generic function sending messages
 function sendEcrire(recipientId) {
     request({
@@ -102,6 +122,7 @@ function sendMessage(recipientId, message) {
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
+    sendSeen(recipientId);
     sendEcrire(recipientId);
     var fatafeat = 'http://www.fatafeat.com/recipes/search?keyword=&category=&season=&chef=&kitchen=&group=';
     request(fatafeat, function(error, response, html){
