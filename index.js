@@ -196,46 +196,62 @@ function rihana(recipientId, text){
       console.log("articles : " + articles.length);
 
       for(var i=0; i<titres.length; i++){
-        // message:{
-        //    "text":"Pick a color:",
-        //    "quick_replies":[
-        //      {
-        //        "content_type":"text",
-        //        "title":"Red",
-        //        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-        //      },
-        //      {
-        //        "content_type":"text",
-        //        "title":"Green",
-        //        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-        //      }
-        //    ]
-        //  };
-      var  message = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                        "title": titres[i],
-                        "subtitle": $(this).find('.text').text(),
-                        "image_url":  images[i],
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": liens[i],
-                            "title": "Voir"
-                            }, {
-                            "type": "postback",
-                            "title": "J'aime",
-                            "payload": "User " + recipientId + " likes repas "  + images[i],
-                        }]
-                    }]
-                }
-            }
-        };
-
-        sendMessage(recipientId, message);
-
+        message:{
+           "text":"Pick a color:",
+           "quick_replies":[
+             {
+               "content_type":"text",
+               "title":"Red",
+               "payload": {
+            "template_type": "generic",
+            "elements": [{
+                "title": titres[i],
+                "subtitle": $(this).find('.text').text(),
+                "image_url":  images[i],
+                "buttons": [{
+                    "type": "web_url",
+                    "url": liens[i],
+                    "title": "Voir"
+                    }, {
+                    "type": "postback",
+                    "title": "J'aime",
+                    "payload": "User " + recipientId + " likes repas "  + images[i],
+                }]
+            }]
+        }
+             },
+             {
+               "content_type":"text",
+               "title":"Green",
+               "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+             }
+           ]
+         };
+      // var  message = {
+      //       "attachment": {
+      //           "type": "template",
+      //           "payload": {
+      //               "template_type": "generic",
+      //               "elements": [{
+      //                   "title": titres[i],
+      //                   "subtitle": $(this).find('.text').text(),
+      //                   "image_url":  images[i],
+      //                   "buttons": [{
+      //                       "type": "web_url",
+      //                       "url": liens[i],
+      //                       "title": "Voir"
+      //                       }, {
+      //                       "type": "postback",
+      //                       "title": "J'aime",
+      //                       "payload": "User " + recipientId + " likes repas "  + images[i],
+      //                   }]
+      //               }]
+      //           }
+      //       }
+      //   };
+      //
+      //   sendMessage(recipientId, message);
+sendQuikMessage(recipientId, message);
         }
     }else{
       console.log('error' + error);
