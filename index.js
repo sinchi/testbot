@@ -52,7 +52,7 @@ app.get('/webhook', function (req, res) {
 
 // handler receiving message
 app.post('/webhook', function (req, res) {
-
+    menu();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -126,6 +126,43 @@ function sendSeen(recipientId) {
         }
     });
 };
+
+
+function menu(){
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: {
+        "setting_type" : "call_to_actions",
+        "thread_state" : "existing_thread",
+        "call_to_actions":[
+          {
+            "type":"postback",
+            "title":"Help",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+          },
+          {
+            "type":"postback",
+            "title":"Start a New Order",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+          },
+          {
+            "type":"web_url",
+            "title":"View Website",
+            "url":"http://petersapparel.parseapp.com/"
+          }
+        ]
+
+      }
+  }, function(error, response, body) {
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
+  });
+}
 
 // generic function sending messages
 function sendEcrire(recipientId) {
