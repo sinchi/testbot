@@ -32,8 +32,8 @@ app.post('/webhook', function (req, res) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                //sendMessage(event.sender.id, {text: event.message.text});
               // if(event.message.text === "fatafeat")
-                  // sendSeen(event.sender.id);
-                  // sendEcrire(event.sender.id);
+                  sendSeen(event.sender.id);
+                  sendEcrire(event.sender.id);
                   fatafeat(event.sender.id, event.message.text);
            }
 
@@ -146,7 +146,6 @@ function fatafeat(recipientId, text){
 
 
         details.filter(function(){
-          console.log('filter');
           var imgUrl = img.get(index).attribs['src'];
           message = {
               "attachment": {
