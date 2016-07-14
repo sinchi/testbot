@@ -143,7 +143,7 @@ function fatafeat(recipientId, text){
 
 
 
-        details.map(function(){
+    var d =  details.map(function(){
           var imgUrl = img.get(index).attribs['src'];
           message = {
               "attachment": {
@@ -167,7 +167,7 @@ function fatafeat(recipientId, text){
                   }
               }
           };
-          console.log(details);
+          console.log(d);
           sendMessage(recipientId, message);
           index++;
           console.log(imgUrl);
