@@ -88,12 +88,12 @@ function fatafeat(recipientId, text){
         var $ = cheerio.load(html);
         var details = $('.container.wasafat').find('.item').find('.details');
         var img = $('.container.wasafat').find('.item').find('.pic').find('img');
-        console.log("taille images:  " + img.length);
         var index = 0;
-        var imgUrl = img.get(index).attribs['src'];
+
       //  console.log(img);
         console.log(imgUrl);
         details.filter(function(){
+          var imgUrl = img.get(index).attribs['src'];
           message = {
               "attachment": {
                   "type": "template",
@@ -118,6 +118,7 @@ function fatafeat(recipientId, text){
           };
 
           sendMessage(recipientId, message);
+          index++;
           console.log(imgUrl);
 
         });
