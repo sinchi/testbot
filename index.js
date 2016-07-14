@@ -136,9 +136,9 @@ function menu(recipientId){
       method: 'POST',
       json: {
         recipient: {id: recipientId},
-        "setting_type" : "call_to_actions",
-        "thread_state" : "existing_thread",
-        "call_to_actions":[
+        setting_type : "call_to_actions",
+        thread_state : "existing_thread",
+        call_to_actions:[
           {
             "type":"postback",
             "title":"Help",
