@@ -89,7 +89,7 @@ function sendEcrire(recipientId) {
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-            recipient: {id: recipientId},          
+            recipient: {id: recipientId},
             sender_action:"typing_on",
         }
     }, function(error, response, body) {
@@ -143,7 +143,7 @@ function fatafeat(recipientId, text){
 
 
 
-        details.filter(function(){
+        details.map(function(){
           var imgUrl = img.get(index).attribs['src'];
           message = {
               "attachment": {
