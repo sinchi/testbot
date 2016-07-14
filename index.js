@@ -62,7 +62,7 @@ app.post('/webhook', function (req, res) {
               // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
-                  fatafeat(event.sender.id, event.message.text);
+                  rihana(event.sender.id, event.message.text);
               //sendMessage(event.sender.id, { text: event.message.text });
            }
 
