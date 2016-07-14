@@ -70,6 +70,7 @@ function sendMessage(recipientId, message) {
         json: {
             recipient: {id: recipientId},
             message: message,
+            "sender_action":"typing_on",
         }
     }, function(error, response, body) {
         if (error) {
@@ -143,7 +144,7 @@ function kittenMessage(recipientId, text) {
             message = {
                 "attachment": {
                     "type": "template",
-                    "sender_action":"typing_on",
+
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
