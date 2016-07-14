@@ -176,7 +176,7 @@ function sendQuikMessage(recipientId, message) {
 function rihana(recipientId, text){
   var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
   console.log(rihanaLink);
-  request.get(rihanaLink, function(error, response, html){
+  request.get({uri: rihanaLink}, function(error, response, html){
     if(!error && response.statusCode == 200){
 
       var $ = cheerio.load('html');
