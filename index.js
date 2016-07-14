@@ -169,7 +169,7 @@ function fatafeat(recipientId, text){
                   }
               }
           };
-          console.log(message);
+          //console.log(message);
           sendMessage(recipientId, message);
           index++;
           console.log(imgUrl);
