@@ -31,7 +31,8 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                //sendMessage(event.sender.id, {text: event.message.text});
-               fatafeat(event.sender.id, event.message.text);
+               if(event.message.text === "fatafeat")
+                  fatafeat(event.sender.id, event.message.text);
            }
 
           // var what = event.message.text;
