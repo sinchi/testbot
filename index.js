@@ -70,7 +70,7 @@ function sendMessage(recipientId, message) {
         json: {
             recipient: {id: recipientId},
             message: message,
-            "sender_action":"typing_on",
+            sender_action:"typing_on",
         }
     }, function(error, response, body) {
         if (error) {
