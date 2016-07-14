@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
 
 
-
 // App Secret can be retrieved from the App Dashboard
 const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ?
   process.env.MESSENGER_APP_SECRET :
@@ -153,13 +152,65 @@ function sendMessage(recipientId, message) {
     });
 };
 
+//rihana Chhiwat
+function rihana(recipientId, text){
+  var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
+  request(rihanaLink, function(error, response, html){
+    if(!error){
+      var $ = cheerio.load('html');
+      var articles = $('article');
+      var images = articles.find('.post-thumbnail').find('img').map(function(){
+        return $(this).attr('src')
+      });
+
+      var titres = articles.find('.post-box-title a').map(function(){
+      return $(this).text()
+      })
+
+      var liens = articles.find('a').map(function(){
+      return $(this).attr('href')
+      })
+      var items = [{}];
+      for(var i=0; i<titres.length; i++){
+        message = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": titres[i],
+                        "subtitle": $(this).find('.text').text(),
+                        "image_url":  images[i],
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": link: liens[i],
+                            "title": "Voir"
+                            }, {
+                            "type": "postback",
+                            "title": "J'aime",
+                            "payload": "User " + recipientId + " likes repas "  + images[i],
+                        }]
+                    }]
+                }
+            }
+        };
+
+        sendMessage(recipientId, message);
+
+        }
+    }// end error
+
+
+  })
+}
+
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
   //  sendSeen(recipientId);
   //  sendEcrire(recipientId);
-    var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+Number(text);
-    console.log(fatafeat);
-    request(fatafeat, function(error, response, html){
+    var fatafeatLink = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+Number(text);
+    console.log(fatafeatLink);
+    request(fatafeatLink, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
         var details = $('.container.wasafat').find('.item').find('.details');
