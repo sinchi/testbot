@@ -155,6 +155,7 @@ function sendMessage(recipientId, message) {
 //rihana Chhiwat
 function rihana(recipientId, text){
   var rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(text) + '/';
+  console.log(rihanaLink);
   request(rihanaLink, function(error, response, html){
     if(!error){
       var $ = cheerio.load('html');
