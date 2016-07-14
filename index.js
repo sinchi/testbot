@@ -131,6 +131,10 @@ function fatafeat(recipientId, text){
         var $ = cheerio.load(html);
         var details = $('.container.wasafat').find('.item').find('.details');
         var img = $('.container.wasafat').find('.item').find('.pic').find('img');
+
+        var countries = $(".theProgramName").find('span').map(function(){
+          return $(this).text()
+        });
         var index = 0;
 
       //  console.log(img);
@@ -143,7 +147,7 @@ function fatafeat(recipientId, text){
                   "payload": {
                       "template_type": "generic",
                       "elements": [{
-                          "title": $(this).find('.name').text(),
+                          "title": $(this).find('.name').text() + ' ' + countries[index],
                           "subtitle": $(this).find('.text').text(),
                           "image_url": imgUrl ,
                           "buttons": [{
