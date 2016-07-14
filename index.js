@@ -208,10 +208,19 @@ function sendQuikMessage(recipientId) {
 function rihana(recipientId, text){
   var values = text.split(' ');
   var rihanaLink = "";
-  if(values[0] === "regime"){
-    rihanaLink = 'http://chhiwat.ma/regime-et-minceur/recettes-pour-le-regime/page/'+ Number(values[1]) + "/";
-  }else if(values[0] === "rihana"){
-    rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
+
+  switch (values[0]) {
+    case "regime":
+        rihanaLink = 'http://chhiwat.ma/regime-et-minceur/recettes-pour-le-regime/page/'+ Number(values[1]) + "/";
+      break;
+    case "rihana":
+      rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
+      break;
+    case "gateau":
+        rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page'+ Number(values[1]) + '/';
+    break;
+    default:
+
   }
 
   console.log(rihanaLink);
