@@ -183,7 +183,7 @@ function rihana(recipientId, text){
                         "image_url":  images[i],
                         "buttons": [{
                             "type": "web_url",
-                            "url": link: liens[i],
+                            "url": liens[i],
                             "title": "Voir"
                             }, {
                             "type": "postback",
