@@ -52,6 +52,7 @@ app.get('/webhook', function (req, res) {
 
 // handler receiving messages
 app.post('/webhook', function (req, res) {
+    sendGreeting();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -141,6 +142,27 @@ function sendTypingOff(recipientId) {
         json: {
             recipient: {id: recipientId},
             sender_action:"typing_off",
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+// generic function sending messages
+function sendGreeting() {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+          setting_type:"greeting",
+            greeting:{
+              "text":"Welcome to My Company!"
+            }
+
         }
     }, function(error, response, body) {
         if (error) {
