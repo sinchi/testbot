@@ -197,8 +197,8 @@ function rihana(recipientId, text){
 
       for(var i=0; i<titres.length; i++){
         message:{
-           "text":"Pick a color:",
-           "quick_replies":[
+           text:"Pick a color:",
+           quick_replies:[
              {
                "content_type":"text",
                "title":"Red",
