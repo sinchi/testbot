@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 app.get('/webhook', function(req, res) {
   console.log(VALIDATION_TOKEN);
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === VALIDATION_TOKEN) {
+      req.query['hub.verify_token'] === "chhiwathana") {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
