@@ -146,6 +146,7 @@ function fatafeat(recipientId, text){
       //  console.log(img);
 
         details.filter(function(){
+          console.log('filter');
           var imgUrl = img.get(index).attribs['src'];
           message = {
               "attachment": {
