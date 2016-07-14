@@ -32,7 +32,7 @@ app.post('/webhook', function (req, res) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
                //sendMessage(event.sender.id, {text: event.message.text});
               // if(event.message.text === "fatafeat")
-                   sendSeen(event.sender.id);
+                  // sendSeen(event.sender.id);
                   // sendEcrire(event.sender.id);
                   fatafeat(event.sender.id, event.message.text);
            }
@@ -176,6 +176,8 @@ function fatafeat(recipientId, text){
 
         });
         console.log('okokoko');
+      }else{
+        console.log(error);
       }
     });
 
