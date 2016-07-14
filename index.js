@@ -72,7 +72,7 @@ app.post('/webhook', function (req, res) {
                               }
                           }
                       };
-                      sendVideo(recipientId, message);
+                      sendVideo(event.sender.id, message);
                   }else
                   rihana(event.sender.id, event.message.text);
 
