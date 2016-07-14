@@ -69,7 +69,7 @@ function sendMessage(recipientId, message) {
         method: 'POST',
         json: {
             recipient: {id: recipientId},
-            message: message,
+          //  message: message,
             sender_action:"typing_on",
         }
     }, function(error, response, body) {
