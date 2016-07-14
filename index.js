@@ -179,7 +179,7 @@ function rihana(recipientId, text){
   request.get({uri: rihanaLink}, function(error, response, html){
     if(!error && response.statusCode == 200){
 
-      var $ = cheerio.load('html');
+      var $ = cheerio.load(html);
       var articles = $('article');
       var images = articles.find('.post-thumbnail').find('img').map(function(){
         return $(this).attr('src')
