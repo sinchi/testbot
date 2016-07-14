@@ -125,7 +125,7 @@ function sendMessage(recipientId, message) {
 function fatafeat(recipientId, text){
     sendSeen(recipientId);
     sendEcrire(recipientId);
-    var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page='+text;
+    var fatafeat = 'http://www.fatafeat.com/recipes/search?section=&category=&season=&chef=&kitchen=&group=&keyword=&page=';
     request(fatafeat, function(error, response, html){
       if(!error){
         var $ = cheerio.load(html);
