@@ -135,6 +135,9 @@ function fatafeat(recipientId, text){
         var countries = $(".theProgramName").find('span').map(function(){
           return $(this).text()
         });
+        var times = $('.timeOfPreparation').find('span').map(function(){
+          return $(this).text();
+        });
         var index = 0;
 
       //  console.log(img);
@@ -147,7 +150,7 @@ function fatafeat(recipientId, text){
                   "payload": {
                       "template_type": "generic",
                       "elements": [{
-                          "title": $(this).find('.name').text() + ' ' + countries[index],
+                          "title": $(this).find('.name').text() + ' ' + countries[index] + ' ' + times[index],
                           "subtitle": $(this).find('.text').text(),
                           "image_url": imgUrl ,
                           "buttons": [{
