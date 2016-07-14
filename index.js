@@ -63,16 +63,19 @@ app.post('/webhook', function (req, res) {
               // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
-                //  rihana(event.sender.id, event.message.text);
-                  var  message = {
-                        "attachment": {
-                            "type": "video",
-                            "payload": {
-                                "url":"https://petersapparel.com/bin/clip.mp4"
-                            }
-                        }
-                    };
-                    sendVideo(recipientId, message);
+                  if(event.message.text === "video"){
+                    var  message = {
+                          "attachment": {
+                              "type": "video",
+                              "payload": {
+                                  "url":"https://petersapparel.com/bin/clip.mp4"
+                              }
+                          }
+                      };
+                      sendVideo(recipientId, message);
+                  }else
+                  rihana(event.sender.id, event.message.text);
+
 
               //sendMessage(event.sender.id, { text: event.message.text });
            }
