@@ -143,7 +143,7 @@ function fatafeat(recipientId, text){
         });
         var index = 0;
 
-        console.log(details);
+
 
         details.filter(function(){
           console.log('filter');
@@ -170,7 +170,7 @@ function fatafeat(recipientId, text){
                   }
               }
           };
-          //console.log(message);
+          console.log(details);
           sendMessage(recipientId, message);
           index++;
           console.log(imgUrl);
