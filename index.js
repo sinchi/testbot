@@ -160,7 +160,7 @@ app.post('/webhook', function (req, res) {
                       };
                       sendVideo(event.sender.id, message);
                   }else{
-                    console.log(JSON.stringify(event.message));
+                    console.log(event.message.text);
                     //rihana(event.sender.id, event.message.text);
                   }
 
