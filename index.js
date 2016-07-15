@@ -85,7 +85,7 @@ function rihana(recipientId, text){
       return $(this).text()
     });
 
-      var liens = articles.find('a').map(function(){
+      var liens = articles.find('.post-thumbnail a').map(function(){
       return $(this).attr('href')
     });
 
