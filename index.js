@@ -103,7 +103,7 @@ app.post('/webhook', function (req, res) {
           //   }
 
             } else if (event.postback) {
-              var payload = event.postback.split(',');
+              var payload = JSON.stringify(event.postback).split(',');
               console.log('recipientId :' + payload[0]);
               console.log(payload[1]);
               console.log('lien :' + payload[2]);
