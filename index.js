@@ -168,7 +168,10 @@ app.post('/webhook', function (req, res) {
             } else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
               var id = payload[0].split(':');
-              console.log(id[1].substring(1, id[1].length)+ ' ' + payload[1] + ' ' + payload[2].substring(0, payload[2].length-2));
+              var userId = id[1].substring(1, id[1].length);
+              var motCle = payload[1];
+              var link = payload[2].substring(0, payload[2].length-2);
+              console.log(userId ' ' + motCle + ' ' + link);
 
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
