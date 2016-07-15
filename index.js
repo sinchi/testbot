@@ -179,6 +179,8 @@ app.post('/webhook', function (req, res) {
               sendIngredients(payloadObject);
             }else if(payloadObject.keyword === "how"){
               sendHow(payloadObject);
+            }else{
+              sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." })
             }
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
