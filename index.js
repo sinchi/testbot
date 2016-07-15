@@ -63,9 +63,9 @@ function rihana(recipientId, text){
       rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
       break;
     case "gateau":
-        rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page'+ Number(values[1]) + '/';
+        rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page/'+ Number(values[1]) + '/';
     case "pizza":
-      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page' + Number(values[1]) + '/';
+      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
     break;
     default:
 
