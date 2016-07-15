@@ -1,4 +1,4 @@
-ghvar express = require('express');
+var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var cheerio = require('cheerio');
@@ -349,13 +349,13 @@ function rihana(recipientId, text){
               "title": "Voir"
               }, {
               "type": "postback",
-              "title": "ingredients",
-              "payload": "User " + recipientId + " ingredients "  + images[i],
+              "title": "مقادير",
+              "payload": "User " + recipientId + " likes repas "  + images[i],
           },
           {
              "type": "postback",
-             "title": "comment la préparer",
-             "payload": "User " + recipientId + " comment la préparer "  + images[i],
+             "title": "طريقة التحضير",
+             "payload": "User " + recipientId + " likes repas "  + images[i],
          }
         ]
       };
