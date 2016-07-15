@@ -388,12 +388,12 @@ function sendQuikMessage(recipientId) {
                "quick_replies":[
                  {
                    "content_type":"text",
-                   "title":"Red",
+                   "title":"gateau 1",
                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                  },
                  {
                    "content_type":"text",
-                   "title":"Green",
+                   "title":"pizza 1",
                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                  }
                ]
