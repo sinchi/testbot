@@ -164,14 +164,7 @@ app.post('/webhook', function (req, res) {
                       }else {
                         rihana(event.sender.id, event.message.text);
                       }
-
-                  //
-                  }
-
-
-
               //sendMessage(event.sender.id, { text: event.message.text });
-           }
 
             } else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
