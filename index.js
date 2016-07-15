@@ -1,4 +1,4 @@
-var express = require('express');
+ghvar express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var cheerio = require('cheerio');
@@ -349,9 +349,15 @@ function rihana(recipientId, text){
               "title": "Voir"
               }, {
               "type": "postback",
-              "title": "J'aime",
+              "title": "مقادير",
               "payload": "User " + recipientId + " likes repas "  + images[i],
-          }]
+          },
+          {
+             "type": "postback",
+             "title": "طريقة التحضير",
+             "payload": "User " + recipientId + " likes repas "  + images[i],
+         }
+        ]
       };
 
 
