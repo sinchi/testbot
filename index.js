@@ -103,7 +103,11 @@ app.post('/webhook', function (req, res) {
           //   }
 
             } else if (event.postback) {
-              console.log("Postback received: " + JSON.stringify(event.postback));
+              var payload = event.postback.split(',');
+              console.log('recipientId :' + payload[0]);
+              console.log(payload[1]);
+              console.log('lien :' + payload[2]);
+              //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
             console.log(event.message.metadata);
           }
@@ -352,12 +356,12 @@ function rihana(recipientId, text){
               }, {
               "type": "postback",
               "title": "مقادير",
-              "payload": recipientId + " " + liens[i],
+              "payload": recipientId + ",ingredient," +  liens[i],
           },
           {
              "type": "postback",
              "title": "طريقة التحضير",
-             "payload":  recipientId + " " + liens[i],
+             "payload":  recipientId + ",how," + liens[i],
          }
         ]
       };
