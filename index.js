@@ -159,8 +159,11 @@ app.post('/webhook', function (req, res) {
                           }
                       };
                       sendVideo(event.sender.id, message);
-                  }else
-                  rihana(event.sender.id, event.message.text);
+                  }else{
+                    console.log(JSON.stringify(event.message));
+                    //rihana(event.sender.id, event.message.text);
+                  }
+
 
 
               //sendMessage(event.sender.id, { text: event.message.text });
@@ -192,6 +195,40 @@ app.post('/webhook', function (req, res) {
     }
     res.sendStatus(200);
 });
+
+// generic function sending messages
+function sendQuikMessage(recipientId) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: recipientId},
+            message:{
+               "text":"Choisir votre repas :",
+               "quick_replies":[
+                 {
+                   "content_type":"text",
+                   "title":"gateau 1",
+                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                 },
+                 {
+                   "content_type":"text",
+                   "title":"pizza 1",
+                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                 }
+               ]
+             }
+
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
 
 
 
@@ -377,39 +414,7 @@ function sendVideo(recipientId, message){
   });
 }
 
-// generic function sending messages
-function sendQuikMessage(recipientId) {
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-        method: 'POST',
-        json: {
-            recipient: {id: recipientId},
-            message:{
-               "text":"Choisir votre repas :",
-               "quick_replies":[
-                 {
-                   "content_type":"text",
-                   "title":"gateau 1",
-                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                 },
-                 {
-                   "content_type":"text",
-                   "title":"pizza 1",
-                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-                 }
-               ]
-             }
 
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending message: ', error);
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
-        }
-    });
-};
 
 
 
