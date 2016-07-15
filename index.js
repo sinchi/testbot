@@ -349,13 +349,13 @@ function rihana(recipientId, text){
               "title": "Voir"
               }, {
               "type": "postback",
-              "title": "مقادير",
-              "payload": "User " + recipientId + " likes repas "  + images[i],
+              "title": "ingredients",
+              "payload": "User " + recipientId + " ingredients "  + images[i],
           },
           {
              "type": "postback",
-             "title": "طريقة التحضير",
-             "payload": "User " + recipientId + " likes repas "  + images[i],
+             "title": "comment la préparer",
+             "payload": "User " + recipientId + " comment la préparer "  + images[i],
          }
         ]
       };
