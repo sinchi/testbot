@@ -174,7 +174,9 @@ app.post('/webhook', function (req, res) {
                 link : payload[2].substring(0, payload[2].length-2)
               };
 
-              sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
+            //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
+            if(payloadObject.keyword === "ingredient")
+              sendIngredients(payloadObject);
 
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
@@ -186,8 +188,8 @@ app.post('/webhook', function (req, res) {
 
 
 sendIngredients(payload){
-  var recipeLink = payload.link;
-  request(recipeLink, function(error, response, html){
+
+  request(payload.link, function(error, response, html){
     if(!error && response.statusCode == 200){
       var $ = cheerio.load(html);
       var ingredients = $('.entry ul').first().map(function(){
