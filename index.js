@@ -74,6 +74,8 @@ app.post('/webhook', function (req, res) {
                           }
                       };
                       sendVideo(event.sender.id, message);
+                  }else if(event.message.text === "مقادير"){
+                    sendMessage(event.sender.id, { text: "bghiti مقادير" });
                   }else
                   rihana(event.sender.id, event.message.text);
 
@@ -350,18 +352,12 @@ function rihana(recipientId, text){
               }, {
               "type": "postback",
               "title": "مقادير",
-              "payload": {
-                "user": recipientId,
-                "lien": liens[i]
-              },
+              "payload": recipientId + " " + liens[i],
           },
           {
              "type": "postback",
              "title": "طريقة التحضير",
-             "payload":{
-               "user": recipientId,
-               "lien": liens[i]
-             },
+             "payload":  recipientId + " " + liens[i],
          }
         ]
       };
