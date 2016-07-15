@@ -174,7 +174,7 @@ app.post('/webhook', function (req, res) {
                 link : payload[2].substring(0, payload[2].length-2)
               };
 
-              sendMessage(userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
+              sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
 
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
