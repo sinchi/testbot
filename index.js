@@ -356,7 +356,7 @@ function sendTypingOff(recipientId) {
 // generic function sending messages
 function sendGreeting() {
     request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
+        url: 'https://graph.facebook.com/v2.6/me/thread_settings',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
