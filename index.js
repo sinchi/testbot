@@ -178,11 +178,8 @@ app.post('/webhook', function (req, res) {
             if(payloadObject.keyword === "ingredient"){
               sendIngredients(payloadObject);
             }else if(payloadObject.keyword === "how"){
-              sendHow(payload);
+              sendHow(payloadObject);
             }
-
-
-
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
             console.log(event.message.metadata);
@@ -201,12 +198,8 @@ function sendHow(payload){
       var how = $('.entry ol').map(function(){
         return $(this).text()
     });
-
-
-        sendMessage(payload.userId, {text: how[0]});
-
+      sendMessage(payload.userId, {text: how[0]});
     }
-
   });
 
 }
@@ -219,12 +212,9 @@ function sendIngredients(payload){
       var ingredients = $('.entry ul').first().map(function(){
         return $(this).text()
       });
-      
       for(var i=0; i<ingredients.length; i++)
         sendMessage(payload.userId, {text: ingredients[i]});
-
     }
-
   });
 
 }
