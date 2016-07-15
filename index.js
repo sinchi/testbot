@@ -159,12 +159,13 @@ app.post('/webhook', function (req, res) {
                           }
                       };
                       sendVideo(event.sender.id, message);
-                  }else{
-                    if(event.message.quick_reply){
-                      console.log("payload => " + event.message.quick_reply.payload);
-                    }
+                    }else if(event.message.quick_reply){
+                          console.log("payload => " + event.message.quick_reply.payload);
+                      }else {
+                        rihana(event.sender.id, event.message.text);
+                      }
 
-                  //  rihana(event.sender.id, event.message.text);
+                  //
                   }
 
 
