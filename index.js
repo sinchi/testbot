@@ -168,6 +168,7 @@ app.post('/webhook', function (req, res) {
 
             } else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
+              console.log(JSON.stringify(event.postback));
               var id = payload[0].split(':');
               var payloadObject = {
                 userId: id[1].substring(1, id[1].length),
@@ -178,6 +179,7 @@ app.post('/webhook', function (req, res) {
             //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
             if(payloadObject.keyword === "ingredient"){
               sendIngredients(payloadObject);
+
             }else if(payloadObject.keyword === "how"){
               sendHow(payloadObject);
             }else{
@@ -384,7 +386,7 @@ function sendQuikMessage(recipientId) {
         json: {
             recipient: {id: recipientId},
             message:{
-               "text":"Pick a color:",
+               "text":"Choisir votre repas :",
                "quick_replies":[
                  {
                    "content_type":"text",
