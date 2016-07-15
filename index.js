@@ -201,9 +201,9 @@ function sendHow(payload){
       var how = $('.entry ol').map(function(){
         return $(this).text()
     });
-      var message = "";
-      for(var i=0; i<how.length; i++)
-        sendMessage(payload.userId, {text: how[i]});
+
+
+        sendMessage(payload.userId, {text: how[0]});
 
     }
 
@@ -219,7 +219,7 @@ function sendIngredients(payload){
       var ingredients = $('.entry ul').first().map(function(){
         return $(this).text()
       });
-      var message = "";
+      
       for(var i=0; i<ingredients.length; i++)
         sendMessage(payload.userId, {text: ingredients[i]});
 
