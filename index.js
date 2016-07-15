@@ -148,6 +148,7 @@ app.post('/webhook', function (req, res) {
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
                   menu(event.sender.id);
+                  sendQuikMessage(event.sender.id);
                   if(event.message.text === "video"){
                     var  message = {
                           "attachment": {
@@ -180,7 +181,7 @@ app.post('/webhook', function (req, res) {
             }else if(payloadObject.keyword === "how"){
               sendHow(payloadObject);
             }else{
-              sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." })
+              sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." });
             }
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
