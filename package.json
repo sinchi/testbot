@@ -16,6 +16,7 @@
     "cheerio": "latest",
     "config": "latest",
     "https" : "latest",
-    "crypto": "latest"
+    "crypto": "latest",
+    "ejs": "latest"
   }
 }
