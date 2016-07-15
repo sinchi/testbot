@@ -423,7 +423,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/rift.png"
+          url: SERVER_URL + "/public/asa.png"
         }
       }
     }
