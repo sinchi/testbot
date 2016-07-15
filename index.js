@@ -185,6 +185,28 @@ app.post('/webhook', function (req, res) {
 });
 
 
+sendIngredients(payload){
+  var recipeLink = payload.link;
+  request(recipeLink, function(error, response, html){
+    if(!error && response.statusCode == 200){
+      var $ = cheerio.load(html);
+      var ingredients = $('.entry ul').first().map(function(){
+        return $(this).text()
+      });
+
+      sendMessage(payload.userId, {text: JSON.stringify(ingredients)});
+    }
+
+  });
+
+  // for(var i=0; i<ingredients.length; i++){
+  //
+  // }
+
+
+
+}
+
 function sendSeen(recipientId) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
