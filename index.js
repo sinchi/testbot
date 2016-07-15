@@ -16,7 +16,7 @@ const
   crypto = require('crypto'),
   express = require('express'),
   https = require('https'),
-  request = require('request');
+  request = require('request'),
   cheerio = require('cheerio');
 
 var app = express();
@@ -834,8 +834,8 @@ app.listen((process.env.PORT || 3000));
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid
 // certificate authority.
-// app.listen(app.get('port'), function() {
-//   console.log('Node app is running on port', app.get('port'));
-// });
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 //
-// module.exports = app;
+module.exports = app;
