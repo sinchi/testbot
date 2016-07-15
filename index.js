@@ -190,8 +190,10 @@ app.post('/webhook', function (req, res) {
             console.log(event.message.metadata);
           }
     }
+  }
     res.sendStatus(200);
-});
+})
+
 
 // generic function sending messages
 function sendQuikMessage(recipientId) {
