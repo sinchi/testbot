@@ -148,7 +148,8 @@ app.post('/webhook', function (req, res) {
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
                   menu(event.sender.id);
-                  sendQuikMessage(event.sender.id);
+                  //sendQuikMessage(event.sender.id);
+                  sendGreeting();
                   if(event.message.text === "video"){
                     var  message = {
                           "attachment": {
@@ -179,7 +180,6 @@ app.post('/webhook', function (req, res) {
             //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
             if(payloadObject.keyword === "ingredient"){
               sendIngredients(payloadObject);
-
             }else if(payloadObject.keyword === "how"){
               sendHow(payloadObject);
             }else{
