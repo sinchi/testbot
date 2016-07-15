@@ -149,7 +149,7 @@ app.post('/webhook', function (req, res) {
                   sendEcrire(event.sender.id);
                   menu(event.sender.id);
                   //sendQuikMessage(event.sender.id);
-                  sendGreeting();
+                  sendGreeting(event.sender.id);
                   if(event.message.text === "video"){
                     var  message = {
                           "attachment": {
@@ -352,12 +352,13 @@ function sendTypingOff(recipientId) {
     });
 };
 // generic function sending messages
-function sendGreeting() {
+function sendGreeting(recipientId) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
+          recipient: {id: recipientId},
           setting_type:"greeting",
             greeting:{
               "text":"Welcome to My Company!"
