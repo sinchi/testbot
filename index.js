@@ -50,6 +50,90 @@ app.get('/webhook', function (req, res) {
 });
 
 
+//rihana Chhiwat
+function rihana(recipientId, text){
+  var values = text.split(' ');
+  var rihanaLink = "";
+
+  switch (values[0]) {
+    case "regime":
+        rihanaLink = 'http://chhiwat.ma/regime-et-minceur/recettes-pour-le-regime/page/'+ Number(values[1]) + "/";
+      break;
+    case "rihana":
+      rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
+      break;
+    case "gateau":
+        rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page'+ Number(values[1]) + '/';
+    case "pizza":
+      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page' + Number(values[1]) + '/';
+    break;
+    default:
+
+  }
+
+  console.log(rihanaLink);
+  request.get({uri: rihanaLink}, function(error, response, html){
+    if(!error && response.statusCode == 200){
+
+      var $ = cheerio.load(html);
+      var articles = $('article');
+      var images = articles.find('.post-thumbnail').find('img').map(function(){
+        return $(this).attr('src')
+      });
+
+      var titres = articles.find('.post-box-title a').map(function(){
+      return $(this).text()
+    });
+
+      var liens = articles.find('a').map(function(){
+      return $(this).attr('href')
+    });
+
+      console.log("articles : " + articles.length);
+      var elements = [{}];
+      for(var i=0; i<titres.length; i++){
+        elements[i] = {
+          "title": titres[i],
+          "subtitle": $(this).find('.text').text(),
+          "image_url":  images[i],
+          "buttons": [{
+              "type": "web_url",
+              "url": liens[i],
+              "title": "Voir"
+              }, {
+              "type": "postback",
+              "title": "مقادير",
+              "payload": recipientId + ",ingredient," +  liens[i],
+          },
+          {
+             "type": "postback",
+             "title": "طريقة التحضير",
+             "payload":  recipientId + ",how," + liens[i],
+         }
+        ]
+      };
+
+
+  }
+  var  message = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": elements
+            }
+        }
+    };
+    sendMessage(recipientId, message);
+    }else{
+      console.log('error' + error);
+    }
+    sendTypingOff(recipientId);
+
+  })
+}
+
+
 // handler receiving message
 app.post('/webhook', function (req, res) {
 
@@ -74,8 +158,6 @@ app.post('/webhook', function (req, res) {
                           }
                       };
                       sendVideo(event.sender.id, message);
-                  }else if(event.message.text === "مقادير"){
-                    sendMessage(event.sender.id, { text: "bghiti مقادير" });
                   }else
                   rihana(event.sender.id, event.message.text);
 
@@ -83,30 +165,9 @@ app.post('/webhook', function (req, res) {
               //sendMessage(event.sender.id, { text: event.message.text });
            }
 
-          // var what = event.message.text;
-          //   switch(what){
-          //     case "pizza fruit de mer":
-          //       var message = "العجينة" +
-          //                         "300 جرام طحين" +
-          //                         "3 ملعقة كبيرة زيت زيتون" +
-          //                         "نصف ملعقة صغيرة ملح" +
-          //                         "ملعقة كبيرة سكر" ;
-          //       sendMessage(event.sender.id, {text: message});
-          //         kittenMessage(event.sender.id, event.message.text);
-          //       break;
-          //     case "7ot":
-          //       sendMessage(event.sender.id, {text: "7ot ? bent lik chomicha ana ? hhhhhhh"});
-          //     break;
-          //     default:
-          //       sendMessage(event.sender.id, {text: "" + event.message.text});
-          //     break;
-          //   }
-
             } else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
-              console.log('recipientId :' + payload[0]);
-              console.log(payload[1]);
-              console.log('lien :' + payload[2]);
+              console.log(payload[0] + ' ' + payload[1] + ' ' + payload[2]);            
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
             console.log(event.message.metadata);
@@ -303,88 +364,7 @@ function sendQuikMessage(recipientId) {
     });
 };
 
-//rihana Chhiwat
-function rihana(recipientId, text){
-  var values = text.split(' ');
-  var rihanaLink = "";
 
-  switch (values[0]) {
-    case "regime":
-        rihanaLink = 'http://chhiwat.ma/regime-et-minceur/recettes-pour-le-regime/page/'+ Number(values[1]) + "/";
-      break;
-    case "rihana":
-      rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
-      break;
-    case "gateau":
-        rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page'+ Number(values[1]) + '/';
-    case "pizza":
-      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page' + Number(values[1]) + '/';
-    break;
-    default:
-
-  }
-
-  console.log(rihanaLink);
-  request.get({uri: rihanaLink}, function(error, response, html){
-    if(!error && response.statusCode == 200){
-
-      var $ = cheerio.load(html);
-      var articles = $('article');
-      var images = articles.find('.post-thumbnail').find('img').map(function(){
-        return $(this).attr('src')
-      });
-
-      var titres = articles.find('.post-box-title a').map(function(){
-      return $(this).text()
-    });
-
-      var liens = articles.find('a').map(function(){
-      return $(this).attr('href')
-    });
-
-      console.log("articles : " + articles.length);
-      var elements = [{}];
-      for(var i=0; i<titres.length; i++){
-        elements[i] = {
-          "title": titres[i],
-          "subtitle": $(this).find('.text').text(),
-          "image_url":  images[i],
-          "buttons": [{
-              "type": "web_url",
-              "url": liens[i],
-              "title": "Voir"
-              }, {
-              "type": "postback",
-              "title": "مقادير",
-              "payload": recipientId + ",ingredient," +  liens[i],
-          },
-          {
-             "type": "postback",
-             "title": "طريقة التحضير",
-             "payload":  recipientId + ",how," + liens[i],
-         }
-        ]
-      };
-
-
-  }
-  var  message = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": elements
-            }
-        }
-    };
-    sendMessage(recipientId, message);
-    }else{
-      console.log('error' + error);
-    }
-    sendTypingOff(recipientId);
-
-  })
-}
 
 //send rich message with fatafeat
 function fatafeat(recipientId, text){
