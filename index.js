@@ -195,8 +195,10 @@ function sendIngredients(payload){
       var ingredients = $('.entry ul').first().map(function(){
         return $(this).text()
       });
+      var message = "";
+      for(var i=0; i<ingredients.length; i++)
+        sendMessage(payload.userId, {text: ingredients[i]});
 
-      sendMessage(payload.userId, {text: JSON.stringify(ingredients)});
     }
 
   });
