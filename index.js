@@ -187,7 +187,7 @@ app.post('/webhook', function (req, res) {
 });
 
 
-sendIngredients(payload){
+function sendIngredients(payload){
 
   request(payload.link, function(error, response, html){
     if(!error && response.statusCode == 200){
