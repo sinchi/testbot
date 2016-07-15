@@ -175,8 +175,13 @@ app.post('/webhook', function (req, res) {
               };
 
             //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
-            if(payloadObject.keyword === "ingredient")
+            if(payloadObject.keyword === "ingredient"){
               sendIngredients(payloadObject);
+            }else if(payloadObject.keyword === "how"){
+              sendHow(payload);
+            }
+
+
 
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
@@ -186,6 +191,25 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
 });
 
+
+
+function sendHow(payload){
+
+  request(payload.link, function(error, response, html){
+    if(!error && response.statusCode == 200){
+      var $ = cheerio.load(html);
+      var how = $('.entry ol').map(function(){
+        return $(this).text()
+    });
+      var message = "";
+      for(var i=0; i<how.length; i++)
+        sendMessage(payload.userId, {text: how[i]});
+
+    }
+
+  });
+
+}
 
 function sendIngredients(payload){
 
@@ -202,12 +226,6 @@ function sendIngredients(payload){
     }
 
   });
-
-  // for(var i=0; i<ingredients.length; i++){
-  //
-  // }
-
-
 
 }
 
