@@ -350,12 +350,18 @@ function rihana(recipientId, text){
               }, {
               "type": "postback",
               "title": "مقادير",
-              "payload": "User " + recipientId + " likes repas "  + images[i],
+              "payload": {
+                "user": recipientId,
+                "lien": liens[i]
+              },
           },
           {
              "type": "postback",
              "title": "طريقة التحضير",
-             "payload": "User " + recipientId + " likes repas "  + images[i],
+             "payload":{
+               "user": recipientId,
+               "lien": liens[i]
+             },
          }
         ]
       };
