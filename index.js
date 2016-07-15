@@ -153,7 +153,7 @@ app.post('/webhook', function (req, res) {
                           "attachment": {
                               "type": "video",
                               "payload": {
-                                  "url":"http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4"
+                                  "url":"https://youtu.be/L-qewHuW_dU"
                               }
                           }
                       };
