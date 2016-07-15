@@ -136,7 +136,7 @@ function rihana(recipientId, text){
 
 // handler receiving message
 app.post('/webhook', function (req, res) {
-
+  sendGreeting();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -149,7 +149,7 @@ app.post('/webhook', function (req, res) {
                   sendEcrire(event.sender.id);
                   menu(event.sender.id);
                   //sendQuikMessage(event.sender.id);
-                  sendGreeting(event.sender.id);
+
                   if(event.message.text === "video"){
                     var  message = {
                           "attachment": {
@@ -354,15 +354,15 @@ function sendTypingOff(recipientId) {
     });
 };
 // generic function sending messages
-function sendGreeting(recipientId) {
+function sendGreeting() {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-          "setting_type" : "call_to_actions",
-    "thread_state" : "existing_thread",
-    "call_to_actions":[
+          setting_type : "call_to_actions",
+    thread_state : "existing_thread",
+    call_to_actions:[
       {
         "type":"postback",
         "title":"Help",
