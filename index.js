@@ -104,9 +104,11 @@ app.post('/webhook', function (req, res) {
 
             } else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
-              console.log('recipientId :' + payload[1]);
-              console.log(payload[2]);
+              console.log('recipientId :' + payload[0]);
+              console.log(payload[1]);
+              console.log('lien :' + payload[2]);
               console.log('lien :' + payload[3]);
+
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
             console.log(event.message.metadata);
