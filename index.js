@@ -172,6 +172,7 @@ app.post('/webhook', function (req, res) {
               var motCle = payload[1];
               var link = payload[2].substring(0, payload[2].length-2);
               console.log(userId + ' ' + motCle + ' ' + link);
+              sendMessage(userId, { text: userId + ' ' + motCle + ' ' + link });
 
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
