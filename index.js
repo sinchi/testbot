@@ -160,8 +160,11 @@ app.post('/webhook', function (req, res) {
                       };
                       sendVideo(event.sender.id, message);
                   }else{
-                    console.log("payload => " + event.message.quick_reply.payload);
-                    rihana(event.sender.id, event.message.text);
+                    if(event.message.quick_reply){
+                      console.log("payload => " + event.message.quick_reply.payload);
+                    }
+
+                  //  rihana(event.sender.id, event.message.text);
                   }
 
 
