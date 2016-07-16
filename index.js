@@ -145,8 +145,6 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message) {
-                  sendSeen(event.sender.id);
-                  sendEcrire(event.sender.id);
                   //sendQuikMessage(event.sender.id);
                   if(event.message.text === "video"){
                     var  message = {
@@ -165,6 +163,8 @@ app.post('/webhook', function (req, res) {
                             rihana(event.sender.id, event.message.quick_reply.payload);
 
                       }else if(event.message.text) {
+                        sendSeen(event.sender.id);
+                        sendEcrire(event.sender.id);
                         rihana(event.sender.id, event.message.text);
                       }
             }else if (event.postback) {
