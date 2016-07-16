@@ -160,6 +160,8 @@ app.post('/webhook', function (req, res) {
                       sendVideo(event.sender.id, message);
                     }else if(event.message.quick_reply){
                           console.log("payload => " + event.message.quick_reply.payload);
+                          sendMessage(event.sender.id, { text: event.message.quick_reply.payload });
+
                       }else {
                         rihana(event.sender.id, event.message.text);
                       }
@@ -205,13 +207,13 @@ function sendQuikMessage(recipientId) {
                "quick_replies":[
                  {
                    "content_type":"text",
-                   "title":"gateau 1",
-                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                   "title":"gateau",
+                   "payload":"gateau 1"
                  },
                  {
                    "content_type":"text",
-                   "title":"pizza 1",
-                   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                   "title":"pizza",
+                   "payload":"pizza 1"
                  }
                ]
              }
