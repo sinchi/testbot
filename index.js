@@ -142,15 +142,10 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-
         if (event.message && event.message.text) {
-
-               //sendMessage(event.sender.id, {text: event.message.text});
-              // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
                   //sendQuikMessage(event.sender.id);
-
                   if(event.message.text === "video"){
                     var  message = {
                           "attachment": {
@@ -166,8 +161,6 @@ app.post('/webhook', function (req, res) {
                       }else {
                         rihana(event.sender.id, event.message.text);
                       }
-              //sendMessage(event.sender.id, { text: event.message.text });
-
             }else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
               console.log(JSON.stringify(event.postback));
