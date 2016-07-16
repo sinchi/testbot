@@ -220,6 +220,16 @@ function sendQuikMessage(recipientId) {
                    "content_type":"text",
                    "title":"pizza",
                    "payload":"pizza 1"
+                 },
+                 {
+                   "content_type":"text",
+                   "title":"regime",
+                   "payload":"regime 1"
+                 },
+                 {
+                   "content_type":"text",
+                   "title":"rihana",
+                   "payload":"rihana 1"
                  }
                ]
              }
