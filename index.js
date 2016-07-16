@@ -159,8 +159,12 @@ app.post('/webhook', function (req, res) {
                     }else if(event.message.quick_reply){
                           console.log("payload => " + event.message.quick_reply.payload);
                           //sendMessage(event.sender.id, { text: event.message.quick_reply.payload });
-                          if(event.message.quick_reply.payload)
+                          if(event.message.quick_reply.payload){
+                            sendSeen(event.sender.id);
+                            sendEcrire(event.sender.id);
                             rihana(event.sender.id, event.message.quick_reply.payload);
+                          }
+
 
                       }else if(event.message.text) {
                         sendSeen(event.sender.id);
