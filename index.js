@@ -203,7 +203,7 @@ function sendQuikMessage(recipientId) {
         json: {
             recipient: {id: recipientId},
             message:{
-               "text":"Choisir votre repas :",
+               "text":" شنو شهيوة لي بغيتي ؟",
                "quick_replies":[
                  {
                    "content_type":"text",
