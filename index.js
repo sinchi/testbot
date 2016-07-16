@@ -160,8 +160,8 @@ app.post('/webhook', function (req, res) {
                       sendVideo(event.sender.id, message);
                     }else if(event.message.quick_reply){
                           console.log("payload => " + event.message.quick_reply.payload);
-                          sendMessage(event.sender.id, { text: event.message.quick_reply.payload });
-
+                          //sendMessage(event.sender.id, { text: event.message.quick_reply.payload });
+                          rihana(event.sender.id, event.message.text);
                       }else {
                         rihana(event.sender.id, event.message.text);
                       }
