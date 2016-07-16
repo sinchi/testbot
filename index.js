@@ -64,6 +64,7 @@ function rihana(recipientId, text){
       break;
     case "gateau":
         rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page/'+ Number(values[1]) + '/';
+        break;
     case "pizza":
       rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
     break;
