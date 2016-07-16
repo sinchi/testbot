@@ -144,7 +144,7 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        if (event.message && event.message.text) {
+        if (event.message) {
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
                   //sendQuikMessage(event.sender.id);
@@ -161,8 +161,10 @@ app.post('/webhook', function (req, res) {
                     }else if(event.message.quick_reply){
                           console.log("payload => " + event.message.quick_reply.payload);
                           //sendMessage(event.sender.id, { text: event.message.quick_reply.payload });
-                          rihana(event.sender.id, event.message.quick_reply.payload);
-                      }else {
+                          if(event.message.quick_reply.payload)
+                            rihana(event.sender.id, event.message.quick_reply.payload);
+
+                      }else if(event.message.text) {
                         rihana(event.sender.id, event.message.text);
                       }
             }else if (event.postback) {
