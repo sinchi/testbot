@@ -69,6 +69,8 @@ function rihana(recipientId, text){
     break;
     default:
       sendQuikMessage(recipientId)
+      return;
+      break;
   }
 
   console.log(rihanaLink);
