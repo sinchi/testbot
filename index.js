@@ -177,7 +177,7 @@ app.post('/webhook', function (req, res) {
                 keyword: payload[1],
                 link : payload[2].substring(0, payload[2].length-2)
               };
-              console.log(JSON.stringify(payloadObject));
+              console.log("payloadObject => " + JSON.stringify(payloadObject));
             //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
             if(payloadObject.keyword === "ingredient"){
               if(!payloadObject.link)
