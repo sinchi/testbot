@@ -149,7 +149,6 @@ app.post('/webhook', function (req, res) {
               // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
                   sendEcrire(event.sender.id);
-                  menu(event.sender.id);
                   //sendQuikMessage(event.sender.id);
 
                   if(event.message.text === "video"){
@@ -181,11 +180,12 @@ app.post('/webhook', function (req, res) {
               console.log(JSON.stringify(payloadObject));
             //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
             if(payloadObject.keyword === "ingredient"){
-              sendIngredients(payloadObject);
+              if(!payloadObject.link)
+                  sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." });
+              else
+                sendIngredients(payloadObject);
             }else if(payloadObject.keyword === "how"){
               sendHow(payloadObject);
-            }else{
-              sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." });
             }
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
