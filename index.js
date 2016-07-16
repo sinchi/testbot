@@ -144,7 +144,7 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
 
         if (event.message && event.message.text) {
-          if (!kittenMessage(event.sender.id, event.message.text)) {
+
                //sendMessage(event.sender.id, {text: event.message.text});
               // if(event.message.text === "fatafeat")
                   sendSeen(event.sender.id);
@@ -168,7 +168,7 @@ app.post('/webhook', function (req, res) {
                       }
               //sendMessage(event.sender.id, { text: event.message.text });
 
-            } else if (event.postback) {
+            }else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
               console.log(JSON.stringify(event.postback));
               var id = payload[0].split(':');
@@ -191,7 +191,7 @@ app.post('/webhook', function (req, res) {
           }else if(event.message && event.message.is_echo){
             console.log(event.message.metadata);
           }
-    }
+
   }
     res.sendStatus(200);
 })
