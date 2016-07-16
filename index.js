@@ -136,9 +136,9 @@ function rihana(recipientId, text){
 
 // handler receiving message
 app.post('/webhook', function (req, res) {
-  sendMenu();
-  sendGreeting();
-  getStarted();
+//  sendMenu();
+//  sendGreeting();
+//  getStarted();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
