@@ -68,7 +68,7 @@ function rihana(recipientId, text){
       rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
     break;
     default:
-
+      sendQuikMessage(recipientId)
   }
 
   console.log(rihanaLink);
