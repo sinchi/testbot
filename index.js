@@ -213,12 +213,12 @@ function sendQuikMessage(recipientId) {
                "quick_replies":[
                  {
                    "content_type":"text",
-                   "title":"gateau 1",
+                   "title":"gateau",
                    "payload":"gateau 1"
                  },
                  {
                    "content_type":"text",
-                   "title":"pizza 1",
+                   "title":"pizza",
                    "payload":"pizza 1"
                  }
                ]
