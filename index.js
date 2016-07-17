@@ -181,7 +181,7 @@ app.post('/webhook', function (req, res) {
             }else if (event.postback) {
               var postbackPayload = JSON.stringify(event.postback).split(':');
               if(postbackPayload && postbackPayload.length === 2){
-                sendMessage(event.sender.id, { text: event.postback.payload});
+                rihana(event.sender.id, event.postback.payload);
               }else{
                 var payload = JSON.stringify(event.postback).split(',');
                 console.log(JSON.stringify(event.postback));
