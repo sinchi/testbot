@@ -186,17 +186,15 @@ app.post('/webhook', function (req, res) {
               if(postbackPayload && postbackPayload.length === 2){
                 repas = event.postback.payload;
                 switch (repas) {
-                  case "pizza":
+                  case "pizza 1":
                     sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
                     break;
-                  case "gateau":
+                  case "gateau 1":
                       sendMessage(event.sender.id, { text: 'للمزيد من شهيوات حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
                     break;
-                    case "regime":
+                    case "regime 1":
                       sendMessage(event.sender.id, { text: 'للمزيد من شهيوات وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
                       break;
-                  default:
-
                 }
 
               //  rihana(event.sender.id, event.postback.payload);
