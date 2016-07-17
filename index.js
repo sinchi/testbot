@@ -59,23 +59,18 @@ function rihana(recipientId, text){
   switch (values[0]) {
     case "regime":
         rihanaLink = 'http://chhiwat.ma/regime-et-minceur/recettes-pour-le-regime/page/'+ Number(values[1]) + "/";
-        repas = "regime 1";
       break;
     case "rihana":
       rihanaLink = 'http://chhiwat.ma/author/chhiwat-rihanna-kamal/page/'+ Number(values[1]) + '/';
-      repas = "rihana 1";
       break;
     case "gateau":
         rihanaLink = 'http://chhiwat.ma/gateaux-2/gateaux-et-cakes/page/'+ Number(values[1]) + '/';
-        repas = "gateau 1";
         break;
     case "pizza":
       rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
-      repas = "pizza 1";
     break;
     case "بيتزا":
-      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
-      repas = "pizza 1";
+      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';    
     break;
     default:
       sendQuikMessage(recipientId)
