@@ -171,7 +171,7 @@ app.post('/webhook', function (req, res) {
                         sendSeen(event.sender.id);
                         sendEcrire(event.sender.id);
                         if(event.message.text === "زبدة")
-                          console.log(" Message text =>  " +  event.message.text);
+                          sendMessage(event.sender.id, { text: event.message.text});
                         rihana(event.sender.id, event.message.text);
                       }
             }else if (event.postback) {
