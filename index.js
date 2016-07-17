@@ -442,8 +442,8 @@ function sendMenu() {
               "payload":"pizza 1"
             },
             {
-              "type":"وصفات للريجيم",
-              "title":"regime 1",
+              "type":"postback",
+              "title":"وصفات للريجيم",
               "payload":"regime 1"
             }
           ]
