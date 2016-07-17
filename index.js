@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var cheerio = require('cheerio');
 var app = express();
+var repas = "";
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -174,15 +175,19 @@ app.post('/webhook', function (req, res) {
                       }else if(event.message.text) {
                         sendSeen(event.sender.id);
                         sendEcrire(event.sender.id);
-                        if(event.message.text === "زبدة")
-                          sendMessage(event.sender.id, { text: event.message.text});
-                        rihana(event.sender.id, event.message.text);
+                        if(event.message.text === "المزيد")
+                          sendMessage(event.sender.id, { text: repas});
+
+                    //    rihana(event.sender.id, repas);
                       }
             }else if (event.postback) {
+              // for menu selected item
               var postbackPayload = JSON.stringify(event.postback).split(':');
               if(postbackPayload && postbackPayload.length === 2){
+                repas = event.postback.payload;
                 rihana(event.sender.id, event.postback.payload);
               }else{
+                // for items selected options
                 var payload = JSON.stringify(event.postback).split(',');
                 console.log(JSON.stringify(event.postback));
                 var id = payload[0].split(':');
