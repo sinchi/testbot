@@ -142,14 +142,14 @@ function rihana(recipientId, text){
 
 // handler receiving message
 app.post('/webhook', function (req, res) {
-
+    sendMenu();
 //  sendGreeting();
 //  getStarted();
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message) {
-          sendMenu(event.sender.id);
+
                   //sendQuikMessage(event.sender.id);
                   if(event.message.text === "video"){
                     var  message = {
@@ -428,7 +428,6 @@ function sendMenu() {
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-          recipient: {id: recipientId},
           setting_type : "call_to_actions",
           thread_state : "existing_thread",
           call_to_actions:[
