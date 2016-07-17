@@ -263,7 +263,7 @@ function sendHow(payload){
         return $(this).text()
     });
     console.log("How =>=>=> : "  + how);
-    if(how && how.length > 0)
+    if(how && how.length > 1)
       sendMessage(payload.userId, {text: how[0]});
     }else {
       sendMessage(payload.userId, { text: "nothing now" })
