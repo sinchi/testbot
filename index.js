@@ -137,7 +137,20 @@ function rihana(recipientId, text){
         }
     };
     sendMessage(recipientId, message);
-    sendMessage(recipientId, { text: 'للمزيد من شهيوات أكتب(ي) كلمة "المزيد"' })
+      switch (repas) {
+        case "pizza 1":
+        //  rihana(event.sender.id, event.postback.payload);
+          sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
+          break;
+        case "gateau 1":
+          //  rihana(event.sender.id, event.postback.payload);
+            sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
+          break;
+          case "regime 1":
+          //  rihana(event.sender.id, event.postback.payload);
+            sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
+            break;
+      }
     }else{
       console.log('error' + error);
     }
@@ -200,15 +213,15 @@ app.post('/webhook', function (req, res) {
                 switch (repas) {
                   case "pizza 1":
                     rihana(event.sender.id, event.postback.payload);
-                    sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
+                  //  sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
                     break;
                   case "gateau 1":
                       rihana(event.sender.id, event.postback.payload);
-                      sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
+                    //  sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
                     break;
                     case "regime 1":
                       rihana(event.sender.id, event.postback.payload);
-                      sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
+                      //sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
                       break;
                 }
 
