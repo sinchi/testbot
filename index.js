@@ -187,16 +187,16 @@ app.post('/webhook', function (req, res) {
                 repas = event.postback.payload;
                 switch (repas) {
                   case "pizza 1":
-                    sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
                     rihana(event.sender.id, event.postback.payload);
+                    sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
                     break;
                   case "gateau 1":
-                      sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
                       rihana(event.sender.id, event.postback.payload);
+                      sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
                     break;
                     case "regime 1":
-                      sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
                       rihana(event.sender.id, event.postback.payload);
+                      sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
                       break;
                 }
 
