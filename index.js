@@ -137,6 +137,7 @@ function rihana(recipientId, text){
         }
     };
     sendMessage(recipientId, message);
+    sendMessage(recipientId, { text: 'للمزيد من شهيوات أكتب(ي) كلمة "المزيد"' })
     }else{
       console.log('error' + error);
     }
