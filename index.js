@@ -170,6 +170,7 @@ app.post('/webhook', function (req, res) {
                       }else if(event.message.text) {
                         sendSeen(event.sender.id);
                         sendEcrire(event.sender.id);
+                        console.log(" Message text =>  " +  event.message.text);
                         rihana(event.sender.id, event.message.text);
                       }
             }else if (event.postback) {
