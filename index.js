@@ -179,7 +179,8 @@ app.post('/webhook', function (req, res) {
                           var index = repas.replace( /^\D+/g, '');
                           index ++;
                           var chhiwa = repas.split(' ');
-                          sendMessage(event.sender.id, { text: chhiwa[0] + ' ' + index});
+                          repas = chhiwa[0] + ' ' + index;
+                          sendMessage(event.sender.id, { text: repas});
                         }
 
                         else
