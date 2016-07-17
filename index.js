@@ -456,7 +456,7 @@ function sendMenu() {
         }
     });
 };
-// generic function sending messages
+// generic function sending messagess
 function sendMessage(recipientId, message) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
