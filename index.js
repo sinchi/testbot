@@ -268,6 +268,7 @@ function sendHow(payload){
     }else {
       sendMessage(payload.userId, {text: how[0]});
     }
+  }
   });
 
 }
