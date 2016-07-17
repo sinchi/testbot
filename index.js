@@ -178,7 +178,7 @@ app.post('/webhook', function (req, res) {
                         if(event.message.text === "المزيد")
                           sendMessage(event.sender.id, { text: repas});
 
-                    //    rihana(event.sender.id, repas);
+                        rihana(event.sender.id, event.message.text);
                       }
             }else if (event.postback) {
               // for menu selected item
