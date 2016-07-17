@@ -180,6 +180,7 @@ app.post('/webhook', function (req, res) {
                       }
             }else if (event.postback) {
               var payload = JSON.stringify(event.postback).split(',');
+
               console.log(JSON.stringify(event.postback));
               var id = payload[0].split(':');
               var payloadObject = {
@@ -261,7 +262,10 @@ function sendHow(payload){
       var how = $('.entry ol').map(function(){
         return $(this).text()
     });
+    if(how && how.length > 0)
       sendMessage(payload.userId, {text: how[0]});
+    }else {
+      sendMessage(payload.userId, { text: "nothing now" })
     }
   });
 
