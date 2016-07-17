@@ -70,7 +70,7 @@ function rihana(recipientId, text){
       rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
     break;
     case "بيتزا":
-      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';    
+      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
     break;
     default:
       sendQuikMessage(recipientId)
@@ -182,7 +182,8 @@ app.post('/webhook', function (req, res) {
                           if(event.message.quick_reply.payload){
                             sendSeen(event.sender.id);
                             sendEcrire(event.sender.id);
-                            rihana(event.sender.id, event.message.quick_reply.payload);
+                            repas = event.message.quick_reply.payload;
+                            rihana(event.sender.id, repas);
                           }
 
 
@@ -236,9 +237,6 @@ app.post('/webhook', function (req, res) {
                 console.log("payload => " + JSON.stringify(payload));
               //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
               if(payloadObject.keyword === "ingredient"){
-                if(!payloadObject.link)
-                    sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." });
-                else
                   sendIngredients(payloadObject);
               }else if(payloadObject.keyword === "how"){
                 sendHow(payloadObject);
