@@ -190,10 +190,10 @@ app.post('/webhook', function (req, res) {
                     sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
                     break;
                   case "gateau 1":
-                      sendMessage(event.sender.id, { text: 'للمزيد من شهيوات حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
+                      sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
                     break;
                     case "regime 1":
-                      sendMessage(event.sender.id, { text: 'للمزيد من شهيوات وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
+                      sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
                       break;
                 }
 
