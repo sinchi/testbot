@@ -257,24 +257,24 @@ function sendQuikMessage(recipientId) {
                "quick_replies":[
                  {
                    "content_type":"text",
-                   "title":"gateau",
+                   "title":"الحلويات و طورطات",
                    "payload":"gateau 1"
                  },
                  {
                    "content_type":"text",
-                   "title":"pizza",
+                   "title":"بيتزا و معجنات",
                    "payload":"pizza 1"
                  },
                  {
                    "content_type":"text",
-                   "title":"regime",
+                   "title":"وصفات للريجيم",
                    "payload":"regime 1"
-                 },
-                 {
-                   "content_type":"text",
-                   "title":"rihana",
-                   "payload":"rihana 1"
-                 }
+                  },
+                //  {
+                //    "content_type":"text",
+                //    "title":"rihana",
+                //    "payload":"rihana 1"
+                //  }
                ]
              }
 
