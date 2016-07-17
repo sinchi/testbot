@@ -140,15 +140,15 @@ function rihana(recipientId, text){
       switch (repas) {
         case "pizza 1":
         //  rihana(event.sender.id, event.postback.payload);
-          sendMessage(event.sender.id, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
+          sendMessage(recipientId, { text: 'للمزيد من شهيوات بيتزا و معجنات أكتب(ي) كلمة "المزيد"' })
           break;
         case "gateau 1":
           //  rihana(event.sender.id, event.postback.payload);
-            sendMessage(event.sender.id, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
+            sendMessage(recipientId, { text: 'للمزيد من حلويات و طورطات  أكتب(ي) كلمة "المزيد"' })
           break;
           case "regime 1":
           //  rihana(event.sender.id, event.postback.payload);
-            sendMessage(event.sender.id, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
+            sendMessage(recipientId, { text: 'للمزيد من وصفات للريجيم  أكتب(ي) كلمة "المزيد"' })
             break;
       }
     }else{
