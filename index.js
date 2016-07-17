@@ -262,6 +262,7 @@ function sendHow(payload){
       var how = $('.entry ol').map(function(){
         return $(this).text()
     });
+    console.log("taille of how"  + how.length);
     if(how && how.length > 0)
       sendMessage(payload.userId, {text: how[0]});
     }else {
