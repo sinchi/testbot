@@ -179,25 +179,32 @@ app.post('/webhook', function (req, res) {
                         rihana(event.sender.id, event.message.text);
                       }
             }else if (event.postback) {
-              var payload = JSON.stringify(event.postback).split(',');
 
-              console.log(JSON.stringify(event.postback));
-              var id = payload[0].split(':');
-              var payloadObject = {
-                userId: id[1].substring(1, id[1].length),
-                keyword: payload[1],
-                link : payload[2].substring(0, payload[2].length-2)
-              };
-              console.log("payload => " + JSON.stringify(payload));
-            //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
-            if(payloadObject.keyword === "ingredient"){
-              if(!payloadObject.link)
-                  sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." });
-              else
-                sendIngredients(payloadObject);
-            }else if(payloadObject.keyword === "how"){
-              sendHow(payloadObject);
+
+              var postbackPayload = JSON.stringify(event.postback).split(':');
+              if(postbackPayload.length === 2){
+                sendMessage(event.sender.id, { text: postbackPayload[1]});
+              }else{
+                var payload = JSON.stringify(event.postback).split(',');
+                console.log(JSON.stringify(event.postback));
+                var id = payload[0].split(':');
+                var payloadObject = {
+                  userId: id[1].substring(1, id[1].length),
+                  keyword: payload[1],
+                  link : payload[2].substring(0, payload[2].length-2)
+                };
+                console.log("payload => " + JSON.stringify(payload));
+              //  sendMessage(payloadObject.userId, { text: payloadObject.userId + ' ' + payloadObject.keyword + ' ' + payloadObject.link });
+              if(payloadObject.keyword === "ingredient"){
+                if(!payloadObject.link)
+                    sendMessage(payloadObject.userId, { text: "ليست متوفرة حاليا..." });
+                else
+                  sendIngredients(payloadObject);
+              }else if(payloadObject.keyword === "how"){
+                sendHow(payloadObject);
+              }
             }
+
               //console.log("Postback received: " + JSON.stringify(event.postback));
           }else if(event.message && event.message.is_echo){
             console.log(event.message.metadata);
