@@ -175,8 +175,13 @@ app.post('/webhook', function (req, res) {
                       }else if(event.message.text) {
                         sendSeen(event.sender.id);
                         sendEcrire(event.sender.id);
-                        if(event.message.text === "المزيد")
-                          sendMessage(event.sender.id, { text: repas});
+                        if(event.message.text === "المزيد"){
+                          var index = repas.replace( /^\D+/g, '');
+                          index ++;
+                          var chhiwa = repas.split(' ');
+                          sendMessage(event.sender.id, { text: chhiwa[0] + ' ' + index});
+                        }
+
                         else
                         rihana(event.sender.id, event.message.text);
                       }
