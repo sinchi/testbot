@@ -68,6 +68,9 @@ function rihana(recipientId, text){
     case "pizza":
       rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
     break;
+    case "بيتزا":
+      rihanaLink = 'http://chhiwat.ma/recettes-divers/pizza-pastry/page/' + Number(values[1]) + '/';
+    break;
     default:
       sendQuikMessage(recipientId)
       return;
