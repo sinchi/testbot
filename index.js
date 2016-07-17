@@ -149,7 +149,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message) {
-          sendMenu(recipientId);
+          sendMenu(event.sender.id);
                   //sendQuikMessage(event.sender.id);
                   if(event.message.text === "video"){
                     var  message = {
