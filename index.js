@@ -185,7 +185,7 @@ app.post('/webhook', function (req, res) {
               var postbackPayload = JSON.stringify(event.postback).split(':');
               if(postbackPayload && postbackPayload.length === 2){
                 repas = event.postback.payload;
-                sendMessage(event.sender.id, { text: '"للمزيد من شهيوات أكتب(ي) كلمة "المزيد' })
+                sendMessage(event.sender.id, { text: 'للمزيد من شهيوات أكتب(ي) كلمة "المزيد"' })
               //  rihana(event.sender.id, event.postback.payload);
               }else{
                 // for items selected options
