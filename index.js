@@ -268,7 +268,7 @@ function sendHow(payload){
         return $(this).text()
     });
     console.log("How =>=>=> : "  + how.length);
-    if(!how || how.length === 1){
+    if(!how || how.length < 3){
         sendMessage(payload.userId, { text: "للأسف لا توجد طريقة التحضير لهذه الوصفة" });
     }else {
       sendMessage(payload.userId, {text: how[0]});
