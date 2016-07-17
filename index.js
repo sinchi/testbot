@@ -262,7 +262,7 @@ function sendHow(payload){
       var how = $('.entry ol').map(function(){
         return $(this).text()
     });
-    console.log("How =>=>=> : "  + how);
+    console.log("How =>=>=> : "  + how.length);
     if(!how || how.length === 0){
         sendMessage(payload.userId, { text: "nothing now" });
     }else {
