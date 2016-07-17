@@ -195,6 +195,7 @@ app.post('/webhook', function (req, res) {
                         sendSeen(event.sender.id);
                         sendEcrire(event.sender.id);
                         if(event.message.text === "المزيد"){
+                          console.log("repas => => : " + repas);
                           var index = repas.replace( /^\D+/g, '');
                           index ++;
                           var chhiwa = repas.split(' ');
