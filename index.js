@@ -180,7 +180,7 @@ app.post('/webhook', function (req, res) {
                           index ++;
                           var chhiwa = repas.split(' ');
                           repas = chhiwa[0] + ' ' + index;
-                          sendMessage(event.sender.id, { text: repas});
+                          rihana(event.sender.id, repas);
                         }
 
                         else
