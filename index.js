@@ -200,6 +200,7 @@ app.post('/webhook', function (req, res) {
                           index ++;
                           var chhiwa = repas.split(' ');
                           repas = chhiwa[0] + ' ' + index;
+                          console.log('repas:' + repas);
                           rihana(event.sender.id, repas);
                         }
 
