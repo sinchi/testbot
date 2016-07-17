@@ -142,7 +142,7 @@ function rihana(recipientId, text){
 
 // handler receiving message
 app.post('/webhook', function (req, res) {
-//  sendMenu();
+  sendMenu();
 //  sendGreeting();
 //  getStarted();
     var events = req.body.entry[0].messaging;
@@ -312,18 +312,18 @@ function menu(recipientId){
         call_to_actions:[
           {
             "type":"postback",
-            "title":"Help",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+            "title":"حلويات و طورطات",
+            "payload":"gateau 1"
           },
           {
             "type":"postback",
-            "title":"Start a New Order",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+            "title":"بيتزا و معجنات",
+            "payload":"pizza 1"
           },
           {
-            "type":"web_url",
-            "title":"View Website",
-            "url":"http://petersapparel.parseapp.com/"
+            "type":"وصفات للريجيم",
+            "title":"regime 1",
+            "payload":"regime 1"
           }
         ]
 
