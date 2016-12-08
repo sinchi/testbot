@@ -38,14 +38,17 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 
 // Server frontpage
 app.get('/', function (req, res) {
+    console.log("/");
     res.send('Chhiwat hana server ok');
 });
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === VALIDATION_TOKEN) {
+        console.log("/webhook");
         res.send(req.query['hub.challenge']);
     } else {
+        console.log('invalid token');
         res.send('Invalid verify token');
     }
 });
