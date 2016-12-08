@@ -38,7 +38,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 
 // Server frontpage
 app.get('/', function (req, res) {
-    res.send('Chhiwat hana server');
+    res.send('Chhiwat hana server ok');
 });
 
 // Facebook Webhook
@@ -75,7 +75,7 @@ function rihana(recipientId, text){
     default:
       sendQuikMessage(recipientId)
       return;
-      break;
+      
   }
 
   console.log(rihanaLink);
