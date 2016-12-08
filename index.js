@@ -181,7 +181,7 @@ console.log("webhook post", req.body);
                           //sendMessage(event.sender.id, { text: event.message.quick_reply.payload });
                           if(event.message.quick_reply.payload){
                             sendSeen(event.sender.id);
-                            sendEcrire(event.sender.id);
+                         //   sendEcrire(event.sender.id);
                             repas = event.message.quick_reply.payload;
                             rihana(event.sender.id, repas);
                           }
