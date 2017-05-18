@@ -160,7 +160,7 @@ function rihana(recipientId, text){
 }
 
 
-function receivedMessage(event) {
+function receiveIt(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
