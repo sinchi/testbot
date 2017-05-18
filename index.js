@@ -56,8 +56,6 @@ app.get('/webhook', function (req, res) {
 });
 
 
-
-
 // handler receiving message
 app.post('/webhook', function (req, res) {
   var data = req.body;
@@ -139,7 +137,7 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+  sendTextMessage(senderID, "Hello {{user_first_name}}, Have you been here before?" );
 }
 
 
