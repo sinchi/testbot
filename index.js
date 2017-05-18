@@ -162,7 +162,29 @@ function rihana(recipientId, text){
 
 // handler receiving message
 app.post('/webhook', function (req, res) {
-console.log("webhook post", req.body);
+
+  var data = req.body;
+
+    // Make sure this is a page subscription
+    if (data.object === 'page') {
+
+      // Iterate over each entry - there may be multiple if batched
+      data.entry.forEach(function(entry) {
+        var pageID = entry.id;
+        var timeOfEvent = entry.time;
+
+        // Iterate over each messaging event
+        entry.messaging.forEach(function(event) {
+          if (event.message) {
+            //receivedMessage(event);
+            // Putting a stub for now, we'll expand it in the following steps
+              console.log("Message data: ", event.message);
+          } else {
+            console.log("Webhook received unknown event: ", event);
+          }
+        });
+
+/*console.log("webhook post", req.body);
 //  sendGreeting();
 //  getStarted();
 if(req.body.object === 'page'){
@@ -259,7 +281,8 @@ if(req.body.object === 'page'){
   }
     res.sendStatus(200);
 
-  }
+  }*/
+
 })
 
 
