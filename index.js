@@ -5,6 +5,8 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
+
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -45,8 +47,8 @@ app.get('/', function (req, res) {
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === VALIDATION_TOKEN) {
-        console.log("/webhook");
-        res.send(req.query['hub.challenge']);
+        console.log("Validating webhook");
+        res.status(200).send(req.query['hub.challenge']);
     } else {
         console.log('invalid token');
         res.send('Invalid verify token');
@@ -78,7 +80,7 @@ function rihana(recipientId, text){
     default:
       sendQuikMessage(recipientId)
       return;
-      
+
   }
 
   console.log(rihanaLink);
@@ -163,6 +165,9 @@ app.post('/webhook', function (req, res) {
 console.log("webhook post", req.body);
 //  sendGreeting();
 //  getStarted();
+if(req.body.object === 'page'){
+
+
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -253,6 +258,8 @@ console.log("webhook post", req.body);
 
   }
     res.sendStatus(200);
+
+  }
 })
 
 
