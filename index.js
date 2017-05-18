@@ -135,9 +135,28 @@ function receivedPostback(event) {
   console.log("Received postback for user %d and page %d with payload '%s' " +
     "at %d", senderID, recipientID, payload, timeOfPostback);
 
+    request({
+      uri: 'https://graph.facebook.com/v2.6/'+senderID,
+      qs: {
+        fields:'first_name,last_name,profile_pic,locale,timezone,gender',
+        access_token: process.env.PAGE_ACCESS_TOKEN
+       },
+      method: 'GET'
+
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+          var first_name = body.first_name;
+          sendTextMessage(senderID, "Hello " + first_name + ", Have you been here before?" );
+      } else {
+        console.error("Unable to send message.");
+        console.error(response);
+        console.error(error);
+      }
+    });
+
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  sendTextMessage(senderID, "Hello {{user_first_name}}, Have you been here before?" );
+
 }
 
 
