@@ -134,31 +134,31 @@ function sendGenericMessage(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "rift",
-            subtitle: "Next-generation virtual reality",
-            item_url: "https://www.oculus.com/en-us/rift/",
+            title: "HELLO SUMMER",
+            subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
+            item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
             image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
             buttons: [{
               type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL"
+              url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+              title: "Go to Store"
             }, {
               type: "postback",
               title: "Call Postback",
               payload: "Payload for first bubble",
             }],
           }, {
-            title: "touch",
-            subtitle: "Your Hands, Now in VR",
-            item_url: "https://www.oculus.com/en-us/touch/",
+            title: "SUMMER TIME HAVE FUN LIMITED EDITION",
+            subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
+            item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
             image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
             buttons: [{
               type: "web_url",
-              url: "https://www.oculus.com/en-us/touch/",
-              title: "Open Web URL"
+              url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+              title: "Go to Store"
             }, {
               type: "postback",
-              title: "Call Postback",
+              title: "Call me",
               payload: "Payload for second bubble",
             }]
           }]
