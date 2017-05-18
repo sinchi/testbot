@@ -5,6 +5,8 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
+var h = "hi";
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -78,7 +80,7 @@ function rihana(recipientId, text){
     default:
       sendQuikMessage(recipientId)
       return;
-      
+
   }
 
   console.log(rihanaLink);
