@@ -147,11 +147,7 @@ function receivedPostback(event) {
       if (!error && response.statusCode == 200) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
-          if(user.gender === "male"){
-              sendTextMessage(senderID, "Hello Sir " + user.first_name + ", How Can I help you?" );
-          }else{
-              sendTextMessage(senderID, "Hello Lady " + user.first_name + ", How Can I help you?" );
-          }
+          sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +"\nWhat are you looking for today?" );
 
       } else {
         console.error("Unable to send message.");
