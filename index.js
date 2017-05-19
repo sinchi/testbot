@@ -113,12 +113,13 @@ function receiveIt(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-      case'quick_reply_tshirt':
+      case 'quick_reply_tshirt':
         sendTextMessage(senderID, "You love tshirt");
-      break;
+        break;
       case 'quick_reply_hoodies':
         sendTextMessage(senderID, "You love hoodies");
-      break;
+        break;
+        
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -153,22 +154,7 @@ function receivedPostback(event) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
           sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
-          var message = {
-            "text":"Pick one:",
-            "quick_replies": [
-              {
-                "content_type":"text",
-                "title":"Unisex Tees",
-                "payload":"quick_reply_tshirt"
-              },
-              {
-                "content_type":"text",
-                "title":"Hoodies & Sweatshirts",
-                "payload":"quick_reply_hoodies"
-              },
-            ]
-          };
-          sendQuickMessage(senderID, message);
+          sendQuickMessageChooseOne(senderID);
 
       } else {
         console.error("Unable to send message.");
@@ -182,7 +168,23 @@ function receivedPostback(event) {
 
 }
 
-function sendQuickMessage(recipientId, message){
+function sendQuickMessageChooseOne(recipientId){
+
+  var message = {
+    "text":"Pick one:",
+    "quick_replies": [
+      {
+        "content_type":"text",
+        "title":"Unisex Tees",
+        "payload":"quick_reply_tshirt"
+      },
+      {
+        "content_type":"text",
+        "title":"Hoodies & Sweatshirts",
+        "payload":"quick_reply_hoodies"
+      },
+    ]
+  };
 
   var messageData = {
     "recipient": {
