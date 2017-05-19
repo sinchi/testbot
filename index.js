@@ -113,7 +113,12 @@ function receiveIt(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-
+      case 'quick_reply_tshirt':
+        sendTextMessage(senderID, "You love tshirt");
+        break;
+      case 'quick_reply_hoodies':
+        sendTextMessage(senderID, "You love hoodies");
+        break;
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -150,12 +155,6 @@ function receivedPostback(event) {
 
 
           switch(payload){
-            case 'quick_reply_tshirt':
-              sendTextMessage(senderID, "You love tshirt");
-              break;
-            case 'quick_reply_hoodies':
-              sendTextMessage(senderID, "You love hoodies");
-              break;
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
               sendQuickMessageChooseOne(senderID);
@@ -180,12 +179,12 @@ function sendQuickMessageChooseOne(recipientId){
     "text":"Pick one:",
     "quick_replies": [
       {
-        "content_type":"postback",
+        "content_type":"text",
         "title":"Unisex Tees",
         "payload":"quick_reply_tshirt"
       },
       {
-        "content_type":"postback",
+        "content_type":"text",
         "title":"Hoodies & Sweatshirts",
         "payload":"quick_reply_hoodies"
       },
