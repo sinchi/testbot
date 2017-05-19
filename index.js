@@ -115,8 +115,8 @@ function receiveIt(event) {
         sendGenericMessage(senderID);
         break;
 
-      /*default:
-        sendTextMessage(senderID, messageText + 'mememem');*/
+      default:
+        sendTextMessage(senderID, messageText + 'mememem' + JSON.parse(message).quick_reply.payload);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
@@ -127,7 +127,7 @@ function receiveIt(event) {
         break;
       case 'quick_reply_hoodies':
         sendTextMessage(senderID, "You love hoodies");
-        break;        
+        break;
     }
   }
 }
