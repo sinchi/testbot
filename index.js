@@ -148,7 +148,7 @@ function receivedPostback(event) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
           sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
-          var message = {
+        /*  var message = {
             "quick_replies": [
               {
                 "content_type":"text",
@@ -162,7 +162,7 @@ function receivedPostback(event) {
               },
             ]
           };
-          sendQuickMessage(senderID, message);
+          sendQuickMessage(senderID, message);*/
 
       } else {
         console.error("Unable to send message.");
@@ -176,7 +176,7 @@ function receivedPostback(event) {
 
 }
 
-sendQuickMessage(recipientId, message){
+/*sendQuickMessage(recipientId, message){
 
   var messageData = {
     recipient: {
@@ -186,7 +186,7 @@ sendQuickMessage(recipientId, message){
   }
 
   callSendAPI(messageData);
-}
+}*/
 
 
 function sendGenericMessage(recipientId) {
