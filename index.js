@@ -146,7 +146,10 @@ function receivedPostback(event) {
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
           var first_name = response.body.first_name;
+          var b = response.body;
           console.log(response.body);
+          console.log(b);
+          console.log(body);
           console.log("fistname: "+JSON.stringify(response.body.first_name));
           sendTextMessage(senderID, "Hello " + JSON.stringify(response.body.first_name) + ", Have you been here before?" );
       } else {
