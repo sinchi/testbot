@@ -173,27 +173,25 @@ function receivedPostback(event) {
 
 function sendQuickMessageChooseOne(recipientId){
 
-  var message = {
-    "text":"Pick one:",
-    "quick_replies": [
-      {
-        "content_type":"text",
-        "title":"Unisex Tees",
-        "payload":"quick_reply_tshirt"
-      },
-      {
-        "content_type":"text",
-        "title":"Hoodies & Sweatshirts",
-        "payload":"quick_reply_hoodies"
-      },
-    ]
-  };
-
   var messageData = {
-    "recipient": {
-      "id": recipientId
+    recipient: {
+      id: recipientId
     },
-    "message": message
+    message: {
+      text:"Pick one:",
+      quick_replies: [
+        {
+          content_type:"text",
+          title:"Unisex Tees",
+          payload:"quick_reply_tshirt"
+        },
+        {
+          content_type:"text",
+          title:"Hoodies & Sweatshirts",
+          payload:"quick_reply_hoodies"
+        },
+      ]
+    }
   };
 
   callSendAPI(messageData);
