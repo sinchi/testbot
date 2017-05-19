@@ -147,7 +147,7 @@ function receivedPostback(event) {
       if (!error && response.statusCode == 200) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
-          sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +"\nWhat are you looking for today?" );
+          sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
           var message = {
             "quick_replies": [
               {
@@ -162,7 +162,7 @@ function receivedPostback(event) {
               },
             ]
           };
-        //  sendQuickMessage(senderID, message);
+          sendQuickMessage(senderID, message);
 
       } else {
         console.error("Unable to send message.");
@@ -176,13 +176,11 @@ function receivedPostback(event) {
 
 }
 
-sendQuickMessage(recipient, message){
-  var recipientId = {
-    "id": recipient
-  };
+sendQuickMessage(recipientId, message){
+
   var messageData = {
     recipient: {
-      id: recipient
+      id: recipientId
     },
     message: message
   }
