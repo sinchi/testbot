@@ -104,7 +104,7 @@ function receiveIt(event) {
 
     var messageText = message.text;
     var messageAttachments = message.attachments;
-    //var payload = message.payload;
+    var payload = JSON.parse(message).quick_reply.payload;
 
   if (messageText) {
 
@@ -114,17 +114,21 @@ function receiveIt(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-      case 'Unisex Tees':
-        sendTextMessage(senderID, "You love tshirt " + JSON.stringify(message));
-        break;
-      case 'Hoodies & Sweatshirts':
-        sendTextMessage(senderID, "You love hoodies");
-        break;
-      default:
-        sendTextMessage(senderID, messageText + 'mememem');
+
+      /*default:
+        sendTextMessage(senderID, messageText + 'mememem');*/
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
+  } else if(payload){
+    switch (payload) {
+      case 'quick_reply_tshirt':
+        sendTextMessage(senderID, "You love tshirt " + JSON.stringify(message));
+        break;
+      case 'quick_reply_hoodies':
+        sendTextMessage(senderID, "You love hoodies");
+        break;        
+    }
   }
 }
 
