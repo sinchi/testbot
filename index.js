@@ -146,6 +146,7 @@ function receivedPostback(event) {
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
           var first_name = body.first_name;
+          console.log(response);
           sendTextMessage(senderID, "Hello " + first_name + ", Have you been here before?" );
       } else {
         console.error("Unable to send message.");
