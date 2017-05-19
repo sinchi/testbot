@@ -120,7 +120,7 @@ function receiveIt(event) {
         sendTextMessage(senderID, "You love hoodies");
         break;
       default:
-        sendTextMessage(senderID, messageText);
+        sendTextMessage(senderID, messageText + 'mememem');
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
@@ -152,8 +152,6 @@ function receivedPostback(event) {
       if (!error && response.statusCode == 200) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
-
-
           switch(payload){
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
@@ -196,7 +194,7 @@ function sendQuickMessageChooseOne(recipientId){
       "id": recipientId
     },
     "message": message
-  }
+  };
 
   callSendAPI(messageData);
 }
