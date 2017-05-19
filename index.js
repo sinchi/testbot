@@ -113,13 +113,7 @@ function receiveIt(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-      case 'quick_reply_tshirt':
-        sendTextMessage(senderID, "You love tshirt");
-        break;
-      case 'quick_reply_hoodies':
-        sendTextMessage(senderID, "You love hoodies");
-        break;
-        
+
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -153,8 +147,20 @@ function receivedPostback(event) {
       if (!error && response.statusCode == 200) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
-          sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
-          sendQuickMessageChooseOne(senderID);
+
+
+          switch(payload){
+            case 'quick_reply_tshirt':
+              sendTextMessage(senderID, "You love tshirt");
+              break;
+            case 'quick_reply_hoodies':
+              sendTextMessage(senderID, "You love hoodies");
+              break;
+            case 'GET_STARTED_PAYLOAD':
+              sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
+              sendQuickMessageChooseOne(senderID);
+            break;
+          }
 
       } else {
         console.error("Unable to send message.");
