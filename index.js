@@ -158,7 +158,7 @@ function receivedPostback(event) {
               break;
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
-            //  sendQuickMessageChooseOne(senderID);
+              sendQuickMessageChooseOne(senderID);
             break;
           }
 
@@ -180,12 +180,12 @@ function sendQuickMessageChooseOne(recipientId){
     "text":"Pick one:",
     "quick_replies": [
       {
-        "content_type":"text",
+        "content_type":"postback",
         "title":"Unisex Tees",
         "payload":"quick_reply_tshirt"
       },
       {
-        "content_type":"text",
+        "content_type":"postback",
         "title":"Hoodies & Sweatshirts",
         "payload":"quick_reply_hoodies"
       },
