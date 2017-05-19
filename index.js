@@ -161,8 +161,8 @@ function receivedPostback(event) {
                 "payload":"quick_reply_hoodies"
               },
             ]
-          }
-          sendQuickMessage(senderID, message);
+          };
+        //  sendQuickMessage(senderID, message);
 
       } else {
         console.error("Unable to send message.");
