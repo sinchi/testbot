@@ -115,7 +115,7 @@ function receiveIt(event) {
         sendGenericMessage(senderID);
         break;
       case 'Unisex Tees':
-        sendTextMessage(senderID, "You love tshirt " + message);
+        sendTextMessage(senderID, "You love tshirt " + JSON.stringify(message));
         break;
       case 'Hoodies & Sweatshirts':
         sendTextMessage(senderID, "You love hoodies");
