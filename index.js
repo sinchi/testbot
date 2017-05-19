@@ -151,7 +151,7 @@ function receivedPostback(event) {
           console.log(b);
           console.log(body);
           console.log("fistname: "+JSON.stringify(response.body.first_name));
-          sendTextMessage(senderID, "Hello " + JSON.stringify(response.body.first_name) + ", Have you been here before?" );
+          sendTextMessage(senderID, "Hello " + body.first_name + ", Have you been here before?" );
       } else {
         console.error("Unable to send message.");
         console.error(response);
