@@ -146,7 +146,13 @@ function receivedPostback(event) {
     }, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
-          sendTextMessage(senderID, "Hello " + JSON.parse(body).first_name + ", Can I help you?" );
+          var user = JSON.parse(body);
+          if(user.gender === "male"){
+              sendTextMessage(senderID, "Hello Sir" + user.first_name + ", How Can I help you?" );
+          }else{
+              sendTextMessage(senderID, "Hello Lady" + user.first_name + ", How Can I help you?" );
+          }
+
       } else {
         console.error("Unable to send message.");
         console.error(response);
