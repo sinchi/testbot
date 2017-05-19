@@ -149,6 +149,7 @@ function receivedPostback(event) {
           var user = JSON.parse(body);
           sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
           var message = {
+            "text":"Pick one:",
             "quick_replies": [
               {
                 "content_type":"text",
@@ -179,10 +180,10 @@ function receivedPostback(event) {
 function sendQuickMessage(recipientId, message){
 
   var messageData = {
-    recipient: {
-      id: recipientId
+    "recipient": {
+      "id": recipientId
     },
-    message: message
+    "message": message
   }
 
   callSendAPI(messageData);
