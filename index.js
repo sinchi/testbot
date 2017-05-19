@@ -104,6 +104,7 @@ function receiveIt(event) {
 
     var messageText = message.text;
     var messageAttachments = message.attachments;
+    //var payload = message.payload;
 
   if (messageText) {
 
@@ -114,7 +115,7 @@ function receiveIt(event) {
         sendGenericMessage(senderID);
         break;
       case 'Unisex Tees':
-        sendTextMessage(senderID, "You love tshirt");
+        sendTextMessage(senderID, "You love tshirt " + message);
         break;
       case 'Hoodies & Sweatshirts':
         sendTextMessage(senderID, "You love hoodies");
