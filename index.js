@@ -113,10 +113,10 @@ function receiveIt(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-      case 'quick_reply_tshirt':
+      case 'Unisex Tees':
         sendTextMessage(senderID, "You love tshirt");
         break;
-      case 'quick_reply_hoodies':
+      case 'Hoodies & Sweatshirts':
         sendTextMessage(senderID, "You love hoodies");
         break;
       default:
