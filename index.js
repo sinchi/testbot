@@ -148,9 +148,9 @@ function receivedPostback(event) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
           if(user.gender === "male"){
-              sendTextMessage(senderID, "Hello Sir" + user.first_name + ", How Can I help you?" );
+              sendTextMessage(senderID, "Hello Sir " + user.first_name + ", How Can I help you?" );
           }else{
-              sendTextMessage(senderID, "Hello Lady" + user.first_name + ", How Can I help you?" );
+              sendTextMessage(senderID, "Hello Lady " + user.first_name + ", How Can I help you?" );
           }
 
       } else {
