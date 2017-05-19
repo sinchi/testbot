@@ -158,7 +158,7 @@ function receivedPostback(event) {
               break;
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
-              sendQuickMessageChooseOne(senderID);
+            //  sendQuickMessageChooseOne(senderID);
             break;
           }
 
