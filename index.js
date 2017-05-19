@@ -148,6 +148,21 @@ function receivedPostback(event) {
         //  console.log("fistname: "+JSON.stringify(response.body.first_name));
           var user = JSON.parse(body);
           sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +"\nWhat are you looking for today?" );
+          var message = {
+            "quick_replies": [
+              {
+                "content_type":"text",
+                "title":"Unisex Tees",
+                "payload":"quick_reply_tshirt"
+              },
+              {
+                "content_type":"text",
+                "title":"Hoodies & Sweatshirts",
+                "payload":"quick_reply_hoodies"
+              },
+            ]
+          }
+          sendQuickMessage(senderID, message);
 
       } else {
         console.error("Unable to send message.");
@@ -159,6 +174,20 @@ function receivedPostback(event) {
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
 
+}
+
+sendQuickMessage(recipient, message){
+  var recipientId = {
+    "id": recipient
+  };
+  var messageData = {
+    recipient: {
+      id: recipient
+    },
+    message: message
+  }
+
+  callSendAPI(messageData);
 }
 
 
