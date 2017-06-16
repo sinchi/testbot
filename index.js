@@ -226,7 +226,7 @@ function watchQuickMessageChoosen(recipientId){
             title: "Watches",
             subtitle: "Simulation Wooden Relojes Quartz Men Watches Casual Wooden Color Leather Strap Watch Wood Male Wristwatch Relogio Masculino",
             item_url: "http://bit.ly/2sBHOU6",
-            image_url: "https://www.aliexpress.com/item-img/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio/32271854285.html?spm=2114.12010108.1000017.2.Uwr4m9",
+            image_url: "https://ae01.alicdn.com/kf/HTB15cHCKVXXXXanaXXXq6xXFXXX6/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio.jpg_50x50.jpg",
             buttons: [{
               type: "web_url",
               url: "http://bit.ly/2sBHOU6",
