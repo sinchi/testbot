@@ -121,6 +121,7 @@ function receiveIt(event) {
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   } else if(payload){
+    console.log("payload : " + payload);
     switch (payload) {
       case 'quick_reply_jewelry':
         sendTextMessage(senderID, "You love Jewelry " + JSON.stringify(message));
