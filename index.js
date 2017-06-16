@@ -230,10 +230,10 @@ function watchQuickMessageChoosen(recipientId){
             buttons: [{
               type: "web_url",
               url: "http://bit.ly/2sBHOU6",
-              title: "Go to Store"
+              title: "Shop"
             }, {
               type: "postback",
-              title: "Call Postback",
+              title: "Go to Store",
               payload: "Payload for first bubble",
             }],
           }, {
