@@ -213,6 +213,50 @@ function jewelryQuickMessageChoosen(recipientId){
 
 function watchQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Watches');
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "Watches",
+            subtitle: "Simulation Wooden Relojes Quartz Men Watches Casual Wooden Color Leather Strap Watch Wood Male Wristwatch Relogio Masculino",
+            item_url: "http://bit.ly/2sBHOU6",
+            image_url: "https://www.aliexpress.com/item-img/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio/32271854285.html?spm=2114.12010108.1000017.2.Uwr4m9",
+            buttons: [{
+              type: "web_url",
+              url: "http://bit.ly/2sBHOU6",
+              title: "Go to Store"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for first bubble",
+            }],
+          }, {
+            title: "SUMMER TIME HAVE FUN LIMITED EDITION",
+            subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
+            item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+            image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
+            buttons: [{
+              type: "web_url",
+              url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+              title: "Go to Store"
+            }, {
+              type: "postback",
+              title: "Call me",
+              payload: "Payload for second bubble",
+            }]
+          }]
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
 }
 
 function sendGenericMessage(recipientId) {
