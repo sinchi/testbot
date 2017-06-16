@@ -106,6 +106,8 @@ function receiveIt(event) {
     var messageAttachments = message.attachments;
     var payload = JSON.parse(message).quick_reply.payload;
 
+    console.log("payload " + JSON.parse(message));
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
