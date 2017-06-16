@@ -104,9 +104,9 @@ function receiveIt(event) {
 
     var messageText = message.text;
     var messageAttachments = message.attachments;
-    //var payload = JSON.parse(message).quick_reply.payload;
-    var payload = event.postback.payload;
-    console.log("payload " + JSON.parse(message));
+    var payload = JSON.parse(message).quick_reply;
+  //  var payload = event.postback.payload;
+    console.log("payload " + payload);
 
   if (messageText) {
 
