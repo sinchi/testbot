@@ -116,6 +116,12 @@ function receiveIt(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
+      case 'Jewelry':
+        sendTextMessage(senderID, 'You have choosen Jewelry');
+      break;
+      case 'Watches':
+        sendTextMessage(senderID, 'You have choosen Watches');
+      break;
 
       default:
         sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
@@ -163,7 +169,6 @@ function receivedPostback(event) {
           switch(payload){
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
-            //  sendQuickMessageChooseOne(senderID);
             break;
             case 'quick_reply_jewelry':
               sendTextMessage(senderID, "You love Jewelry ");
