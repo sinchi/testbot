@@ -159,7 +159,7 @@ function receivedPostback(event) {
           var user = JSON.parse(body);
           switch(payload){
             case 'GET_STARTED_PAYLOAD':
-              sendTextMessage(senderID, "Welcome to Oh-Yeah " + user.first_name +" What are you looking for today?" );
+              sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?" );
               sendQuickMessageChooseOne(senderID);
             break;
           }
