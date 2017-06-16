@@ -118,7 +118,7 @@ function receiveIt(event) {
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+        sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
