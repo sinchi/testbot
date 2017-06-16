@@ -122,11 +122,11 @@ function receiveIt(event) {
     sendTextMessage(senderID, "Message with attachment received");
   } else if(payload){
     switch (payload) {
-      case 'quick_reply_tshirt':
-        sendTextMessage(senderID, "You love tshirt " + JSON.stringify(message));
+      case 'quick_reply_jewelry':
+        sendTextMessage(senderID, "You love Jewelry " + JSON.stringify(message));
         break;
-      case 'quick_reply_hoodies':
-        sendTextMessage(senderID, "You love hoodies");
+      case 'quick_reply_watches':
+        sendTextMessage(senderID, "You love Watches");
         break;
     }
   }
@@ -183,17 +183,17 @@ function sendQuickMessageChooseOne(recipientId){
       id: recipientId
     },
     message: {
-      text:"Pick one:",
+      text:"Choose one:",
       quick_replies: [
         {
           content_type:"text",
-          title:"Unisex Tees",
-          payload:"quick_reply_tshirt"
+          title:"Jewelry",
+          payload:"quick_reply_jewelry"
         },
         {
           content_type:"text",
-          title:"Hoodies & Sweatshirts",
-          payload:"quick_reply_hoodies"
+          title:"Watches",
+          payload:"quick_reply_watches"
         },
       ]
     }
