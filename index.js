@@ -162,8 +162,8 @@ function receivedPostback(event) {
           var user = JSON.parse(body);
           switch(payload){
             case 'GET_STARTED_PAYLOAD':
-              sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?" );
-              sendQuickMessageChooseOne(senderID);
+              sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
+            //  sendQuickMessageChooseOne(senderID);
             break;
             case 'quick_reply_jewelry':
               sendTextMessage(senderID, "You love Jewelry ");
@@ -259,7 +259,7 @@ function sendGenericMessage(recipientId) {
   callSendAPI(messageData);
 }
 
-function sendTextMessage(recipientId, messageText) {
+function sendTextMessage(recipientId, messageText, started) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -269,10 +269,10 @@ function sendTextMessage(recipientId, messageText) {
     }
   };
 
-  callSendAPI(messageData);
+  callSendAPI(messageData, started);
 }
 
-function callSendAPI(messageData) {
+function callSendAPI(messageData, started) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -286,6 +286,9 @@ function callSendAPI(messageData) {
 
       console.log("Successfully sent generic message with id %s to recipient %s",
         messageId, recipientId);
+        if(started){
+          sendQuickMessageChooseOne(messageData.recipient.id);
+        }
     } else {
       console.error("Unable to send message.");
       console.error(response);
