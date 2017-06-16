@@ -104,9 +104,9 @@ function receiveIt(event) {
 
     var messageText = message.text;
     var messageAttachments = message.attachments;
-    var payload = JSON.parse(message);
+  //  var payload = JSON.parse(message);
   //  var payload = event.postback.payload;
-    console.log("payload " + payload);
+  //  console.log("payload " + payload);
 
   if (messageText) {
 
@@ -118,7 +118,7 @@ function receiveIt(event) {
         break;
 
       default:
-        sendTextMessage(senderID, messageText + 'mememem' + payload /*JSON.parse(message).quick_reply.payload*/);
+        sendTextMessage(senderID, messageText + 'mememem' /*+ payload JSON.parse(message).quick_reply.payload*/);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
