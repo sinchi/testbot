@@ -105,8 +105,6 @@ function receiveIt(event) {
     var messageText = message.text;
     var messageAttachments = message.attachments;
     var payload = (message.quick_reply) ? message.quick_reply.payload : '';
-  //  var payload = event.postback.payload;
-    console.log("payload " + payload);
 
   if (messageText) {
 
@@ -117,10 +115,10 @@ function receiveIt(event) {
         sendGenericMessage(senderID);
         break;
       case 'Jewelry':
-        sendTextMessage(senderID, 'You have choosen Jewelry');
+        jewelryQuickMessageChoosen(senderID);
       break;
       case 'Watches':
-        sendTextMessage(senderID, 'You have choosen Watches');
+        watchQuickMessageChoosen(senderID);
       break;
 
       default:
@@ -140,7 +138,6 @@ function receiveIt(event) {
     }
   }
 }
-
 
 function receivedPostback(event) {
   var senderID = event.sender.id;
@@ -170,12 +167,6 @@ function receivedPostback(event) {
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
             break;
-            case 'quick_reply_jewelry':
-              sendTextMessage(senderID, "You love Jewelry ");
-              break;
-            case 'quick_reply_watches':
-              sendTextMessage(senderID, "You love Watches");
-              break;
           }
 
       } else {
@@ -216,6 +207,13 @@ function sendQuickMessageChooseOne(recipientId){
   callSendAPI(messageData);
 }
 
+function jewelryQuickMessageChoosen(recipientId){
+  sendTextMessage(recipientId, 'You have choosen Jewelry');
+}
+
+function watchQuickMessageChoosen(recipientId){
+  sendTextMessage(recipientId, 'You have choosen Watches');
+}
 
 function sendGenericMessage(recipientId) {
   var messageData = {
