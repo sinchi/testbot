@@ -237,17 +237,17 @@ function watchQuickMessageChoosen(recipientId){
               payload: "Payload for first bubble",
             }],
           }, {
-            title: "SUMMER TIME HAVE FUN LIMITED EDITION",
-            subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
-            item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
-            image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
+            title: "Watches",
+            subtitle: "Winner Luxury Men Mechanical Watch Classic Date automatic Mechanical Watch Self-Winding Skeleton Black Leather Strap Wrist Watch",
+            item_url: "http://bit.ly/2rA79On",
+            image_url: "https://ae01.alicdn.com/kf/HTB1mG.FMVXXXXbcaFXXq6xXFXXXx/Winner-Luxury-Men-Mechanical-Watch-Classic-Date-automatic-Mechanical-Watch-Self-Winding-Skeleton-Black-Leather-Strap.jpg",
             buttons: [{
               type: "web_url",
-              url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
-              title: "Go to Store"
+              url: "http://bit.ly/2rA79On",
+              title: "Shop"
             }, {
               type: "postback",
-              title: "Call me",
+              title: "Go to Store",
               payload: "Payload for second bubble",
             }]
           }]
