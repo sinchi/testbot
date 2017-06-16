@@ -165,6 +165,12 @@ function receivedPostback(event) {
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?" );
               sendQuickMessageChooseOne(senderID);
             break;
+            case 'quick_reply_jewelry':
+              sendTextMessage(senderID, "You love Jewelry ");
+              break;
+            case 'quick_reply_watches':
+              sendTextMessage(senderID, "You love Watches");
+              break;
           }
 
       } else {
