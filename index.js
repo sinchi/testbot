@@ -5,6 +5,65 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
+import client from './graphql-js-client';
+import {gql} from 'babel-plugin-graphql-js-client-transform';
+
+const shopNameAndProductsPromise = client.send(gql(client)`
+    query {
+      shop {
+        name
+        description
+        products(first:20) {
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+          }
+          edges {
+            node {
+              id
+              title
+              options {
+                name
+                values
+              }
+              variants(first: 250) {
+                pageInfo {
+                  hasNextPage
+                  hasPreviousPage
+                }
+                edges {
+                  node {
+                    title
+                    selectedOptions {
+                      name
+                      value
+                    }
+                    image {
+                      src
+                    }
+                    price
+                  }
+                }
+              }
+              images(first: 250) {
+                pageInfo {
+                  hasNextPage
+                  hasPreviousPage
+                }
+                edges {
+                  node {
+                    src
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `).then((result) => {
+    return result.model.shop;
+  });
 
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -212,49 +271,62 @@ function jewelryQuickMessageChoosen(recipientId){
 }
 
 function watchQuickMessageChoosen(recipientId){
+
+
+
   sendTextMessage(recipientId, 'You have choosen Watches');
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: "Watches",
-            subtitle: "Simulation Wooden Relojes Quartz Men Watches Casual Wooden Color Leather Strap Watch Wood Male Wristwatch Relogio Masculino",
-            item_url: "http://bit.ly/2sBHOU6",
-            image_url: "https://ae01.alicdn.com/kf/HTB15cHCKVXXXXanaXXXq6xXFXXX6/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio.jpg",
-            buttons: [{
-              type: "web_url",
-              url: "http://bit.ly/2sBHOU6",
-              title: "Shop"
+
+  return Promise.all([shopNameAndProductsPromise]).then(([shop]) => {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: "Watches",
+              subtitle: "Simulation Wooden Relojes Quartz Men Watches Casual Wooden Color Leather Strap Watch Wood Male Wristwatch Relogio Masculino",
+              item_url: "http://bit.ly/2sBHOU6",
+              image_url: "https://ae01.alicdn.com/kf/HTB15cHCKVXXXXanaXXXq6xXFXXX6/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio.jpg",
+              buttons: [{
+                type: "web_url",
+                url: "http://bit.ly/2sBHOU6",
+                title: "Shop"
+              }, {
+                type: "postback",
+                title: "Go to Store",
+                payload: "Payload for first bubble",
+              }],
             }, {
-              type: "postback",
-              title: "Go to Store",
-              payload: "Payload for first bubble",
-            }],
-          }, {
-            title: "Watches",
-            subtitle: "Winner Luxury Men Mechanical Watch Classic Date automatic Mechanical Watch Self-Winding Skeleton Black Leather Strap Wrist Watch",
-            item_url: "http://bit.ly/2rA79On",
-            image_url: "https://ae01.alicdn.com/kf/HTB1mG.FMVXXXXbcaFXXq6xXFXXXx/Winner-Luxury-Men-Mechanical-Watch-Classic-Date-automatic-Mechanical-Watch-Self-Winding-Skeleton-Black-Leather-Strap.jpg",
-            buttons: [{
-              type: "web_url",
-              url: "http://bit.ly/2rA79On",
-              title: "Shop"
-            }, {
-              type: "postback",
-              title: "Go to Store",
-              payload: "Payload for second bubble",
+              title: "Watches",
+              subtitle: "Winner Luxury Men Mechanical Watch Classic Date automatic Mechanical Watch Self-Winding Skeleton Black Leather Strap Wrist Watch",
+              item_url: "http://bit.ly/2rA79On",
+              image_url: "https://ae01.alicdn.com/kf/HTB1mG.FMVXXXXbcaFXXq6xXFXXXx/Winner-Luxury-Men-Mechanical-Watch-Classic-Date-automatic-Mechanical-Watch-Self-Winding-Skeleton-Black-Leather-Strap.jpg",
+              buttons: [{
+                type: "web_url",
+                url: "http://bit.ly/2rA79On",
+                title: "Shop"
+              }, {
+                type: "postback",
+                title: "Go to Store",
+                payload: "Payload for second bubble",
+              }]
             }]
-          }]
+          }
         }
       }
-    }
-  };
+    };
+    /*res.render('index', {
+      products: shop.products,
+      cart,
+      shop,
+      isCartOpen: req.query.cart
+    });*/
+    console.log(shop.products);
+  });
 
   callSendAPI(messageData);
 }
