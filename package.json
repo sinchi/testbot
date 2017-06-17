@@ -10,13 +10,6 @@
   "author": "ayoub sinchi",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "latest",
-    "config": "latest",
-    "crypto": "latest",
-    "ejs": "latest",
-    "graphql": "^0.10.1",
-    "https": "latest",
-    "request": "^2.73.0",
     "babel": "~6.5.2",
     "babel-cli": "~6.11.4",
     "babel-core": "~6.13.2",
@@ -30,6 +23,13 @@
     "express": "^4.15.2",
     "graphql-js-client": "^0.6.1",
     "graphql-js-schema": "^0.5.0",
-    "graphql-js-schema-fetch": "^1.1.2"
+    "graphql-js-schema-fetch": "^1.1.2",
+    "cheerio": "latest",
+    "config": "latest",
+    "crypto": "latest",
+    "ejs": "latest",
+    "graphql": "^0.10.1",
+    "https": "latest",
+    "request": "^2.73.0"
   }
 }
