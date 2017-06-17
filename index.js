@@ -280,7 +280,7 @@ sendTextMessage(recipientId, 'You have choosen Watches');
 
 function sendGenericMessage(recipientId) {
   request({
-    url: 'https://testo-mania.myshopify.com/api/graphql',
+    uri: 'https://testo-mania.myshopify.com/api/graphql',
     headers: {
       "X-Shopify-Storefront-Access-Token", "3d02750484be7c34eb8d53317b7d1f8a"
     }
