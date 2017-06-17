@@ -5,23 +5,6 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
-var client = require('./graphql-client');
-//var g =  require('babel-plugin-graphql-js-client-transform');
-
-/*const query = client.query((root) => {
-  root.add('shop', (shop) => {
-    shop.add('name');
-    shop.add('description');
-    shop.addConnection('products', {args: {first: 10}}, (product) => {
-      product.add('title');
-    });
-  });
-});
-
-const shopNameAndProductsPromise = client.send(query).then(function(result){
-    return result.model.shop;
-  });
-  */
 
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -283,7 +266,7 @@ function sendGenericMessage(recipientId) {
     uri: 'https://testo-mania.myshopify.com/api/graphql',
     headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
-    },  
+    },
     json: {query: "query {    shop {      name      products (first: 10) {        pageInfo {          hasNextPage          hasPreviousPage        }        edges {          cursor          node {            id            title          }        }      }    }  }"}
 
   }, function (error, response, body) {
