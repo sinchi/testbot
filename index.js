@@ -342,11 +342,11 @@ function sendGenericMessage(recipientId) {
         elements.push({
           title: edge.node.title,
           subtitle: edge.node.description,
-          item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+          item_url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
           image_url: edge.node.images.edges[0].node.src,
           buttons: [{
             type: "web_url",
-            url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+            url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
             title: "Go to Store"
           }, {
             type: "postback",
