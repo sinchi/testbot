@@ -6,7 +6,7 @@ var app = express();
 var repas = "";
 
 var client = require('./graphql-client');
-var g =  require('babel-plugin-graphql-js-client-transform');
+//var g =  require('babel-plugin-graphql-js-client-transform');
 
 const query = client.query((root) => {
   root.add('shop', (shop) => {
