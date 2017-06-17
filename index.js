@@ -212,7 +212,122 @@ function jewelryQuickMessageChoosen(recipientId){
 }
 
 function watchQuickMessageChoosen(recipientId){
+  sendTextMessage(recipientId, 'You have choosen Watches');
+  request({
+    uri: 'https://testo-mania.myshopify.com/api/graphql',
+    headers: {
+      "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
+    },
+    json: {
+      query: `
+        query {
+          shop {
+            name
+            description
+            products(first:20) {
+              pageInfo {
+                hasNextPage
+                hasPreviousPage
+              }
+              edges {
+                node {
+                  id
+                  title
+                  description
+                  options {
+                    name
+                    values
+                  }
+                  variants(first: 250) {
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                    }
+                    edges {
+                      node {
+                        title
+                        selectedOptions {
+                          name
+                          value
+                        }
+                        image {
+                          src
+                        }
+                        price
+                      }
+                    }
+                  }
+                  images(first: 250) {
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                    }
+                    edges {
+                      node {
+                        src
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
 
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var data = body.data;
+      var title = data.shop.products.edges[0].node.title;
+      var edges = data.shop.products.edges;
+      var elements = [];
+    //  console.log(products);
+      for(var i=0; i< edges.length; i++){
+        var edge = edges[i];
+        console.log(edge);
+         console.log(edge.node.images.edges);
+         console.log("OPTIONS");
+         console.log(edge.node.options);
+         console.log("VARIANTES");
+         console.log(JSON.stringify(edge.node.variants));
+        elements.push({
+          title: edge.node.title,
+          subtitle: edge.node.description,
+          item_url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
+          image_url: edge.node.images.edges[0].node.src,
+          buttons: [{
+            type: "web_url",
+            url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
+            title: "Go to Store"
+          }, {
+            type: "postback",
+            title: "Call Postback",
+            payload: "Payload for first bubble",
+          }]
+        });
+      }
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: elements
+            }
+          }
+        }
+      };
+      callSendAPI(messageData);
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+}
 
 
 sendTextMessage(recipientId, 'You have choosen Watches');
