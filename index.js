@@ -6,7 +6,7 @@ var app = express();
 var repas = "";
 
 var client = require('./graphql-client');
-var gql =  require('babel-plugin-graphql-js-client-transform')('gql');
+var gql =  require('babel-plugin-graphql-js-client-transform');
 
 const shopNameAndProductsPromise = client.send(gql(client)`
     query {
