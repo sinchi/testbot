@@ -334,6 +334,8 @@ function sendGenericMessage(recipientId) {
         var edge = edges[i];
           console.log(edge);
          console.log(edge.node.images.edges);
+         console.log("OPTIONS");
+         console.log(edge.node.options);
         elements.push({
           title: edge.node.title,
           subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
