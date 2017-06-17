@@ -8,60 +8,16 @@ var repas = "";
 var client = require('./graphql-client');
 var g =  require('babel-plugin-graphql-js-client-transform');
 
-const shopNameAndProductsPromise = client.send(g.gql(client)`
-    query {
-      shop {
-        name
-        description
-        products(first:20) {
-          pageInfo {
-            hasNextPage
-            hasPreviousPage
-          }
-          edges {
-            node {
-              id
-              title
-              options {
-                name
-                values
-              }
-              variants(first: 250) {
-                pageInfo {
-                  hasNextPage
-                  hasPreviousPage
-                }
-                edges {
-                  node {
-                    title
-                    selectedOptions {
-                      name
-                      value
-                    }
-                    image {
-                      src
-                    }
-                    price
-                  }
-                }
-              }
-              images(first: 250) {
-                pageInfo {
-                  hasNextPage
-                  hasPreviousPage
-                }
-                edges {
-                  node {
-                    src
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `).then((result) => {
+const query = client.query((root) => {
+  root.add('shop', (shop) => {
+    shop.add('name');
+    shop.addConnection('products', {args: {first: 10}}, (product) => {
+      product.add('title');
+    });
+  });
+});
+
+const shopNameAndProductsPromise = client.send(query).then((result) => {
     return result.model.shop;
   });
 
