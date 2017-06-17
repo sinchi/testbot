@@ -11,9 +11,11 @@
   "author": "ayoub sinchi",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
     "babel": "~6.5.2",
     "babel-cli": "~6.11.4",
-    "babel-preset-es2015": "^6.0.0",
     "babel-core": "~6.13.2",
     "babel-plugin-add-shopify-header": "~1.0.5",
     "babel-plugin-graphql-js-client-transform": "^1.1.0",
@@ -33,5 +35,16 @@
     "graphql": "^0.10.1",
     "https": "latest",
     "request": "^2.73.0"
-  }
+  },
+  "scripts": {
+    "prestart": "yarn build",
+    "start": "node lib/app.js",
+    "test": "yarn run lint-allow-warning && mocha --compilers js:babel-register -u tdd test/index.js",
+    "build": "babel -d lib/ src/",
+    "lint": "eslint --max-warnings 0 -c .eslintrc.json src/ test/",
+    "lint-allow-warning": "eslint -c .eslintrc.json src/ test/",
+    "schema:refresh": "rimraf types.js && yarn run schema:fetch && yarn run schema:transform-to-types",
+    "schema:fetch": "graphql-js-schema-fetch --url 'https://graphql.myshopify.com/api/graphql' --header 'Authorization: Basic MzUxYzEyMjAxN2QwZjJhOTU3ZDMyYWU3MjhhZDc0OWM=' | jq '.' > schema.json",
+    "schema:transform-to-types": "graphql-js-schema --schema-file schema.json --outdir ./src --schema-bundle-name 'Types' --bundle-only"
+  },
 }
