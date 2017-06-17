@@ -326,7 +326,7 @@ function sendGenericMessage(recipientId) {
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log("BODY BODY BODY");
-      console.log(response.body);
+      console.log(body);
       var data = response.body.data;
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;
