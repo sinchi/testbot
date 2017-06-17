@@ -1,6 +1,6 @@
-var fetch =  require('node-fetch');
-var Client =  require('graphql-js-client');
-var typeBundle = require('./types');
+import fetch from 'node-fetch';
+import Client from 'graphql-js-client';
+import typeBundle from './types';
 
 global.fetch = fetch;
 
@@ -12,4 +12,3 @@ module.exports = new Client(typeBundle, {
     }
   }
 });
- 
