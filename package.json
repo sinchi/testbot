@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel server --out-dir build --presets=es2015 && webpack",
     "start": "babel-node --presets es2015 app.js"
   },
   "author": "ayoub sinchi",
