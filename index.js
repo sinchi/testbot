@@ -299,7 +299,7 @@ function watchQuickMessageChoosen(recipientId){
             title: "Go to Store"
           }, {
             type: "postback",
-            title: "Call Postback",
+            title: "Share",
             payload: "Payload for first bubble",
           }]
         });
