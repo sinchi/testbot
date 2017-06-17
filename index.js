@@ -8,7 +8,7 @@ var repas = "";
 var client = require('./graphql-client');
 //var g =  require('babel-plugin-graphql-js-client-transform');
 
-const query = client.query((root) => {
+/*const query = client.query((root) => {
   root.add('shop', (shop) => {
     shop.add('name');
     shop.add('description');
@@ -21,6 +21,7 @@ const query = client.query((root) => {
 const shopNameAndProductsPromise = client.send(query).then(function(result){
     return result.model.shop;
   });
+  */
 
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -231,64 +232,7 @@ function watchQuickMessageChoosen(recipientId){
 
 
 
-  sendTextMessage(recipientId, 'You have choosen Watches');
-
-  return Promise.all([shopNameAndProductsPromise]).then(([shop]) => {
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: "Watches",
-              subtitle: "Simulation Wooden Relojes Quartz Men Watches Casual Wooden Color Leather Strap Watch Wood Male Wristwatch Relogio Masculino",
-              item_url: "http://bit.ly/2sBHOU6",
-              image_url: "https://ae01.alicdn.com/kf/HTB15cHCKVXXXXanaXXXq6xXFXXX6/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio.jpg",
-              buttons: [{
-                type: "web_url",
-                url: "http://bit.ly/2sBHOU6",
-                title: "Shop"
-              }, {
-                type: "postback",
-                title: "Go to Store",
-                payload: "Payload for first bubble",
-              }],
-            }, {
-              title: "Watches",
-              subtitle: "Winner Luxury Men Mechanical Watch Classic Date automatic Mechanical Watch Self-Winding Skeleton Black Leather Strap Wrist Watch",
-              item_url: "http://bit.ly/2rA79On",
-              image_url: "https://ae01.alicdn.com/kf/HTB1mG.FMVXXXXbcaFXXq6xXFXXXx/Winner-Luxury-Men-Mechanical-Watch-Classic-Date-automatic-Mechanical-Watch-Self-Winding-Skeleton-Black-Leather-Strap.jpg",
-              buttons: [{
-                type: "web_url",
-                url: "http://bit.ly/2rA79On",
-                title: "Shop"
-              }, {
-                type: "postback",
-                title: "Go to Store",
-                payload: "Payload for second bubble",
-              }]
-            }]
-          }
-        }
-      }
-    };
-    /*res.render('index', {
-      products: shop.products,
-      cart,
-      shop,
-      isCartOpen: req.query.cart
-    });*/
-    console.log(shop.products);
-  });
-
-  callSendAPI(messageData);
-}
-
-function sendGenericMessage(recipientId) {
+sendTextMessage(recipientId, 'You have choosen Watches');
   var messageData = {
     recipient: {
       id: recipientId
@@ -299,31 +243,31 @@ function sendGenericMessage(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "HELLO SUMMER",
-            subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
-            item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
-            image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
+            title: "Watches",
+            subtitle: "Simulation Wooden Relojes Quartz Men Watches Casual Wooden Color Leather Strap Watch Wood Male Wristwatch Relogio Masculino",
+            item_url: "http://bit.ly/2sBHOU6",
+            image_url: "https://ae01.alicdn.com/kf/HTB15cHCKVXXXXanaXXXq6xXFXXX6/Simulation-Wooden-Relojes-Quartz-Men-Watches-Casual-Wooden-Color-Leather-Strap-Watch-Wood-Male-Wristwatch-Relogio.jpg",
             buttons: [{
               type: "web_url",
-              url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
-              title: "Go to Store"
+              url: "http://bit.ly/2sBHOU6",
+              title: "Shop"
             }, {
               type: "postback",
-              title: "Call Postback",
+              title: "Go to Store",
               payload: "Payload for first bubble",
             }],
           }, {
-            title: "SUMMER TIME HAVE FUN LIMITED EDITION",
-            subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
-            item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
-            image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
+            title: "Watches",
+            subtitle: "Winner Luxury Men Mechanical Watch Classic Date automatic Mechanical Watch Self-Winding Skeleton Black Leather Strap Wrist Watch",
+            item_url: "http://bit.ly/2rA79On",
+            image_url: "https://ae01.alicdn.com/kf/HTB1mG.FMVXXXXbcaFXXq6xXFXXXx/Winner-Luxury-Men-Mechanical-Watch-Classic-Date-automatic-Mechanical-Watch-Self-Winding-Skeleton-Black-Leather-Strap.jpg",
             buttons: [{
               type: "web_url",
-              url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
-              title: "Go to Store"
+              url: "http://bit.ly/2rA79On",
+              title: "Shop"
             }, {
               type: "postback",
-              title: "Call me",
+              title: "Go to Store",
               payload: "Payload for second bubble",
             }]
           }]
@@ -331,6 +275,65 @@ function sendGenericMessage(recipientId) {
       }
     }
   };
+  callSendAPI(messageData);
+}
+
+function sendGenericMessage(recipientId) {
+
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+  xhr.open("POST", "https://testo-mania.myshopify.com/api/graphql");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("X-Shopify-Storefront-Access-Token", "3d02750484be7c34eb8d53317b7d1f8a");
+  xhr.onload = function () {
+    console.log('data returned:', xhr.response);
+    var data = xhr.response.data;
+    var title = data.shop.products.edges[0].node.title;
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: title,
+              subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
+              item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+              image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
+              buttons: [{
+                type: "web_url",
+                url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+                title: "Go to Store"
+              }, {
+                type: "postback",
+                title: "Call Postback",
+                payload: "Payload for first bubble",
+              }],
+            }, {
+              title: "SUMMER TIME HAVE FUN LIMITED EDITION",
+              subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
+              item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+              image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
+              buttons: [{
+                type: "web_url",
+                url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+                title: "Go to Store"
+              }, {
+                type: "postback",
+                title: "Call me",
+                payload: "Payload for second bubble",
+              }]
+            }]
+          }
+        }
+      }
+    };
+  }
+  xhr.send(JSON.stringify({query: " query {    shop {      name      products (first: 10) {        pageInfo {          hasNextPage          hasPreviousPage        }        edges {          cursor          node {            id            title          }        }      }    }  }"}));
 
   callSendAPI(messageData);
 }
