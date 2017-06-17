@@ -271,7 +271,7 @@ function sendGenericMessage(recipientId) {
 
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log(body);
+      console.log(response);
     //  var data = response.data;
       var title = body.shop.products.edges[0].node.title;
       var messageData = {
