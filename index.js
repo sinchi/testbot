@@ -279,62 +279,66 @@ sendTextMessage(recipientId, 'You have choosen Watches');
 }
 
 function sendGenericMessage(recipientId) {
+  request({
+    url: 'https://testo-mania.myshopify.com/api/graphql',
+    headers: {
+      "X-Shopify-Storefront-Access-Token", "3d02750484be7c34eb8d53317b7d1f8a"
+    }
+    method: 'POST',
+    json: {query: "query {    shop {      name      products (first: 10) {        pageInfo {          hasNextPage          hasPreviousPage        }        edges {          cursor          node {            id            title          }        }      }    }  }"}
 
-  var xhr = new XMLHttpRequest();
-  xhr.responseType = 'json';
-  xhr.open("POST", "https://testo-mania.myshopify.com/api/graphql");
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("Accept", "application/json");
-  xhr.setRequestHeader("X-Shopify-Storefront-Access-Token", "3d02750484be7c34eb8d53317b7d1f8a");
-  xhr.onload = function () {
-    console.log('data returned:', xhr.response);
-    var data = xhr.response.data;
-    var title = data.shop.products.edges[0].node.title;
-    var messageData = {
-      recipient: {
-        id: recipientId
-      },
-      message: {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: title,
-              subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
-              item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
-              image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
-              buttons: [{
-                type: "web_url",
-                url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
-                title: "Go to Store"
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var data = response.data;
+      var title = data.shop.products.edges[0].node.title;
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: title,
+                subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
+                item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+                image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
+                buttons: [{
+                  type: "web_url",
+                  url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+                  title: "Go to Store"
+                }, {
+                  type: "postback",
+                  title: "Call Postback",
+                  payload: "Payload for first bubble",
+                }],
               }, {
-                type: "postback",
-                title: "Call Postback",
-                payload: "Payload for first bubble",
-              }],
-            }, {
-              title: "SUMMER TIME HAVE FUN LIMITED EDITION",
-              subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
-              item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
-              image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
-              buttons: [{
-                type: "web_url",
-                url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
-                title: "Go to Store"
-              }, {
-                type: "postback",
-                title: "Call me",
-                payload: "Payload for second bubble",
+                title: "SUMMER TIME HAVE FUN LIMITED EDITION",
+                subtitle: "Limited Time Only ! Makes a great gift. NOT AVAILABLE IN STORES! See additional styles and colors",
+                item_url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+                image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/262/962/943/original/summer-time-have-fun-limited-edition.jpg?1494930534",
+                buttons: [{
+                  type: "web_url",
+                  url: "https://www.teezily.com/summer-time-have-fun-limited-edition?source=store&store=ohyeah-summer",
+                  title: "Go to Store"
+                }, {
+                  type: "postback",
+                  title: "Call me",
+                  payload: "Payload for second bubble",
+                }]
               }]
-            }]
+            }
           }
         }
-      }
-    };
-  }
-  xhr.send(JSON.stringify({query: " query {    shop {      name      products (first: 10) {        pageInfo {          hasNextPage          hasPreviousPage        }        edges {          cursor          node {            id            title          }        }      }    }  }"}));
-
+      };
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });
   callSendAPI(messageData);
 }
 
