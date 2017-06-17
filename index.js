@@ -8,7 +8,7 @@ var repas = "";
 var Client =  require('graphql-js-client');
 var typeBundle = require('./types');
 
-var client = new Client(typeBundle.types, {
+var client = Client(typeBundle.types, {
   url: 'https://testo-mania.myshopify.com/api/graphql',
   fetcherOptions: {
     headers: {
