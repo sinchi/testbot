@@ -6,7 +6,7 @@ global.fetch = fetch;
 
 //console.log(GraphQLClient.default);
 
-module.exports['default'] = new Client(typeBundle, {
+module.exports['default'] = new Client.default(typeBundle, {
   url: 'https://testo-mania.myshopify.com/api/graphql',
   fetcherOptions: {
     headers: {
