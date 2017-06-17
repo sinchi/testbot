@@ -282,7 +282,7 @@ function sendGenericMessage(recipientId) {
   request({
     uri: 'https://testo-mania.myshopify.com/api/graphql',
     headers: {
-      "X-Shopify-Storefront-Access-Token", "3d02750484be7c34eb8d53317b7d1f8a"
+      "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     }
     method: 'POST',
     json: {query: "query {    shop {      name      products (first: 10) {        pageInfo {          hasNextPage          hasPreviousPage        }        edges {          cursor          node {            id            title          }        }      }    }  }"}
