@@ -41,5 +41,5 @@
     "schema:refresh": "rimraf types.js && yarn run schema:fetch && yarn run schema:transform-to-types",
     "schema:fetch": "graphql-js-schema-fetch --url 'https://graphql.myshopify.com/api/graphql' --header 'Authorization: Basic MzUxYzEyMjAxN2QwZjJhOTU3ZDMyYWU3MjhhZDc0OWM=' | jq '.' > schema.json",
     "schema:transform-to-types": "graphql-js-schema --schema-file schema.json --outdir ./src --schema-bundle-name 'Types' --bundle-only"
-  },
+  }
 }
