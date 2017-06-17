@@ -272,8 +272,8 @@ function sendGenericMessage(recipientId) {
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log(response.body);
-    //  var data = response.data;
-      var title = response._host;//body.shop.products.edges[0].node.title;
+      var data = response.body.data;
+      var title = data.shop.products.edges[0].node.title;
       var messageData = {
         recipient: {
           id: recipientId
@@ -316,13 +316,14 @@ function sendGenericMessage(recipientId) {
           }
         }
       };
+      callSendAPI(messageData);
     } else {
       console.error("Unable to send message.");
       console.error(response);
       console.error(error);
     }
   });
-  callSendAPI(messageData);
+
 }
 
 function sendTextMessage(recipientId, messageText, started) {
