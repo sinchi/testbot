@@ -10,15 +10,17 @@ var client = require('./graphql-client');
 
 const query = client.query((root) => {
   root.add('shop', (shop) => {
+    shop.add('name');
     shop.add('description');
     shop.addConnection('products', {args: {first: 10}}, (product) => {
       product.add('title');
+      product.add('name');
     });
   });
 });
 
-const shopNameAndProductsPromise = client.send(query).then((result) => {
-    return result.model.shop;
+const shopNameAndProductsPromise = client.send(query).then(function(model, data){
+    return model.shop;
   });
 
 
