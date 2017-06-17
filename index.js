@@ -5,10 +5,10 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
-var client =  require('graphql-js-client');
+var Client =  require('graphql-client');
 var typeBundle = require('./types');
 
- client(typeBundle.types, {
+var client = new Client(typeBundle, {
   url: 'https://testo-mania.myshopify.com/api/graphql',
   fetcherOptions: {
     headers: {
