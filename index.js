@@ -273,7 +273,7 @@ function sendGenericMessage(recipientId) {
     if (!error && response.statusCode == 200) {
       console.log(response);
     //  var data = response.data;
-      var title = body.shop.products.edges[0].node.title;
+      var title = response._host;//body.shop.products.edges[0].node.title;
       var messageData = {
         recipient: {
           id: recipientId
