@@ -5,10 +5,10 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
-import client from './graphql-js-client';
-import {gql} from 'babel-plugin-graphql-js-client-transform';
+var client = require('./graphql-js-client');
+var q =  require('babel-plugin-graphql-js-client-transform');
 
-const shopNameAndProductsPromise = client.send(gql(client)`
+const shopNameAndProductsPromise = client.send(q.gql(client)`
     query {
       shop {
         name
