@@ -325,16 +325,18 @@ function sendGenericMessage(recipientId) {
 
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
+      console.log("BODY BODY BODY");
       console.log(response.body);
       var data = response.body.data;
       var title = data.shop.products.edges[0].node.title;
-      var products = data.shop.products.edges;
+      var edges = data.shop.products.edges;
       var elements = [];
-      console.log(products);
-      for(var i=0; i< products.length; i++){
-        var product = products[i];
+    //  console.log(products);
+      for(var i=0; i< edges.length; i++){
+        var edge = edges[i];
+
         elements.push({
-          title: product.node.title,
+          title: edge.node.title,
           subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
           item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
           image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
