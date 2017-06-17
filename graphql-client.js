@@ -4,7 +4,7 @@ var typeBundle = require('./types');
 
 global.fetch = fetch;
 
-module.exports['default'] = new Client.default(typeBundle, {
+module.exports = new Client.default(typeBundle, {
   url: 'https://testo-mania.myshopify.com/api/graphql',
   fetcherOptions: {
     headers: {
