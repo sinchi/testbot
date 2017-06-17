@@ -4,9 +4,9 @@ var typeBundle = require('./types');
 
 global.fetch = fetch;
 
-console.log(GraphQLClient.default.Client);
+console.log(GraphQLClient.default);
 
-module.exports['default'] = new GraphQLClient.default(typeBundle, {
+var Client = new GraphQLClient.default(typeBundle, {
   url: 'https://testo-mania.myshopify.com/api/graphql',
   fetcherOptions: {
     headers: {
@@ -14,3 +14,5 @@ module.exports['default'] = new GraphQLClient.default(typeBundle, {
     }
   }
 });
+
+module.exports['default'] = Client;
