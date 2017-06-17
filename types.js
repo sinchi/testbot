@@ -1523,4 +1523,4 @@ Types.subscriptionType = null;
 Object.freeze(Types.types);
 var types = Object.freeze(Types);
 
-module.exports default types;
+module.exports types;
