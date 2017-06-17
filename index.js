@@ -9,7 +9,9 @@ var client = require('./graphql-client');
 //var g =  require('babel-plugin-graphql-js-client-transform');
 
 const query = client.query((root) => {
-  root.add('shop', (shop) => {    
+  root.add('shop', (shop) => {
+    shop.add('name');
+    shop.add('description');
     shop.addConnection('products', {args: {first: 10}}, (product) => {
       product.add('title');
     });
