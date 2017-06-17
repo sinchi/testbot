@@ -267,7 +267,60 @@ function sendGenericMessage(recipientId) {
     headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     },
-    json: {query: "query {    shop {      name      products (first: 10) {        pageInfo {          hasNextPage          hasPreviousPage        }        edges {          cursor          node {            id            title          }        }      }    }  }"}
+    json: {query: `
+        query {
+          shop {
+            name
+            description
+            products(first:20) {
+              pageInfo {
+                hasNextPage
+                hasPreviousPage
+              }
+              edges {
+                node {
+                  id
+                  title
+                  options {
+                    name
+                    values
+                  }
+                  variants(first: 250) {
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                    }
+                    edges {
+                      node {
+                        title
+                        selectedOptions {
+                          name
+                          value
+                        }
+                        image {
+                          src
+                        }
+                        price
+                      }
+                    }
+                  }
+                  images(first: 250) {
+                    pageInfo {
+                      hasNextPage
+                      hasPreviousPage
+                    }
+                    edges {
+                      node {
+                        src
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
 
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
