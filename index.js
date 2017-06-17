@@ -267,7 +267,8 @@ function sendGenericMessage(recipientId) {
     headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     },
-    json: {query: `
+    json: {
+      query: `
         query {
           shop {
             name
@@ -327,6 +328,15 @@ function sendGenericMessage(recipientId) {
       console.log(response.body);
       var data = response.body.data;
       var title = data.shop.products.edges[0].node.title;
+      var products = data.shop.products;
+      var elements = [];
+      console.log(products);
+    /*  for(var i=0; i< products.length; i++){
+        var product = products[i];
+        elements.push({
+          title: product
+        })
+      }*/
       var messageData = {
         recipient: {
           id: recipientId
