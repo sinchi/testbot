@@ -5,7 +5,17 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
-var client = require('./graphql-client');
+var Client =  require('graphql-js-client');
+var typeBundle = require('./types');
+
+var client = new Client(typeBundle, {
+  url: 'https://testo-mania.myshopify.com/api/graphql',
+  fetcherOptions: {
+    headers: {
+      'X-Shopify-Storefront-Access-Token': ' 3d02750484be7c34eb8d53317b7d1f8a'
+    }
+  }
+});
 var q =  require('babel-plugin-graphql-js-client-transform');
 
 const shopNameAndProductsPromise = client.send(q.gql(client)`
