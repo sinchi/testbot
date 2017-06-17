@@ -341,7 +341,7 @@ function sendGenericMessage(recipientId) {
         elements.push({
           title: edge.node.title,
           subtitle: "FREE SHIPPING",
-          //item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
+          item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
           image_url: edge.node.images.edges[0].node.src,
           buttons: [{
             type: "web_url",
