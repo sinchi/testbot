@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
-var Client =  require('./graphql-client');
+var Client =  require('graphql-js-client');
 var typeBundle = require('./types');
 
 var client = new Client(typeBundle, {
