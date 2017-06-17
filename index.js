@@ -333,12 +333,12 @@ function sendGenericMessage(recipientId) {
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
           console.log(edge);
-         console.log(edge.node.images.edges.node);
+         console.log(edge.node.images.edges);
         elements.push({
           title: edge.node.title,
           subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
           item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
-          image_url: edge.node.images.edges[0].src,
+          image_url: edge.node.images.edges[0].node.src,
           buttons: [{
             type: "web_url",
             url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
