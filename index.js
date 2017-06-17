@@ -5,8 +5,6 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 
-
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -224,7 +222,7 @@ function watchQuickMessageChoosen(recipientId){
           shop {
             name
             description
-            products(first:20) {
+            products(first:4) {
               pageInfo {
                 hasNextPage
                 hasPreviousPage
