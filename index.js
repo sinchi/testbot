@@ -338,7 +338,7 @@ function sendGenericMessage(recipientId) {
           title: edge.node.title,
           subtitle: "T-Shirt of quality, very comfortable and well cut. NOT AVAILABLE IN STORES!",
           item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
-          image_url: "https://dpar4s8x3qago.cloudfront.net/previews/images/259/856/791/normal/hello-summer-oh-yeah.jpg?1494844230",
+          image_url: images[0].src,
           buttons: [{
             type: "web_url",
             url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
