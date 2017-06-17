@@ -282,6 +282,7 @@ function sendGenericMessage(recipientId) {
                 node {
                   id
                   title
+                  description
                   options {
                     name
                     values
@@ -332,7 +333,7 @@ function sendGenericMessage(recipientId) {
     //  console.log(products);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
-          console.log(edge);
+        console.log(edge);
          console.log(edge.node.images.edges);
          console.log("OPTIONS");
          console.log(edge.node.options);
@@ -340,7 +341,7 @@ function sendGenericMessage(recipientId) {
          console.log(JSON.stringify(edge.node.variants));
         elements.push({
           title: edge.node.title,
-          subtitle: "FREE SHIPPING",
+          subtitle: edge.node.description,
           item_url: "https://www.teezily.com/hello-summer-oh-yeah?source=store&store=ohyeah-summer",
           image_url: edge.node.images.edges[0].node.src,
           buttons: [{
