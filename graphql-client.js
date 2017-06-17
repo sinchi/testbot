@@ -1,12 +1,12 @@
-var fetch =  require('node-fetch');
-var GraphQLClient = require('graphql-js-client');
-var typeBundle = require('./types');
+import fetch from 'node-fetch';
+import Client from 'graphql-js-client';
+import typeBundle from './types';
 
 global.fetch = fetch;
 
-console.log(GraphQLClient.default);
+//console.log(GraphQLClient.default);
 
-var Client = new GraphQLClient.default(typeBundle, {
+export default new Client(typeBundle, {
   url: 'https://testo-mania.myshopify.com/api/graphql',
   fetcherOptions: {
     headers: {
@@ -14,5 +14,3 @@ var Client = new GraphQLClient.default(typeBundle, {
     }
   }
 });
-
-module.exports['default'] = Client;
