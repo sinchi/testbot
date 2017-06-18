@@ -261,12 +261,12 @@ function watchQuickMessageChoosen(recipientId, page){
 
       var elements = [];
 
-       _.find(JSON.parse(body).products, function(product){
+       _.each(JSON.parse(body).products, function(product){
         request({
           uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/'+product.product_id+'.json',
         }, function(error, response, body){
           console.log(JSON.parse(body));
-          var edges = JSON.parse(body);  
+          var edges = JSON.parse(body);
           console.log("BODY BODY @@@@");
        //console.log(edges);
         for(var i=0; i< edges.length; i++){
