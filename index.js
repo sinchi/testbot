@@ -188,12 +188,7 @@ function receivedPostback(event) {
               case 'payload_more_latest':
                 var numberOfPages = COUNT/5;
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
-                if(numberOfPages === page){
-                  sendTextMessage(senderID, 'You have reach the final latest items');
-                }else{
-                  watchQuickMessageChoosen(senderID, page);
-                }
-
+                watchQuickMessageChoosen(senderID, page);              
               break;
           }
 
@@ -286,7 +281,7 @@ function watchQuickMessageChoosen(recipientId, page){
           }]
         });
       }
-      // if not the last item 
+      // if not the last item
       if(page < COUNT){
           elements.push({
             title: "Looking for more latest?" ,
