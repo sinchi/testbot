@@ -275,7 +275,7 @@ function watchQuickMessageChoosen(recipientId, page){
                 console.log(image);
                 elements.push({
                   title: edge.title ,
-                  subtitle: edge.body_html,
+                  subtitle: stripHTML(edge.body_html),
                   item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
                   image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
                   buttons: [{
@@ -327,7 +327,7 @@ function watchQuickMessageChoosen(recipientId, page){
       });
 
     } else {
-      console.error("Unable to send message.");
+      console.error("Error Collect Request.");
       //console.error(response);
       console.error(error);
     }
