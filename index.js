@@ -228,7 +228,7 @@ function sendQuickMessageChooseOne(recipientId){
     }
   };
 
-  callSendAPI(messageData);
+  callSendAPI(messageData, false, false);
 }
 
 function sendQuickMessageChooseOneAfter(recipientId){
@@ -249,7 +249,7 @@ function sendQuickMessageChooseOneAfter(recipientId){
     }
   };
 
-  callSendAPI(messageData);
+  callSendAPI(messageData, false, false);
 }
 
 function jewelryQuickMessageChoosen(recipientId){
@@ -322,7 +322,7 @@ function watchQuickMessageChoosen(recipientId, page){
           }
         }
       };
-      callSendAPI(messageData, fasle, true);
+      callSendAPI(messageData, false, true);
     } else {
       console.error("Unable to send message.");
       console.error(response);
@@ -439,7 +439,7 @@ function sendGenericMessage(recipientId) {
           }
         }
       };
-      callSendAPI(messageData);
+      callSendAPI(messageData, false, false);
     } else {
       console.error("Unable to send message.");
       console.error(response);
@@ -478,7 +478,7 @@ function sendTextMessage(recipientId, messageText, started) {
     }
   };
 
-  callSendAPI(messageData, started);
+  callSendAPI(messageData, true, false);
 }
 
 function callSendAPI(messageData, started, after) {
