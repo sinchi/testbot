@@ -244,24 +244,32 @@ function sendQuickMessageChooseOne(recipientId){
 
 function sendQuickMessageChooseOneAfter(recipientId, page){
 
+  var reply = [];
+  if(page < COUNT/5){
+    reply.push({
+      content_type:"text",
+      title:"More",
+      payload:"quick_reply_more;"+page
+    });
+    reply.push({
+      content_type:"text",
+      title:"Jewelry",
+      payload:"quick_reply_jewelry"
+    })
+  }else{
+    reply.push({
+      content_type:"text",
+      title:"Jewelry",
+      payload:"quick_reply_jewelry"
+    })
+  }
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
       text:"Want more ?",
-      quick_replies: [
-        {
-          content_type:"text",
-          title:"More",
-          payload:"quick_reply_more;"+page
-        },
-        {
-          content_type:"text",
-          title:"Jewelry",
-          payload:"quick_reply_jewelry"
-        }
-      ]
+      quick_replies: reply
     }
   };
 
