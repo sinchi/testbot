@@ -250,18 +250,24 @@ function watchQuickMessageChoosen(recipientId, page){
   sendTextMessage(recipientId, 'You have choosen Watches');
   console.log(page);
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+page,
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/collects.json?collection_id=443269459?limit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       /*var data = body.data;
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;*/
+      console.log("BODY BODY");
       var elements = [];
       var edges =  _.find(JSON.parse(body).products, function(product){
-        return product.tags == 'watches';
+        request({
+          uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/product/'+product.product_id
+        }, function(error, response, body){
+          console.log(JSON.parse(body));
+        })
+        return product;
       });
-    console.log("BODY BODY");
-     console.log(edges);
+        console.log("BODY BODY @@@@");
+     //console.log(edges);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         console.log(edge);
