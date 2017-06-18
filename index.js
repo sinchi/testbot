@@ -293,7 +293,7 @@ function watchQuickMessageChoosen(recipientId){
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
-        var edge = JSON.parse(edges[i]);
+        var edge = edges[i];
         console.log(edge);
         elements.push({
           title: edge.title ,
