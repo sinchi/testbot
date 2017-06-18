@@ -289,7 +289,7 @@ function watchQuickMessageChoosen(recipientId){
          console.log("VARIANTES");
          console.log(JSON.stringify(edge.node.variants));
         elements.push({
-          title: edge.node.title,
+          title: edge.node.title + ' - ' + edge.node.price,
           subtitle: edge.node.description,
           item_url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
           image_url: edge.node.images.edges[0].node.src,
