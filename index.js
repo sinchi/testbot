@@ -262,7 +262,7 @@ function watchQuickMessageChoosen(recipientId, page){
       });
       COUNT = edges.length;
     console.log("BODY BODY");
-     console.log(JSON.parse(body).products);
+    // console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
         console.log(edge);
@@ -271,7 +271,7 @@ function watchQuickMessageChoosen(recipientId, page){
         console.log(image);
         elements.push({
           title: edge.title ,
-          subtitle: edge.body_html,
+        //  subtitle: edge.body_html,
           item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
           image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
           buttons: [{
