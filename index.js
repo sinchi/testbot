@@ -299,7 +299,7 @@ function watchQuickMessageChoosen(recipientId){
           title: edge.title ,
           subtitle: edge.body_html,
           item_url: edge.handle,
-          image_url: edge.image.src,
+          image_url: JSON.parse(edge.image).src,
           buttons: [{
             type: "web_url",
             url: edge.handle,
