@@ -148,7 +148,7 @@ function receiveIt(event) {
       break;
       case 'Watches':
         watchQuickMessageChoosen(senderID);
-      break;    
+      break;
 
       default:
         sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
@@ -248,8 +248,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page){
     recipient: {
       id: recipientId
     },
-    message: {
-      text:"Choose one:",
+    message: {    
       quick_replies: [
         {
           content_type:"text",
