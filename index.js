@@ -155,7 +155,7 @@ function receiveIt(event) {
       break;
 
       default:
-        sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
+        sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
