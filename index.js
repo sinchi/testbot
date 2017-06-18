@@ -296,7 +296,7 @@ function watchQuickMessageChoosen(recipientId){
         var edge = edges[i];
         console.log(edge);
         var image = edge.image;
-        var src = (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg'
+        var src =  'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg';
         console.log("IMAGE");
         console.log(src);
         elements.push({
