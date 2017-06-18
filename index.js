@@ -318,6 +318,7 @@ function watchQuickMessageChoosen(recipientId, page){
           }else{
             console.log("product ERRor ");
             console.log(error);
+            console.log(response);
           }
 
         });
