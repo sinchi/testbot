@@ -159,9 +159,6 @@ function receiveIt(event) {
       case "hello":
         sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
       break;
-
-      default:
-        sendTextMessage(senderID, ":)");
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
