@@ -261,7 +261,7 @@ function watchQuickMessageChoosen(recipientId, page){
         return product.tags == 'watches';
       });
     console.log("BODY BODY");
-     console.log(JSON.parse(body).products);
+     console.log(edges);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         console.log(edge);
