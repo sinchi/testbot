@@ -268,7 +268,7 @@ function watchQuickMessageChoosen(recipientId, page){
         console.log(image);
         elements.push({
           title: edge.title ,
-          subtitle: edge.body_html,
+          subtitle: stripHTML(edge.body_html),
           item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
           image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
           buttons: [{
@@ -435,6 +435,25 @@ function sendGenericMessage(recipientId) {
   });
 
 }
+
+function stripHTML(my_string){
+      charArr   = my_string.split('');
+      resultArr = [];
+      htmlZone  = 0;
+      quoteZone = 0;
+      for( x=0; x < charArr.length; x++ ){
+       switch( charArr[x] + htmlZone + quoteZone ){
+         case "<00" : htmlZone  = 1;break;
+         case ">10" : htmlZone  = 0;resultArr.push(' ');break;
+         case '"10' : quoteZone = 1;break;
+         case "'10" : quoteZone = 2;break;
+         case '"11' :
+         case "'12" : quoteZone = 0;break;
+         default    : if(!htmlZone){ resultArr.push(charArr[x]) }
+       }
+      }
+      return resultArr.join('')
+  }
 
 function sendTextMessage(recipientId, messageText, started) {
   var messageData = {
