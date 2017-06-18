@@ -124,6 +124,9 @@ function receiveIt(event) {
     var messageAttachments = message.attachments;
     var payload = (message.quick_reply) ? message.quick_reply.payload : '';
 
+    console.log("PAYLOAD PAYLOAD PAYLOAD");
+    console.log(payload);
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -139,7 +142,7 @@ function receiveIt(event) {
         watchQuickMessageChoosen(senderID);
       break;
       case 'More':
-        console.log("MORE IS CHOOSEN");
+        watchQuickMessageChoosen(senderID);
       break;
 
       default:
@@ -234,7 +237,7 @@ function sendQuickMessageChooseOne(recipientId){
   callSendAPI(messageData);
 }
 
-function sendQuickMessageChooseOneAfter(recipientId){
+function sendQuickMessageChooseOneAfter(recipientId, page){
 
   var messageData = {
     recipient: {
@@ -246,7 +249,7 @@ function sendQuickMessageChooseOneAfter(recipientId){
         {
           content_type:"text",
           title:"More",
-          payload:"quick_reply_more"
+          payload:"quick_reply_more;"+page
         },
         {
           content_type:"text",
@@ -329,7 +332,7 @@ function watchQuickMessageChoosen(recipientId, page){
           }
         }
       };
-      callSendAPI(messageData, false, true);
+      callSendAPI(messageData, false, true, page);
     } else {
       console.error("Unable to send message.");
       console.error(error);
@@ -487,7 +490,7 @@ function sendTextMessage(recipientId, messageText, started) {
   callSendAPI(messageData, started);
 }
 
-function callSendAPI(messageData, started, after) {
+function callSendAPI(messageData, started, after, page) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -503,7 +506,7 @@ function callSendAPI(messageData, started, after) {
         sendQuickMessageChooseOne(messageData.recipient.id);
       }
       if(after){
-        sendQuickMessageChooseOneAfter(messageData.recipient.id);
+        sendQuickMessageChooseOneAfter(messageData.recipient.id, page);
       }
     } else {
       console.error("Unable to send message.");
