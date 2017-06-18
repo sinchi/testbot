@@ -144,7 +144,8 @@ function receivedPostback(event) {
 
   // The 'payload' param is a developer-defined field which is set in a postback
   // button for Structured Messages.
-  var payload = event.postback.payload;
+  var payload = event.postback.payload.split(';')[0];
+  var page  = event.postback.payload.split(';')[1];
 
   console.log("Received postback for user %d and page %d with payload '%s' " +
     "at %d", senderID, recipientID, payload, timeOfPostback);
@@ -166,8 +167,7 @@ function receivedPostback(event) {
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
               break;
               case 'payload_more_latest':
-                PAGE = PAGE + 1;
-                watchQuickMessageChoosen(senderID);
+                watchQuickMessageChoosen(senderID, page+1);
               break;
           }
 
@@ -223,11 +223,12 @@ function slugify(text)
     .replace(/-+$/, '');            // Trim - from end of text
 }
 
-function watchQuickMessageChoosen(recipientId){
+function watchQuickMessageChoosen(recipientId, page){
+  var page = (page) ? page : 1;
   sendTextMessage(recipientId, 'You have choosen Watches');
-  console.log(PAGE);
+  console.log(page);
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+PAGE,
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+page,
     /*headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     },
@@ -327,7 +328,7 @@ function watchQuickMessageChoosen(recipientId){
         buttons: [{
           type: "postback",
           title: "MORE LATEST",
-          payload: "payload_more_latest",
+          payload: "payload_more_latest;"+page,
         }]
     });
       var messageData = {
