@@ -166,7 +166,7 @@ function receivedPostback(event) {
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
               break;
               case 'payload_more_latest':
-                PAGE = PAGE + 5;
+                PAGE = PAGE + 1;
                 watchQuickMessageChoosen(senderID);
               break;
           }
