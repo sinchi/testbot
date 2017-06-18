@@ -278,17 +278,17 @@ function watchQuickMessageChoosen(recipientId, page){
                 "template_type": "generic",
                 "elements": [
                   {
-                    "title": "I took Peter's 'Which Hat Are You?' Quiz",
+                    "title": "I took Trust Dream Watches 'Which watches Are You?' Quiz",
                     "subtitle": "My result: Fez",
-                    "image_url": "https://bot.peters-hats.com/img/hats/fez.jpg",
+                    "image_url": (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
                     "default_action": {
                       "type": "web_url",
-                      "url": "https://m.me/petershats?ref=invited_by_24601"
+                      "url": "https://testo-mania.myshopify.com/products/"+edge.handle,
                     },
                     "buttons": [
                       {
                         "type": "web_url",
-                        "url": "https://m.me/petershats?ref=invited_by_24601",
+                        "url": "https://testo-mania.myshopify.com/products/"+edge.handle,
                         "title": "Take Quiz"
                       }
                     ]
