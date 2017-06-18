@@ -287,14 +287,14 @@ function watchQuickMessageChoosen(recipientId){
     if (!error && response.statusCode == 200) {
       /*var data = body.data;
       var title = data.shop.products.edges[0].node.title;
-      var edges = data.shop.products.edges;
-      var elements = [];*/
+      var edges = data.shop.products.edges;*/
+      var elements = [];
       var edges =  JSON.parse(body).products;
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
-        console.log(edge);          
+        console.log(edge);
         elements.push({
           title: edge.title ,
           subtitle: edge.body_html,
