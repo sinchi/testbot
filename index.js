@@ -222,7 +222,7 @@ function slugify(text)
 function watchQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Watches');
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json',
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page=1',
     /*headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     },
@@ -289,6 +289,7 @@ function watchQuickMessageChoosen(recipientId){
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;
       var elements = [];*/
+      var edges = body.products;
     console.log("BODY BODY");
      console.log(body);
       for(var i=0; i< edges.length; i++){
@@ -300,13 +301,13 @@ function watchQuickMessageChoosen(recipientId){
          console.log("VARIANTES");
          console.log(JSON.stringify(edge.node.variants));
         elements.push({
-          title: edge.node.title ,
-          subtitle: edge.node.description,
-          item_url: "https://testo-mania.myshopify.com/products/"+slugify(edge.node.title),
-          image_url: edge.node.images.edges[0].node.src,
+          title: edge.title ,
+          subtitle: edge.body_html,
+          item_url: edge.handle,
+          image_url: edge.image.src,
           buttons: [{
             type: "web_url",
-            url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
+            url: edge.handle,
             title: "Go to Store"
           }, {
             type: "postback",
