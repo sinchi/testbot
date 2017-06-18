@@ -224,6 +224,7 @@ function slugify(text)
 }
 
 function watchQuickMessageChoosen(recipientId,page){
+  var page = (page) ? page : PAGE;
   sendTextMessage(recipientId, 'You have choosen Watches');
   request({
     uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+page,
