@@ -261,7 +261,7 @@ function watchQuickMessageChoosen(recipientId, page){
 
       var elements = [];
 
-       _.each(JSON.parse(body).products, function(product){
+       _.map(JSON.parse(body).products, function(product){
          console.log("PRODUCT PRODUCT");
          console.log(product);
         request({
