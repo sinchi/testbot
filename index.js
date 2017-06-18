@@ -5,22 +5,20 @@ var cheerio = require('cheerio');
 var app = express();
 var repas = "";
 COUNT = (function(){
-  var count = 0;
-  request({
+  return request({
     uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/count.json',
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
       console.log("COUNTTTTTTTTTTTTTTT");
       console.log(JSON.parse(body).count);
-      count = JSON.parse(body).count;
+      return JSON.parse(body).count;
     } else {
       console.error("Unable to get products count.");
       console.error(response);
       console.error(error);
     }
-  });
-  return count;
+  });  
 }
 )();
 app.use(bodyParser.urlencoded({extended: false}));
