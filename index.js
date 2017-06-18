@@ -151,7 +151,7 @@ function receiveIt(event) {
         watchQuickMessageChoosen(senderID);
       break;
       case 'hi':
-        sendTextMessage(senderID, "Hi there what you looking for ? Watches or Jewelry ! ", true);
+        sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
       break;
 
       default:
