@@ -257,7 +257,7 @@ function watchQuickMessageChoosen(recipientId, page){
          console.log("PRODUCT PRODUCT");
          console.log(product);
         request({
-          uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/'+product.product_id+'.json',
+          uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/'+parseInt(product.product_id)+'.json',
         }, function(error, response, body){
           if(!error && response.statusCode == 200){
                 var elements = [];
