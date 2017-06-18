@@ -284,7 +284,7 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page < COUNT/5){
+      if(page < Math.round(COUNT/5)){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
