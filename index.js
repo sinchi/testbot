@@ -253,8 +253,12 @@ function watchQuickMessageChoosen(recipientId, page){
     uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/collects.json?collection_id=443269459?limit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
+      console.log("PARSE PARSE");
+      console.log(JSON.parse(body));
        _.map(JSON.parse(body), function(product){
-         var url = 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/' + String(product.product_id) + '.json';      
+         var url = 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/' + String(product.product_id) + '.json';
+         console.log("URL URL");
+         console.log(url);
         request({
           uri: url,
         }, function(error, response, body){
