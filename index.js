@@ -302,7 +302,7 @@ function watchQuickMessageChoosen(recipientId){
           title: edge.title ,
           subtitle: edge.body_html,
           item_url: edge.handle,
-          image_url: (image) ? image.src : '',
+          image_url: (image) ? image.src : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgvLE6hlpKZZwIX5xTiUc57N91uzpZNUi5LvZWMGBkiGwh6afF',
           buttons: [{
             type: "web_url",
             url: edge.handle,
