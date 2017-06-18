@@ -270,36 +270,10 @@ function watchQuickMessageChoosen(recipientId, page){
             url: "https://testo-mania.myshopify.com/products/"+edge.handle,
             title: "Go to Store"
           }, {
-            type:"element_share",
-            "share_contents": {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type": "generic",
-                "elements": [
-                  {
-                    "title": "I took Trust Dream Watches 'Which watches Are You?' Quiz",
-                    "subtitle": "My result: Fez",
-                    "image_url": (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
-                    "default_action": {
-                      "type": "web_url",
-                      "url": "https://testo-mania.myshopify.com/products/"+edge.handle,
-                    },
-                    "buttons": [
-                      {
-                        "type": "web_url",
-                        "url": "https://testo-mania.myshopify.com/products/"+edge.handle,
-                        "title": "Take Quiz"
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        }]
-      });
-    }
+            type:"element_share"                        
+          }]
+        });
+      }
       // if not the last item
       if(page < COUNT/5){
           elements.push({
