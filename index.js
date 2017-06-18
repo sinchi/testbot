@@ -232,7 +232,7 @@ function watchQuickMessageChoosen(recipientId){
           shop {
             name
             description
-            products(first:4 offset:5) {
+            products(first:4 offset:2) {
               pageInfo {
                 hasNextPage
                 hasPreviousPage
