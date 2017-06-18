@@ -8,7 +8,7 @@ var _ = require('underscore');
 COUNT = 0;
 (function(){
    request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/count.json',
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/count.json?collection_id=443269459',
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
@@ -258,9 +258,8 @@ function watchQuickMessageChoosen(recipientId, page){
       var edges = data.shop.products.edges;*/
       var elements = [];
       var edges = JSON.parse(body).products;
-    console.log("BODY BODY");
-     console.log(JSON.parse(body).products);
-     COUNT = edges.length;
+      console.log("BODY BODY");
+      console.log(JSON.parse(body).products);     
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         console.log(edge);
@@ -284,7 +283,7 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page < Math.round(COUNT/5)){
+      if(page < COUNT/5){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
