@@ -138,9 +138,6 @@ function receiveIt(event) {
       case 'Watches':
         watchQuickMessageChoosen(senderID);
       break;
-      case 'More_latest_watches':
-
-      break;
 
       default:
         sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
@@ -206,32 +203,6 @@ function receivedPostback(event) {
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
 
-}
-
-function sendQuickMessageChooseOneAfter(recipientId){
-
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      text:"Choose one:",
-      quick_replies: [
-        {
-          content_type:"text",
-          title:"Jewelry",
-          payload:"quick_reply_jewelry"
-        }/*,
-        {
-          content_type:"text",
-          title:"More_latest_watches",
-          payload:"quick_reply_more"
-        },*/
-      ]
-    }
-  };
-
-  callSendAPI(messageData);
 }
 
 function sendQuickMessageChooseOne(recipientId){
@@ -505,8 +476,6 @@ function callSendAPI(messageData, started) {
         messageId, recipientId);
         if(started){
           sendQuickMessageChooseOne(messageData.recipient.id);
-        }else{
-          sendQuickMessageChooseOneAfter(messageData.recipient.id);
         }
     } else {
       console.error("Unable to send message.");
