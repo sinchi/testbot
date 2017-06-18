@@ -250,82 +250,71 @@ function watchQuickMessageChoosen(recipientId, page){
   sendTextMessage(recipientId, 'You have choosen Watches');
   console.log(page);
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/collects.json?collection_id=443269459?limit=5&page='+page,
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443269459&limit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-       _.map(JSON.parse(body).collects, function(product){
-         var url = 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/' + String(product.product_id) + '.json';
-         console.log("URL URL");
-         console.log(url);
-        request({
-          uri: url,
-        }, function(error, response, body){
-          if(!error && response.statusCode == 200){
-                console.log("BODY BODY @@@@");
-                var edges = JSON.parse(body);
-                COUNT = edges.length;
-                var elements = [];
-              for(var i=0; i< edges.length; i++){
-                var edge = edges[i] ;
-                console.log("EDGE EDGE EDGE");
-                console.log(edge);
-                var image = edge.image;
-
-                elements.push({
-                  title: edge.title ,
-                  subtitle: stripHTML(edge.body_html),
-                  item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-                  image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
-                  buttons: [{
-                    type: "web_url",
-                    url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-                    title: "Go to Store"
-                  }, {
-                    type: "postback",
-                    title: "Share",
-                    payload: "Payload for first bubble",
-                  }]
-                });
-              }
-              // if not the last item
-              if(page < COUNT/5){
-                  elements.push({
-                    title: "Looking for more latest?" ,
-                    subtitle: "Press the button below to keep exploring",
-                    image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
-                    buttons: [{
-                      type: "postback",
-                      title: "MORE LATEST",
-                      payload: "payload_more_latest;"+page,
-                    }]
-                });
-              }
-              var messageData = {
-                recipient: {
-                  id: recipientId
-                },
-                message: {
-                  attachment: {
-                    type: "template",
-                    payload: {
-                      template_type: "generic",
-                      elements: elements
-                    }
-                  }
-                }
-              };
-              callSendAPI(messageData);
-          }else{
-            console.log("product ERRor ");
-            console.log(error);
-          //  console.log(response);
-          }
-        });
+      /*var data = body.data;
+      var title = data.shop.products.edges[0].node.title;
+      var edges = data.shop.products.edges;*/
+      var elements = [];
+      var edges =  _.find(JSON.parse(body).products, function(product){
+        return product.tags == 'watches';
       });
-
+    console.log("BODY BODY");
+     console.log(JSON.parse(body).products);
+      for(var i=0; i< edges.length; i++){
+        var edge = edges[i] ;
+        console.log(edge);
+        var image = edge.image;
+        console.log("IMAGE");
+        console.log(image);
+        elements.push({
+          title: edge.title ,
+          subtitle: stripHTML(edge.body_html),
+          item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+          image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
+          buttons: [{
+            type: "web_url",
+            url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+            title: "Go to Store"
+          }, {
+            type: "postback",
+            title: "Share",
+            payload: "Payload for first bubble",
+          }]
+        });
+      }
+      // if not the last item
+      if(page < COUNT/5){
+          elements.push({
+            title: "Looking for more latest?" ,
+            subtitle: "Press the button below to keep exploring",
+            image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
+            buttons: [{
+              type: "postback",
+              title: "MORE LATEST",
+              payload: "payload_more_latest;"+page,
+            }]
+        });
+      }
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: elements
+            }
+          }
+        }
+      };
+      callSendAPI(messageData);
     } else {
-      console.error("Error Collect Request.");
-      //console.error(response);
+      console.error("Unable to send message.");
+      console.error(response);
       console.error(error);
     }
   });
