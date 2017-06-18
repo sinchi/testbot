@@ -4,13 +4,13 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app = express();
 var repas = "";
-COUNT = function(){
+COUNT = (function(){
   request({
     uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/count.json',
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
-      console.log("COUNT COUNT");
+      console.log("COUNTTTTTTTTTTTTTTT");
       console.log(body);
       return JSON.parse(body).count;
     } else {
@@ -19,7 +19,7 @@ COUNT = function(){
       console.error(error);
     }
   });
-}();
+})();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -54,7 +54,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 // Server frontpage
 app.get('/', function (req, res) {
     console.log("/");
-
+    console.log("COUNT COUNT");
     console.log(COUNT);
     res.send('Chhiwat hana server ok');
 });
