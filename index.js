@@ -261,7 +261,7 @@ function watchQuickMessageChoosen(recipientId, page){
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
-        var edge = edges[i].tags == 'watches' ? edges[i] : ;
+        var edge = edges[i] ;
         console.log(edge);
         var image = edge.image;
         console.log("IMAGE");
