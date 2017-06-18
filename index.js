@@ -248,7 +248,8 @@ function sendQuickMessageChooseOneAfter(recipientId, page){
     recipient: {
       id: recipientId
     },
-    message: {    
+    message: {
+      text:"",
       quick_replies: [
         {
           content_type:"text",
