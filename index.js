@@ -258,7 +258,7 @@ function watchQuickMessageChoosen(recipientId, page){
       var edges = data.shop.products.edges;*/
       var elements = [];
       var edges =  _.find(JSON.parse(body).products, function(product){
-        return product.tags === 'watches';
+        return product.tags == 'watches';
       });
       COUNT = edges.length;
     console.log("BODY BODY");
