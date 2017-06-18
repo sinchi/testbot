@@ -295,11 +295,14 @@ function watchQuickMessageChoosen(recipientId){
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
         console.log(edge);
+        var image = edge.image;
+        console.log("IMAGE");
+        console.log(image);
         elements.push({
           title: edge.title ,
           subtitle: edge.body_html,
           item_url: edge.handle,
-          image_url: edge.image.src,
+          image_url: JSON.parse(image).src,
           buttons: [{
             type: "web_url",
             url: edge.handle,
