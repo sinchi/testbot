@@ -296,17 +296,16 @@ function watchQuickMessageChoosen(recipientId){
         var edge = edges[i];
         console.log(edge);
         var image = edge.image;
-        var src =  'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg';
         console.log("IMAGE");
-        console.log(src);
+        console.log(image);
         elements.push({
           title: edge.title ,
           subtitle: edge.body_html,
-          item_url: edge.handle,
-          image_url: src,
+          item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+          image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
           buttons: [{
             type: "web_url",
-            url: edge.handle,
+            url: "https://testo-mania.myshopify.com/products/"+edge.handle,
             title: "Go to Store"
           }, {
             type: "postback",
