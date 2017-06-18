@@ -186,7 +186,10 @@ function receivedPostback(event) {
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
               break;
               case 'payload_more_latest':
-                page = (page > COUNT/5) ? COUNT/5 : page + 1;
+                var numberOfPages = parseInt(COUNT)/5;
+                page = (page > numberOfPages) ? numberOfPages : (page + 1);
+                console.log("COUNT  / 5");
+                console.log(numberOfPages);
                 watchQuickMessageChoosen(senderID, page);
               break;
           }
