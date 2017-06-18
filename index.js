@@ -262,6 +262,7 @@ function watchQuickMessageChoosen(recipientId, page){
       });
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
+     COUNT = edges.length;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         console.log(edge);
