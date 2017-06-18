@@ -260,6 +260,7 @@ function watchQuickMessageChoosen(recipientId, page){
       var edges =  _.find(JSON.parse(body).products, function(product){
         return product.tags === 'watches';
       });
+      COUNT = edges.length;
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
@@ -285,7 +286,8 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page < COUNT/5){
+      var numberOfPages = COUNT/5;
+      if(page < numberOfPages){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
