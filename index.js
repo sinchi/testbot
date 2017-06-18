@@ -258,67 +258,70 @@ function watchQuickMessageChoosen(recipientId, page){
       var edges = data.shop.products.edges;*/
       console.log("BODY BODY");
       console.log(JSON.parse(body));
+
       var elements = [];
-      var edges =  _.find(JSON.parse(body).products, function(product){
+
+       _.find(JSON.parse(body).products, function(product){
         request({
-          uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/product/'+product.product_id
+          uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/'+product.product_id+'.json',
         }, function(error, response, body){
           console.log(JSON.parse(body));
-        });
-        return product;
-      });
-        console.log("BODY BODY @@@@");
-     //console.log(edges);
-      for(var i=0; i< edges.length; i++){
-        var edge = edges[i] ;
-        console.log(edge);
-        var image = edge.image;
-        console.log("IMAGE");
-        console.log(image);
-        elements.push({
-          title: edge.title ,
-          subtitle: stripHTML(edge.body_html),
-          item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-          image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
-          buttons: [{
-            type: "web_url",
-            url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-            title: "Go to Store"
-          }, {
-            type: "postback",
-            title: "Share",
-            payload: "Payload for first bubble",
-          }]
-        });
-      }
-      // if not the last item
-      if(page < COUNT/5){
+          var edges = JSON.parse(body);  
+          console.log("BODY BODY @@@@");
+       //console.log(edges);
+        for(var i=0; i< edges.length; i++){
+          var edge = edges[i] ;
+          console.log(edge);
+          var image = edge.image;
+          console.log("IMAGE");
+          console.log(image);
           elements.push({
-            title: "Looking for more latest?" ,
-            subtitle: "Press the button below to keep exploring",
-            image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
+            title: edge.title ,
+            subtitle: stripHTML(edge.body_html),
+            item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+            image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
             buttons: [{
+              type: "web_url",
+              url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+              title: "Go to Store"
+            }, {
               type: "postback",
-              title: "MORE LATEST",
-              payload: "payload_more_latest;"+page,
+              title: "Share",
+              payload: "Payload for first bubble",
             }]
-        });
-      }
-      var messageData = {
-        recipient: {
-          id: recipientId
-        },
-        message: {
-          attachment: {
-            type: "template",
-            payload: {
-              template_type: "generic",
-              elements: elements
+          });
+        }
+        // if not the last item
+        if(page < COUNT/5){
+            elements.push({
+              title: "Looking for more latest?" ,
+              subtitle: "Press the button below to keep exploring",
+              image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
+              buttons: [{
+                type: "postback",
+                title: "MORE LATEST",
+                payload: "payload_more_latest;"+page,
+              }]
+          });
+        }
+        var messageData = {
+          recipient: {
+            id: recipientId
+          },
+          message: {
+            attachment: {
+              type: "template",
+              payload: {
+                template_type: "generic",
+                elements: elements
+              }
             }
           }
-        }
-      };
-      callSendAPI(messageData);
+        };
+        callSendAPI(messageData);
+        });
+      });
+
     } else {
       console.error("Unable to send message.");
       console.error(response);
