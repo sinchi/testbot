@@ -11,7 +11,7 @@ COUNT = (function(){
     if (!error && response.statusCode == 200) {
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
       console.log("COUNTTTTTTTTTTTTTTT");
-      console.log(body);
+      console.log(JSON.parse(body).count);
       return JSON.parse(body).count;
     } else {
       console.error("Unable to get products count.");
