@@ -316,7 +316,8 @@ function watchQuickMessageChoosen(recipientId, page){
               };
               callSendAPI(messageData);
           }else{
-            console.log("product ERRor " + error);
+            console.log("product ERRor ");
+            console.log(error);
           }
 
         });
