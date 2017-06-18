@@ -250,28 +250,25 @@ function watchQuickMessageChoosen(recipientId, page){
   sendTextMessage(recipientId, 'You have choosen Watches');
   console.log(page);
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+page,
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?tags=watches&limit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       /*var data = body.data;
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;*/
       var elements = [];
-      var edges =  _.find(JSON.parse(body).products, function(product){
-        return product.tags == 'watches';
-      });
-      COUNT = edges.length;
+      var edges =  JSON.parse(body).products;
     console.log("BODY BODY");
-    // console.log(JSON.parse(body).products);
+     console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
-        var edge = edges[i];
+        var edge = edges[i].tags == 'watches' ? edges[i] : ;
         console.log(edge);
         var image = edge.image;
         console.log("IMAGE");
         console.log(image);
         elements.push({
           title: edge.title ,
-        //  subtitle: edge.body_html,
+          subtitle: edge.body_html,
           item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
           image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
           buttons: [{
@@ -286,8 +283,7 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      var numberOfPages = COUNT/5;
-      if(page < numberOfPages){
+      if(page < COUNT/5){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
@@ -316,7 +312,7 @@ function watchQuickMessageChoosen(recipientId, page){
       callSendAPI(messageData);
     } else {
       console.error("Unable to send message.");
-      //console.error(response);
+      console.error(response);
       console.error(error);
     }
   });
