@@ -291,7 +291,7 @@ function watchQuickMessageChoosen(recipientId){
       var elements = [];*/
       var edges = body.products;
     console.log("BODY BODY");
-     console.log(body);
+     console.log(body.products);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
         console.log(edge);
