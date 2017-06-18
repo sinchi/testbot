@@ -237,8 +237,7 @@ function sendQuickMessageChooseOneAfter(recipientId){
     recipient: {
       id: recipientId
     },
-    message: {
-      text:"Choose one:",
+    message: {    
       quick_replies: [
         {
           content_type:"text",
