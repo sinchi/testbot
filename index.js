@@ -188,9 +188,12 @@ function receivedPostback(event) {
               case 'payload_more_latest':
                 var numberOfPages = parseInt(COUNT)/5;
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
-                console.log("COUNT  / 5");
-                console.log(numberOfPages);
-                watchQuickMessageChoosen(senderID, page);
+                if(numberOfPages === page){
+                  sendTextMessage(senderID, 'You have reach the final latest items');
+                }else{
+                  watchQuickMessageChoosen(senderID, page);
+                }
+
               break;
           }
 
