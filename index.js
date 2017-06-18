@@ -232,6 +232,7 @@ function watchQuickMessageChoosen(recipientId){
           shop {
             name
             description
+            count
             products(first:4) {
               pageInfo {
                 hasNextPage
