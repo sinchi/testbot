@@ -222,17 +222,16 @@ function slugify(text)
 function watchQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Watches');
   request({
-    uri: 'https://testo-mania.myshopify.com/api/graphql',
-    headers: {
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json',
+    /*headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     },
-    json: {
+    /*json: {
       query: `
         query {
           shop {
             name
             description
-            count
             products(first:4) {
               pageInfo {
                 hasNextPage
@@ -282,14 +281,15 @@ function watchQuickMessageChoosen(recipientId){
             }
           }
         }
-      `}
+      `}*/
 
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      var data = body.data;
+      /*var data = body.data;
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;
-      var elements = [];
+      var elements = [];*/
+    console.log("BODY BODY");
      console.log(body);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
