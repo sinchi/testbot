@@ -130,7 +130,7 @@ function receiveIt(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
       case 'generic':
-        //sendGenericMessage(senderID);
+        sendGenericMessage(senderID);
         break;
       case 'Jewelry':
         jewelryQuickMessageChoosen(senderID);
@@ -261,15 +261,16 @@ function watchQuickMessageChoosen(recipientId, page){
           uri: url,
         }, function(error, response, body){
           if(!error && response.statusCode == 200){
-                var elements = [];
                 console.log("BODY BODY @@@@");
                 var edges = JSON.parse(body);
                 COUNT = edges.length;
+                var elements = [];
               for(var i=0; i< edges.length; i++){
                 var edge = edges[i] ;
                 console.log("EDGE EDGE EDGE");
                 console.log(edge);
                 var image = edge.image;
+
                 elements.push({
                   title: edge.title ,
                   subtitle: stripHTML(edge.body_html),
@@ -319,7 +320,6 @@ function watchQuickMessageChoosen(recipientId, page){
             console.log(error);
           //  console.log(response);
           }
-
         });
       });
 
@@ -331,7 +331,7 @@ function watchQuickMessageChoosen(recipientId, page){
   });
 }
 
-/*function sendGenericMessage(recipientId) {
+function sendGenericMessage(recipientId) {
   request({
     uri: 'https://testo-mania.myshopify.com/api/graphql',
     headers: {
@@ -447,7 +447,7 @@ function watchQuickMessageChoosen(recipientId, page){
     }
   });
 
-}*/
+}
 
 function stripHTML(my_string){
       charArr   = my_string.split('');
