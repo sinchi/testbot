@@ -138,6 +138,9 @@ function receiveIt(event) {
       case 'Watches':
         watchQuickMessageChoosen(senderID);
       break;
+      case 'More_latest_watches':
+
+      break;
 
       default:
         sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
@@ -205,6 +208,32 @@ function receivedPostback(event) {
 
 }
 
+function sendQuickMessageChooseOneAfter(recipientId){
+
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text:"Choose one:",
+      quick_replies: [
+        {
+          content_type:"text",
+          title:"Jewelry",
+          payload:"quick_reply_jewelry"
+        }/*,
+        {
+          content_type:"text",
+          title:"More_latest_watches",
+          payload:"quick_reply_more"
+        },*/
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 function sendQuickMessageChooseOne(recipientId){
 
   var messageData = {
@@ -270,7 +299,7 @@ function watchQuickMessageChoosen(recipientId, page){
             url: "https://testo-mania.myshopify.com/products/"+edge.handle,
             title: "Go to Store"
           }, {
-            type:"element_share"                        
+            type:"element_share"
           }]
         });
       }
@@ -476,6 +505,8 @@ function callSendAPI(messageData, started) {
         messageId, recipientId);
         if(started){
           sendQuickMessageChooseOne(messageData.recipient.id);
+        }else{
+          sendQuickMessageChooseOneAfter(messageData.recipient.id);
         }
     } else {
       console.error("Unable to send message.");
