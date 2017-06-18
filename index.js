@@ -313,18 +313,18 @@ function watchQuickMessageChoosen(recipientId){
             payload: "Payload for first bubble",
           }]
         });
-        elements.push({
-          title: "Looking for more latest?" ,
-          subtitle: "Press the button below to keep exploring",
-          item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-          image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
-          buttons: [{
-            type: "postback",
-            title: "MORE LATEST",
-            payload: "Payload for first bubble",
-          }]
-      });
-  }
+      }
+      elements.push({
+        title: "Looking for more latest?" ,
+        subtitle: "Press the button below to keep exploring",
+        item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+        image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
+        buttons: [{
+          type: "postback",
+          title: "MORE LATEST",
+          payload: "Payload for first bubble",
+        }]
+    });
       var messageData = {
         recipient: {
           id: recipientId
