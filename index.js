@@ -248,24 +248,18 @@ function slugify(text)
 function watchQuickMessageChoosen(recipientId, page){
   var page = (page) ? page : 1;
   sendTextMessage(recipientId, 'You have choosen Watches');
+  console.log("PAGE PAGE PAGE");
   console.log(page);
   request({
     uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443269459&limit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      /*var data = body.data;
-      var title = data.shop.products.edges[0].node.title;
-      var edges = data.shop.products.edges;*/
       var elements = [];
       var edges = JSON.parse(body).products;
-      console.log("BODY BODY");
-      console.log(JSON.parse(body).products);     
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         console.log(edge);
         var image = edge.image;
-        console.log("IMAGE");
-        console.log(image);
         elements.push({
           title: edge.title ,
           subtitle: stripHTML(edge.body_html),
