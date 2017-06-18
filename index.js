@@ -187,7 +187,7 @@ function receivedPostback(event) {
               break;
               case 'payload_more_latest':
                 var numberOfPages = parseInt(COUNT)/5;
-                page = (page > numberOfPages) ? numberOfPages : (page + 1);
+                page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 console.log("COUNT  / 5");
                 console.log(numberOfPages);
                 watchQuickMessageChoosen(senderID, page);
