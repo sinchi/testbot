@@ -164,7 +164,10 @@ function receivedPostback(event) {
           switch(payload){
             case 'GET_STARTED_PAYLOAD':
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
-            break;
+              break;
+              case 'payload_more_latest':
+              console.log('Give me more latest');
+              break;
           }
 
       } else {
@@ -322,7 +325,7 @@ function watchQuickMessageChoosen(recipientId){
         buttons: [{
           type: "postback",
           title: "MORE LATEST",
-          payload: "Payload for first bubble",
+          payload: "payload_more_latest",
         }]
     });
       var messageData = {
