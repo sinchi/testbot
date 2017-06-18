@@ -257,13 +257,14 @@ function watchQuickMessageChoosen(recipientId, page){
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;*/
       console.log("BODY BODY");
+      console.log(JSON.parse(body));
       var elements = [];
       var edges =  _.find(JSON.parse(body).products, function(product){
         request({
           uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/product/'+product.product_id
         }, function(error, response, body){
           console.log(JSON.parse(body));
-        })
+        });
         return product;
       });
         console.log("BODY BODY @@@@");
