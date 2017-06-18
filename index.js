@@ -500,7 +500,7 @@ function callSendAPI(messageData, started, after) {
         sendQuickMessageChooseOne(messageData.recipient.id);
       }
       if(after){
-        sendQuickMessageChooseOne(messageData.recipient.id);
+        sendQuickMessageChooseOneAfter(messageData.recipient.id);
       }
     } else {
       console.error("Unable to send message.");
