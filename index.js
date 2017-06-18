@@ -231,6 +231,32 @@ function sendQuickMessageChooseOne(recipientId){
   callSendAPI(messageData);
 }
 
+function sendQuickMessageChooseOneAfter(recipientId){
+
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text:"Choose one:",
+      quick_replies: [
+        {
+          content_type:"text",
+          title:"More",
+          payload:"quick_reply_more"
+        },
+        {
+          content_type:"text",
+          title:"Jewelry",
+          payload:"quick_reply_jewelry"
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 function jewelryQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Jewelry');
 }
