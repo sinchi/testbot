@@ -237,8 +237,13 @@ function sendQuickMessageChooseOneAfter(recipientId){
     recipient: {
       id: recipientId
     },
-    message: {    
+    message: {
       quick_replies: [
+        {
+          content_type:"text",
+          title:"More latest",
+          payload:"quick_reply_more"
+        },
         {
           content_type:"text",
           title:"Jewelry",
