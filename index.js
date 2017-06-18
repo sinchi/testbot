@@ -482,7 +482,7 @@ function sendTextMessage(recipientId, messageText, started) {
     }
   };
 
-  callSendAPI(messageData, true, false);
+  callSendAPI(messageData, started, false);
 }
 
 function callSendAPI(messageData, started, after) {
