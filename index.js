@@ -53,7 +53,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 app.get('/', function (req, res) {
     console.log("/");
     console.log("COUNT COUNT");
-    console.log(COUNT);
+    console.log(COUNT());
     res.send('Chhiwat hana server ok');
 });
 
