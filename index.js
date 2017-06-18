@@ -13,7 +13,7 @@ COUNT = 0;
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
       console.log("COUNTTTTTTTTTTTTTTT");
       console.log(JSON.parse(body).count);
-      COUNT = JSON.parse(body).count;
+      COUNT = parseInt(JSON.parse(body).count);
     } else {
       console.error("Unable to get products count.");
       console.error(response);
@@ -186,7 +186,7 @@ function receivedPostback(event) {
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
               break;
               case 'payload_more_latest':
-                var numberOfPages = parseInt(COUNT)/5;
+                var numberOfPages = COUNT/5;
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 if(numberOfPages === page){
                   sendTextMessage(senderID, 'You have reach the final latest items');
@@ -255,66 +255,6 @@ function watchQuickMessageChoosen(recipientId, page){
   console.log(page);
   request({
     uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+page,
-    /*headers: {
-      "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
-    },
-    /*json: {
-      query: `
-        query {
-          shop {
-            name
-            description
-            products(first:4) {
-              pageInfo {
-                hasNextPage
-                hasPreviousPage
-              },
-              edges {
-                node {
-                  id
-                  title
-                  description
-                  options {
-                    name
-                    values
-                  }
-                  variants(first: 250) {
-                    pageInfo {
-                      hasNextPage
-                      hasPreviousPage
-                    }
-                    edges {
-                      node {
-                        title
-                        selectedOptions {
-                          name
-                          value
-                        }
-                        image {
-                          src
-                        }
-                        price
-                      }
-                    }
-                  }
-                  images(first: 250) {
-                    pageInfo {
-                      hasNextPage
-                      hasPreviousPage
-                    }
-                    edges {
-                      node {
-                        src
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `}*/
-
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       /*var data = body.data;
@@ -346,17 +286,20 @@ function watchQuickMessageChoosen(recipientId, page){
           }]
         });
       }
-      elements.push({
-        title: "Looking for more latest?" ,
-        subtitle: "Press the button below to keep exploring",
-        item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-        image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
-        buttons: [{
-          type: "postback",
-          title: "MORE LATEST",
-          payload: "payload_more_latest;"+page,
-        }]
-    });
+      // if not the last item 
+      if(page < COUNT){
+          elements.push({
+            title: "Looking for more latest?" ,
+            subtitle: "Press the button below to keep exploring",
+            item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+            image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
+            buttons: [{
+              type: "postback",
+              title: "MORE LATEST",
+              payload: "payload_more_latest;"+page,
+            }]
+        });
+      }
       var messageData = {
         recipient: {
           id: recipientId
