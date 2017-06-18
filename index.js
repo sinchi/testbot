@@ -249,7 +249,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page){
       id: recipientId
     },
     message: {
-      text:"",
+      text:"Want more ?",
       quick_replies: [
         {
           content_type:"text",
