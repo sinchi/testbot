@@ -140,7 +140,7 @@ function receiveIt(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     var toLowerText = messageText.toLowerCase();
-    switch (messageText) {
+    switch (toLowerText) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
