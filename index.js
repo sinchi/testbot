@@ -4,7 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app = express();
 var repas = "";
-
+PAGE = 1;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -166,7 +166,8 @@ function receivedPostback(event) {
               sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
               break;
               case 'payload_more_latest':
-              console.log('Give me more latest');
+                var page = PAGE = PAGE + 5;
+                watchQuickMessageChoosen(senderID,page);
               break;
           }
 
@@ -222,10 +223,10 @@ function slugify(text)
     .replace(/-+$/, '');            // Trim - from end of text
 }
 
-function watchQuickMessageChoosen(recipientId){
+function watchQuickMessageChoosen(recipientId,page){
   sendTextMessage(recipientId, 'You have choosen Watches');
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page=1',
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?limit=5&page='+page,
     /*headers: {
       "X-Shopify-Storefront-Access-Token": "3d02750484be7c34eb8d53317b7d1f8a"
     },
