@@ -20,8 +20,8 @@ COUNT = (function(){
       console.error(error);
     }
   });
+  return count;
 }
-return count;
 )();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
