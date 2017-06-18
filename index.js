@@ -270,7 +270,7 @@ function watchQuickMessageChoosen(recipientId, page){
             url: "https://testo-mania.myshopify.com/products/"+edge.handle,
             title: "Go to Store"
           }, {
-            type: "postback",
+            type:"element_share",
             title: "Share",
             payload: "Payload for first bubble",
           }]
