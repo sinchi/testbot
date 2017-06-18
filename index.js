@@ -138,6 +138,9 @@ function receiveIt(event) {
       case 'Watches':
         watchQuickMessageChoosen(senderID);
       break;
+      case 'More':
+        console.log("MORE IS CHOOSEN");
+      break;
 
       default:
         sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
