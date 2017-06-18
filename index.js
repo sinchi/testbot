@@ -231,6 +231,27 @@ function sendQuickMessageChooseOne(recipientId){
   callSendAPI(messageData);
 }
 
+function sendQuickMessageChooseOneAfter(recipientId){
+
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text:"Choose one:",
+      quick_replies: [
+        {
+          content_type:"text",
+          title:"Jewelry",
+          payload:"quick_reply_jewelry"
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 function jewelryQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Jewelry');
 }
@@ -301,7 +322,7 @@ function watchQuickMessageChoosen(recipientId, page){
           }
         }
       };
-      callSendAPI(messageData);
+      callSendAPI(messageData, fasle, true);
     } else {
       console.error("Unable to send message.");
       console.error(response);
@@ -460,7 +481,7 @@ function sendTextMessage(recipientId, messageText, started) {
   callSendAPI(messageData, started);
 }
 
-function callSendAPI(messageData, started) {
+function callSendAPI(messageData, started, after) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -476,6 +497,8 @@ function callSendAPI(messageData, started) {
         messageId, recipientId);
         if(started){
           sendQuickMessageChooseOne(messageData.recipient.id);
+        }else if(after){
+          sendQuickMessageChooseOneAfter(messageData.recipient.id);
         }
     } else {
       console.error("Unable to send message.");
