@@ -263,16 +263,13 @@ function watchQuickMessageChoosen(recipientId, page){
           if(!error && response.statusCode == 200){
                 var elements = [];
                 console.log("BODY BODY @@@@");
-                console.log(JSON.parse(body));
                 var edges = JSON.parse(body);
-
                 COUNT = edges.length;
               for(var i=0; i< edges.length; i++){
                 var edge = edges[i] ;
+                console.log("EDGE EDGE EDGE");
                 console.log(edge);
-                var image = edge.image;
-                console.log("IMAGE");
-                console.log(image);
+                var image = edge.image;              
                 elements.push({
                   title: edge.title ,
                   subtitle: stripHTML(edge.body_html),
