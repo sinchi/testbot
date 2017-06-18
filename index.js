@@ -248,7 +248,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page){
   if(page < COUNT/5){
     reply.push({
       content_type:"text",
-      title:"More",
+      title:"More Watches",
       payload:"quick_reply_more;"+page
     });
     reply.push({
@@ -280,8 +280,7 @@ function jewelryQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Jewelry');
 }
 
-function slugify(text)
-{
+function slugify(text){
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-')           // Replace spaces with -
     .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
