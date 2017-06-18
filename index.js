@@ -188,7 +188,7 @@ function receivedPostback(event) {
               case 'payload_more_latest':
                 var numberOfPages = COUNT/5;
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
-                watchQuickMessageChoosen(senderID, page);              
+                watchQuickMessageChoosen(senderID, page);
               break;
           }
 
@@ -286,8 +286,7 @@ function watchQuickMessageChoosen(recipientId, page){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
-            item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-            image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
+            image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
             buttons: [{
               type: "postback",
               title: "MORE LATEST",
