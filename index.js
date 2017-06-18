@@ -153,9 +153,15 @@ function receiveIt(event) {
       case 'ok':
         sendTextMessage(senderID, ":)");
       break;
+      case "hi":
+        sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
+      break;
+      case "hello":
+        sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
+      break;
 
       default:
-        sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
+        sendTextMessage(senderID, ":)");
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
