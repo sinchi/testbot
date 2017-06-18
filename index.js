@@ -184,7 +184,7 @@ function receivedPostback(event) {
           var user = JSON.parse(body);
           switch(payload){
             case 'GET_STARTED_PAYLOAD':
-              sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true);
+              sendTextMessage(senderID, "Welcome to Trust Dream - Jewelry&Watches " + user.first_name +" What are you looking for today?", true, false);
               break;
               case 'payload_more_latest':
                 var numberOfPages = COUNT/5;
@@ -472,7 +472,7 @@ function stripHTML(my_string){
       return resultArr.join('')
   }
 
-function sendTextMessage(recipientId, messageText, started) {
+function sendTextMessage(recipientId, messageText, started, after) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -482,7 +482,7 @@ function sendTextMessage(recipientId, messageText, started) {
     }
   };
 
-  callSendAPI(messageData, started, false);
+  callSendAPI(messageData, started, after);
 }
 
 function callSendAPI(messageData, started, after) {
