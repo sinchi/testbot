@@ -127,6 +127,14 @@ function receiveIt(event) {
     console.log("PAYLOAD PAYLOAD PAYLOAD");
     console.log(payload);
 
+    if(payload){
+      var payl = payload.split(';')[0];
+      var page  = parseInt(payload.split(';')[1]);
+      var numberOfPages = COUNT/5;
+      page = (page >= numberOfPages) ? numberOfPages : (page + 1);
+      watchQuickMessageChoosen(senderID, page);
+    }
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -140,10 +148,7 @@ function receiveIt(event) {
       break;
       case 'Watches':
         watchQuickMessageChoosen(senderID);
-      break;
-      case 'More':
-        watchQuickMessageChoosen(senderID);
-      break;
+      break;    
 
       default:
         sendTextMessage(senderID, messageText + '' /*+ payload JSON.parse(message).quick_reply.payload*/);
