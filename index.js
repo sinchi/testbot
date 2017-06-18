@@ -258,7 +258,6 @@ function watchQuickMessageChoosen(recipientId, page){
       var edges = JSON.parse(body).products;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
-        console.log(edge);
         var image = edge.image;
         elements.push({
           title: edge.title ,
@@ -301,10 +300,9 @@ function watchQuickMessageChoosen(recipientId, page){
           }
         }
       };
-      callSendAPI(messageData);
+      callSendAPI(messageData, false, true);
     } else {
       console.error("Unable to send message.");
-      console.error(response);
       console.error(error);
     }
   });
@@ -460,7 +458,7 @@ function sendTextMessage(recipientId, messageText, started) {
   callSendAPI(messageData, started);
 }
 
-function callSendAPI(messageData, started) {
+function callSendAPI(messageData, started, after) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -471,15 +469,15 @@ function callSendAPI(messageData, started) {
     if (!error && response.statusCode == 200) {
       var recipientId = body.recipient_id;
       var messageId = body.message_id;
-
-      console.log("Successfully sent generic message with id %s to recipient %s",
-        messageId, recipientId);
-        if(started){
-          sendQuickMessageChooseOne(messageData.recipient.id);
-        }
+      console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+      if(started){
+        sendQuickMessageChooseOne(messageData.recipient.id);
+      }
+      if(after){
+        sendQuickMessageChooseOne(messageData.recipient.id);
+      }
     } else {
       console.error("Unable to send message.");
-      console.error(response);
       console.error(error);
     }
   });
