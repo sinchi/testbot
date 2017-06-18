@@ -10,6 +10,8 @@ COUNT = function(){
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
+      console.log("COUNT COUNT");
+      console.log(body);
       return JSON.parse(body).count;
     } else {
       console.error("Unable to get products count.");
@@ -52,8 +54,8 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 // Server frontpage
 app.get('/', function (req, res) {
     console.log("/");
-    console.log("COUNT COUNT");
-    console.log(COUNT());
+
+    console.log(COUNT);
     res.send('Chhiwat hana server ok');
 });
 
