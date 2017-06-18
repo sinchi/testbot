@@ -209,6 +209,16 @@ function jewelryQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Jewelry');
 }
 
+function slugify(text)
+{
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
+
 function watchQuickMessageChoosen(recipientId){
   sendTextMessage(recipientId, 'You have choosen Watches');
   request({
@@ -291,7 +301,7 @@ function watchQuickMessageChoosen(recipientId){
         elements.push({
           title: edge.node.title ,
           subtitle: edge.node.description,
-          item_url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
+          item_url: "https://testo-mania.myshopify.com/products/"+slugify(edge.node.title),
           image_url: edge.node.images.edges[0].node.src,
           buttons: [{
             type: "web_url",
@@ -408,7 +418,7 @@ function sendGenericMessage(recipientId) {
         elements.push({
           title: edge.node.title,
           subtitle: edge.node.description,
-          item_url: "https://testo-mania.myshopify.com/products/"+edge.node.title,
+          item_url: "https://testo-mania.myshopify.com/products/"+slugify(edge.node.title),
           image_url: edge.node.images.edges[0].node.src,
           buttons: [{
             type: "web_url",
