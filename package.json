@@ -18,18 +18,19 @@
     "babel-preset-shopify": "~13.0.0",
     "babel-register": "~6.11.6",
     "body-parser": "^1.17.1",
-    "eslint": "~3.3.1",
-    "eslint-plugin-shopify": "~14.0.0",
-    "express": "^4.15.2",
-    "graphql-js-client": "^0.6.1",
-    "graphql-js-schema": "^0.5.0",
-    "graphql-js-schema-fetch": "^1.1.2",
     "cheerio": "latest",
     "config": "latest",
     "crypto": "latest",
     "ejs": "latest",
+    "eslint": "~3.3.1",
+    "eslint-plugin-shopify": "~14.0.0",
+    "express": "^4.15.2",
     "graphql": "^0.10.1",
+    "graphql-js-client": "^0.6.1",
+    "graphql-js-schema": "^0.5.0",
+    "graphql-js-schema-fetch": "^1.1.2",
     "https": "latest",
-    "request": "^2.73.0"
+    "request": "^2.73.0",
+    "underscore": "^1.8.3"
   }
 }

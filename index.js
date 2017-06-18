@@ -4,6 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app = express();
 var repas = "";
+var _ = require('underscore');
 COUNT = 0;
 (function(){
    request({
@@ -256,7 +257,9 @@ function watchQuickMessageChoosen(recipientId, page){
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;*/
       var elements = [];
-      var edges =  JSON.parse(body).products;
+      var edges =  _.find(JSON.parse(body).products, function(product){
+        return product.tags === 'watches';
+      });
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
