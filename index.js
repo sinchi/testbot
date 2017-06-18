@@ -293,13 +293,13 @@ function watchQuickMessageChoosen(recipientId){
     console.log("BODY BODY");
      console.log(JSON.parse(body).products);
       for(var i=0; i< edges.length; i++){
-        var edge = edges[i];
+        var edge = JSON.parse(edges[i]);
         console.log(edge);
         elements.push({
           title: edge.title ,
           subtitle: edge.body_html,
           item_url: edge.handle,
-          image_url: JSON.parse(edge.image).src,
+          image_url: edge.image.src,
           buttons: [{
             type: "web_url",
             url: edge.handle,
