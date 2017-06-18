@@ -289,7 +289,7 @@ function watchQuickMessageChoosen(recipientId){
       var title = data.shop.products.edges[0].node.title;
       var edges = data.shop.products.edges;
       var elements = [];
-    //  console.log(products);
+     console.log(body);
       for(var i=0; i< edges.length; i++){
         var edge = edges[i];
         console.log(edge);
