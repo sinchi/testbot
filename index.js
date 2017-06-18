@@ -139,6 +139,7 @@ function receiveIt(event) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
+    var toLowerText = messageText.toLowerCase();
     switch (messageText) {
       case 'generic':
         sendGenericMessage(senderID);
@@ -148,6 +149,9 @@ function receiveIt(event) {
       break;
       case 'Watches':
         watchQuickMessageChoosen(senderID);
+      break;
+      case 'hi':
+        sendTextMessage(senderID, "Hi there what you looking for ? Watches or Jewelry ! ", true);
       break;
 
       default:
