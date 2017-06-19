@@ -149,7 +149,7 @@ function receiveIt(event) {
     if(payload){
       var payl = payload.split(';')[0];
       var page  = parseInt(payload.split(';')[1]);
-      var numberOfPages =  COUNT/5;
+      var numberOfPages =  payl == "quick_reply_jewelry" ? Math.round(COUNT_JEWELRY/5) :  Math.round(COUNT/5);
       page = (page >= numberOfPages) ? numberOfPages : (page + 1);
       if(payl == "quick_reply_jewelry"){
         jewelryQuickMessageChoosen(senderID, page);
