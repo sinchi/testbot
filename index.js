@@ -286,13 +286,13 @@ function sendQuickMessageChooseOneAfter(recipientId, page, type){
     reply.push({
       content_type:"text",
       title: type == "watches" ? "Jewelry" : "Watches",
-      payload: type == "watches" ? "quick_reply_jewelry" :  "quick_reply_more;"+page
+      payload: type == "watches" ? "quick_reply_jewelry;"+page :  "quick_reply_more;"+page
     })
   }else{
     reply.push({
       content_type:"text",
       title: type == "watches" ? "Jewelry" : "Watches",
-      payload: type == "watches" ? "quick_reply_jewelry" :  "quick_reply_more;"+page
+      payload: type == "watches" ? "quick_reply_jewelry;"+page :  "quick_reply_more;"+page
     })
   }
   var messageData = {
