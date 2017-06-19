@@ -176,7 +176,7 @@ function receiveIt(event) {
          sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
      }else if(toLowerText !== 'watches' && toLowerText !== 'jewelry' && toLowerText !== 'more' 
                && toLowerText !== 'more jewelry' && toLowerText !== 'more watches'){
-       sendTextMessage(senderID, "Please say hi to show the menu ");
+       sendTextMessage(senderID, 'Please say "hi" to show the menu ');
      }   
   } else if (messageAttachments) {
     sendTextMessage(senderID, ";)");
