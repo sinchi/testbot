@@ -235,7 +235,7 @@ function receivedPostback(event) {
               break;
               case 'post_back_jewelry':
               ase 'payload_more_latest':
-                var numberOfPages = COUNT_JEWELRY/5;
+                var numberOfPages = Math.round(COUNT_JEWELRY/5);
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 jewelryQuickMessageChoosen(senderID, page);
               break;
