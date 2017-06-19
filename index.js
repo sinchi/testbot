@@ -164,26 +164,20 @@ function receiveIt(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     var toLowerText = messageText.toLowerCase();
-    switch (toLowerText) {
-      case 'generic':
-        sendGenericMessage(senderID);
-        break;
-      case 'Jewelry':
-        jewelryQuickMessageChoosen(senderID);
-      break;
-      case 'Watches':
-        watchQuickMessageChoosen(senderID);
-      break;
-      case 'ok':
-        sendTextMessage(senderID, ":)");
-      break;
-      case "hi":
-        sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
-      break;
-      case "hello":
-        sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
-      break;
-    }
+     if(toLowerText == 'generic'){
+      sendGenericMessage(senderID);
+     }else if(toLowerText == 'ok'){
+      sendTextMessage(senderID, ":)");
+     }else if(toLowerText == 'hi'){
+      sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
+     }else if(toLowerText == 'hello'){
+         sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
+     }else if(toLowerText == 'hey'){
+         sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
+     }else if(toLowerText !== 'Watches' && toLowerText !== 'Jewelry' && toLowerText !== 'More' 
+               && toLowerText !== 'MORE Jewery' && toLowerText !== 'More Watches'){
+       sendTextMessage(senderID, "Please say hi to show the menu ");
+     }   
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   } else if(payload){
