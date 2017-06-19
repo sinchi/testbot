@@ -332,24 +332,24 @@ function jewelryQuickMessageChoosen(recipientId, page){
       //console.log(sortMe);
       var edges = sortMe;
       elements.push({
-        "title": "Classic T-Shirt Collection",
-        "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
-        "subtitle": "See all our colors",
-        "default_action": {
-                        "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/shop_collection",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+        title: "Classic T-Shirt Collection",
+        image_url: "https://peterssendreceiveapp.ngrok.io/img/collection.png",
+        subtitle: "See all our colors",
+        default_action: {
+                        type: "web_url",
+                        url: "https://peterssendreceiveapp.ngrok.io/shop_collection",
+                        messenger_extensions: true,
+                        webview_height_ratio: "tall",
+                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
-        "buttons": [
+        buttons: [
                         {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/collection",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            title: "View",
+                            type: "web_url",
+                            url: "https://peterssendreceiveapp.ngrok.io/collection",
+                            messenger_extensions: true,
+                            webview_height_ratio: "tall",
+                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                         }
                     ]
       });
@@ -357,24 +357,24 @@ function jewelryQuickMessageChoosen(recipientId, page){
         var edge = edges[i] ;
         var image = edge.image;
         elements.push({
-                    "title": "Classic White T-Shirt",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                    title: "Classic White T-Shirt",
+                    image_url: "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+                    subtitle: "100% Cotton, 200% Comfortable",
+                    default_action: {
+                        type: "web_url",
+                        url: "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                        messenger_extensions: true,
+                        webview_height_ratio: "tall",
+                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                     },
-                    "buttons": [
+                    buttons: [
                         {
-                            "title": "Shop Now",
-                            "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            title: "Shop Now",
+                            type: "web_url",
+                            url: "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                            messenger_extensions: true,
+                            webview_height_ratio: "tall",
+                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                         }
                     ]
                 });
@@ -382,24 +382,24 @@ function jewelryQuickMessageChoosen(recipientId, page){
       // if not the last item
       if(page < Math.round(COUNT_JEWELRY/5)){
           elements.push({
-                      "title": "Classic White T-Shirt",
-                      "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-                      "subtitle": "100% Cotton, 200% Comfortable",
-                      "default_action": {
-                          "type": "web_url",
-                          "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
-                          "messenger_extensions": true,
-                          "webview_height_ratio": "tall",
-                          "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                      title: "Classic White T-Shirt",
+                      image_url: "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+                      subtitle: "100% Cotton, 200% Comfortable",
+                      default_action: {
+                          type: "web_url",
+                          url: "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                          messenger_extensions: true,
+                          webview_height_ratio: "tall",
+                          fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                       },
-                      "buttons": [
+                      buttons: [
                           {
-                              "title": "Shop Now",
-                              "type": "web_url",
-                              "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
-                              "messenger_extensions": true,
-                              "webview_height_ratio": "tall",
-                              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                              title: "Shop Now",
+                              type: "web_url",
+                              url: "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                              messenger_extensions: true,
+                              webview_height_ratio: "tall",
+                              fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                           }
                       ]
                   });
@@ -414,11 +414,11 @@ function jewelryQuickMessageChoosen(recipientId, page){
             payload: {
               template_type: "list",
               elements: elements,
-              "buttons": [
+              buttons: [
                 {
-                    "title": "View More",
-                    "type": "postback",
-                    "payload": "payload"
+                    title: "View More",
+                    type: "postback",
+                    payload: "payload"
                 }
             ]
             }
