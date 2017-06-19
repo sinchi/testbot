@@ -352,7 +352,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page <= Math.round(COUNT_JEWELRY/5)){
+      if(page < Math.round(COUNT_JEWELRY/5)){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
@@ -415,7 +415,7 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page <= COUNT/5){
+      if(page < COUNT/5){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
