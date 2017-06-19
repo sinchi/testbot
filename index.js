@@ -174,10 +174,10 @@ function receiveIt(event) {
          sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
      }else if(toLowerText == 'hey'){
          sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
-     }else if(toLowerText !== 'watches' && toLowerText !== 'jewelry' && toLowerText !== 'more' 
+     }else if(toLowerText !== 'watches' && toLowerText !== 'jewelry' && toLowerText !== 'more'
                && toLowerText !== 'more jewelry' && toLowerText !== 'more watches'){
        sendTextMessage(senderID, 'Please say "hi" to show the menu ');
-     }   
+     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, ";)");
   } else if(payload){
@@ -328,7 +328,8 @@ function jewelryQuickMessageChoosen(recipientId, page){
     if (!error && response.statusCode == 200) {
       var elements = [];
       var edges = JSON.parse(body).products;
-      for(var i=0; i< edges.length; i++){
+      //edges = _.sortBy(edges, function(product){ return product.created_at });
+      for(var i=edges.length-1; i==0 ; i--){
         var edge = edges[i] ;
         var image = edge.image;
         elements.push({
