@@ -329,7 +329,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
       var elements = [];
       var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       console.log("SOORT ME SORT ME");
-      //console.log(sortMe);
+      console.log(sortMe);
       var edges = sortMe;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
