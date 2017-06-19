@@ -329,47 +329,80 @@ function jewelryQuickMessageChoosen(recipientId, page){
       var elements = [];
       var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       console.log("SOORT ME SORT ME");
-      console.log(sortMe);
+      //console.log(sortMe);
       var edges = sortMe;
-      for(var i=0; i< edges.length; i++){
-        var edge = edges[i] ;
-        var image = edge.image;
-        elements.push({
-          title: edge.title ,
-          subtitle: stripHTML(edge.body_html),
-          item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-          image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
-          buttons: [{
-            type: "web_url",
-            url: "https://testo-mania.myshopify.com/products/"+edge.handle,
-            title: "Go to Store"
-          }, {
-            type:"element_share"
-          }]
-        });
-      }
-      // if not the last item
-      if(page < Math.round(COUNT_JEWELRY/5)){
-          elements.push({
-            title: "Looking for more latest?" ,
-            subtitle: "Press the button below to keep exploring",
-            image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
-            "default_action": {
+      elements.push({
+        "title": "Classic T-Shirt Collection",
+        "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
+        "subtitle": "See all our colors",
+        "default_action": {
                         "type": "web_url",
                         "url": "https://peterssendreceiveapp.ngrok.io/shop_collection",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
                         "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
                     },
-            buttons: [{
-              type: "postback",
-              title: "MORE Jewelry",
-              payload: "post_back_jewelry;"+page,
-              "messenger_extensions": true,
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-            }]
-        });
+        "buttons": [
+                        {
+                            "title": "View",
+                            "type": "web_url",
+                            "url": "https://peterssendreceiveapp.ngrok.io/collection",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        }
+                    ]
+      });
+      for(var i=0; i< edges.length; i++){
+        var edge = edges[i] ;
+        var image = edge.image;
+        elements.push({
+                    "title": "Classic White T-Shirt",
+                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+                    "subtitle": "100% Cotton, 200% Comfortable",
+                    "default_action": {
+                        "type": "web_url",
+                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                        "messenger_extensions": true,
+                        "webview_height_ratio": "tall",
+                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                    },
+                    "buttons": [
+                        {
+                            "title": "Shop Now",
+                            "type": "web_url",
+                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        }
+                    ]
+                });
+      }
+      // if not the last item
+      if(page < Math.round(COUNT_JEWELRY/5)){
+          elements.push({
+                      "title": "Classic White T-Shirt",
+                      "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+                      "subtitle": "100% Cotton, 200% Comfortable",
+                      "default_action": {
+                          "type": "web_url",
+                          "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                          "messenger_extensions": true,
+                          "webview_height_ratio": "tall",
+                          "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                      },
+                      "buttons": [
+                          {
+                              "title": "Shop Now",
+                              "type": "web_url",
+                              "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                              "messenger_extensions": true,
+                              "webview_height_ratio": "tall",
+                              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                          }
+                      ]
+                  });
       }
       var messageData = {
         recipient: {
@@ -380,7 +413,14 @@ function jewelryQuickMessageChoosen(recipientId, page){
             type: "template",
             payload: {
               template_type: "list",
-              elements: elements
+              elements: elements,
+              "buttons": [
+                {
+                    "title": "View More",
+                    "type": "postback",
+                    "payload": "payload"
+                }
+            ]
             }
           }
         }
