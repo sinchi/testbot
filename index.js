@@ -233,6 +233,12 @@ function receivedPostback(event) {
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 watchQuickMessageChoosen(senderID, page);
               break;
+              case 'post_back_jewelry':
+              ase 'payload_more_latest':
+                var numberOfPages = COUNT_JEWELRY/5;
+                page = (page >= numberOfPages) ? numberOfPages : (page + 1);
+                jewelryQuickMessageChoosen(senderID, page);
+              break;
           }
 
       } else {
@@ -354,7 +360,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
             buttons: [{
               type: "postback",
               title: "MORE Jewelry",
-              payload: "quick_reply_jewelry;"+page,
+              payload: "post_back_jewelry;"+page,
             }]
         });
       }
