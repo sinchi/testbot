@@ -151,7 +151,12 @@ function receiveIt(event) {
       var page  = parseInt(payload.split(';')[1]);
       var numberOfPages =  COUNT/5;
       page = (page >= numberOfPages) ? numberOfPages : (page + 1);
-      watchQuickMessageChoosen(senderID, page);
+      if(payl == "quick_reply_jewelry"){
+        jewelryQuickMessageChoosen(senderID, page);
+      }else{
+        watchQuickMessageChoosen(senderID, page);
+      }
+
     }
 
   if (messageText) {
@@ -280,13 +285,13 @@ function sendQuickMessageChooseOneAfter(recipientId, page){
     reply.push({
       content_type:"text",
       title:"Jewelry",
-      payload:"quick_reply_jewelry"
+      payload:"quick_reply_jewelry;"+page
     })
   }else{
     reply.push({
       content_type:"text",
       title:"Jewelry",
-      payload:"quick_reply_jewelry"
+      payload:"quick_reply_jewelry;"+page
     })
   }
   var messageData = {
