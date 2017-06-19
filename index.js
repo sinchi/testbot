@@ -32,7 +32,7 @@ COUNT_JEWELRY = 0;
       //  console.log("fistname: "+JSON.stringify(response.body.first_name));
       console.log("COUNTTTTTTTTTTTTTTT");
       console.log(JSON.parse(body).count);
-      COUNT = parseInt(JSON.parse(body).count);
+      COUNT_JEWELRY = parseInt(JSON.parse(body).count);
     } else {
       console.error("Unable to get products count.");
       console.error(response);
@@ -149,7 +149,7 @@ function receiveIt(event) {
     if(payload){
       var payl = payload.split(';')[0];
       var page  = parseInt(payload.split(';')[1]);
-      var numberOfPages = COUNT/5;
+      var numberOfPages =  COUNT/5;
       page = (page >= numberOfPages) ? numberOfPages : (page + 1);
       watchQuickMessageChoosen(senderID, page);
     }
@@ -340,7 +340,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page < COUNT/5){
+      if(page < COUNT_JEWELRY/5){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
