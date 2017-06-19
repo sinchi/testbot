@@ -327,9 +327,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
-      var sortMe = _.sortBy(JSON.parse(body).products, function(product){
-        return product.created_at;
-      });
+      var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       console.log("SOORT ME SORT ME");
       console.log(sortMe);
       var edges = JSON.parse(body).products;
