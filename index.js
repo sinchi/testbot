@@ -233,8 +233,7 @@ function receivedPostback(event) {
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 watchQuickMessageChoosen(senderID, page);
               break;
-              case 'post_back_jewelry':
-              ase 'payload_more_latest':
+              case 'post_back_jewelry':              
                 var numberOfPages = Math.round(COUNT_JEWELRY/5);
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 jewelryQuickMessageChoosen(senderID, page);
