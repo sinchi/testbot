@@ -354,10 +354,20 @@ function jewelryQuickMessageChoosen(recipientId, page){
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
             image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
+            "default_action": {
+                        "type": "web_url",
+                        "url": "https://peterssendreceiveapp.ngrok.io/shop_collection",
+                        "messenger_extensions": true,
+                        "webview_height_ratio": "tall",
+                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                    },
             buttons: [{
               type: "postback",
               title: "MORE Jewelry",
               payload: "post_back_jewelry;"+page,
+              "messenger_extensions": true,
+              "webview_height_ratio": "tall",
+              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
             }]
         });
       }
