@@ -273,25 +273,26 @@ function sendQuickMessageChooseOne(recipientId){
   callSendAPI(messageData);
 }
 
-function sendQuickMessageChooseOneAfter(recipientId, page){
+function sendQuickMessageChooseOneAfter(recipientId, page, type){
 
   var reply = [];
-  if(page < COUNT/5){
+  var counter = type == "jewelry" ? Math.round(COUNT_JEWELRY / 5) : Math.round(COUNT / 5)
+  if(page < counter){
     reply.push({
       content_type:"text",
-      title:"More Watches",
-      payload:"quick_reply_more;"+page
+      title: type == "watches" ? "More Watches" : "More Jewelry",
+      payload: type == "watches" ? "quick_reply_more;"+page : "quick_reply_jewelry;"+page
     });
     reply.push({
       content_type:"text",
-      title:"Jewelry",
-      payload:"quick_reply_jewelry;"+page
+      title: type == "watches" ? "Jewelry" : "Watches",
+      payload: type == "watches" ? "quick_reply_jewelry;"+page :  "quick_reply_more;"+page
     })
   }else{
     reply.push({
       content_type:"text",
-      title:"Jewelry",
-      payload:"quick_reply_jewelry;"+page
+      title: type == "watches" ? "Jewelry" : "Watches",
+      payload: type == "watches" ? "quick_reply_jewelry;"+page :  "quick_reply_more;"+page
     })
   }
   var messageData = {
@@ -371,7 +372,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
           }
         }
       };
-      callSendAPI(messageData, false, true, page);
+      callSendAPI(messageData, false, true, page, 'jewelry');
     } else {
       console.error("Unable to send message.");
       console.error(error);
@@ -434,7 +435,7 @@ function watchQuickMessageChoosen(recipientId, page){
           }
         }
       };
-      callSendAPI(messageData, false, true, page);
+      callSendAPI(messageData, false, true, page, 'watches');
     } else {
       console.error("Unable to send message.");
       console.error(error);
@@ -592,7 +593,7 @@ function sendTextMessage(recipientId, messageText, started) {
   callSendAPI(messageData, started);
 }
 
-function callSendAPI(messageData, started, after, page) {
+function callSendAPI(messageData, started, after, page, type) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -608,7 +609,7 @@ function callSendAPI(messageData, started, after, page) {
         sendQuickMessageChooseOne(messageData.recipient.id);
       }
       if(after){
-        sendQuickMessageChooseOneAfter(messageData.recipient.id, page);
+        sendQuickMessageChooseOneAfter(messageData.recipient.id, page, type);
       }
     } else {
       console.error("Unable to send message.");
