@@ -233,7 +233,7 @@ function receivedPostback(event) {
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 watchQuickMessageChoosen(senderID, page);
               break;
-              case 'post_back_jewelry':              
+              case 'post_back_jewelry':
                 var numberOfPages = Math.round(COUNT_JEWELRY/5);
                 page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 jewelryQuickMessageChoosen(senderID, page);
@@ -283,6 +283,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page, type){
   var reply = [];
   var counter = type == "jewelry" ? Math.round(COUNT_JEWELRY / 5) : Math.round(COUNT / 5);
   if(page < counter){
+    
     reply.push({
       content_type:"text",
       title: type == "watches" ? "More Watches" : "More Jewelry",
@@ -297,7 +298,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page, type){
     reply.push({
       content_type:"text",
       title: type == "watches" ? "Jewelry" : "Watches",
-      payload: type == "watches" ? "quick_reply_jewelry;"+page :  "quick_reply_more;"+page
+      payload: type == "watches" ? "quick_reply_jewelry" :  "quick_reply_more"
     })
   }
   var messageData = {
