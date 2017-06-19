@@ -23,6 +23,24 @@ COUNT = 0;
   });
 }
 )();
+COUNT_JEWELRY = 0;
+(function(){
+   request({
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products/count.json?collection_id=443276179',
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //  console.log("fistname: "+JSON.stringify(response.body.first_name));
+      console.log("COUNTTTTTTTTTTTTTTT");
+      console.log(JSON.parse(body).count);
+      COUNT = parseInt(JSON.parse(body).count);
+    } else {
+      console.error("Unable to get products count.");
+      console.error(response);
+      console.error(error);
+    }
+  });
+}
+)();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -59,6 +77,7 @@ app.get('/', function (req, res) {
     console.log("/");
     console.log("COUNT COUNT");
     console.log(COUNT);
+    console.log(COUNT_JEWELRY);
     res.send('Chhiwat hana server ok');
 });
 
@@ -283,10 +302,6 @@ function sendQuickMessageChooseOneAfter(recipientId, page){
   callSendAPI(messageData);
 }
 
-function jewelryQuickMessageChoosen(recipientId){
-  sendTextMessage(recipientId, 'You have choosen Jewelry');
-}
-
 function slugify(text){
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-')           // Replace spaces with -
@@ -294,6 +309,69 @@ function slugify(text){
     .replace(/\-\-+/g, '-')         // Replace multiple - with single -
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
+}
+
+function jewelryQuickMessageChoosen(recipientId, page){
+  var page = (page) ? page : 1;
+  sendTextMessage(recipientId, 'You have choosen Jewelry');
+  console.log("PAGE PAGE PAGE");
+  console.log(page);
+  request({
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443276179&limit=5&page='+page,
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var elements = [];
+      var edges = JSON.parse(body).products;
+      for(var i=0; i< edges.length; i++){
+        var edge = edges[i] ;
+        var image = edge.image;
+        elements.push({
+          title: edge.title ,
+          subtitle: stripHTML(edge.body_html),
+          item_url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+          image_url: (edge.image) ? edge.image.src : 'https://www.iaap-hq.org/global_graphics/default-store-350x350.jpg',
+          buttons: [{
+            type: "web_url",
+            url: "https://testo-mania.myshopify.com/products/"+edge.handle,
+            title: "Go to Store"
+          }, {
+            type:"element_share"
+          }]
+        });
+      }
+      // if not the last item
+      if(page < COUNT/5){
+          elements.push({
+            title: "Looking for more latest?" ,
+            subtitle: "Press the button below to keep exploring",
+            image_url: 'https://media.otstatic.com/img/default-rest-img-36de8e53babb0388be282879433c3313.png',
+            buttons: [{
+              type: "postback",
+              title: "MORE LATEST",
+              payload: "payload_more_latest;"+page,
+            }]
+        });
+      }
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: elements
+            }
+          }
+        }
+      };
+      callSendAPI(messageData, false, true, page);
+    } else {
+      console.error("Unable to send message.");
+      console.error(error);
+    }
+  });
 }
 
 function watchQuickMessageChoosen(recipientId, page){
