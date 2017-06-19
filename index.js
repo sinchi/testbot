@@ -328,8 +328,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
     if (!error && response.statusCode == 200) {
       var elements = [];
       var edges = JSON.parse(body).products;
-      //edges = _.sortBy(edges, function(product){ return product.created_at });
-      for(var i=edges.length-1; i==0 ; i--){
+      for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         var image = edge.image;
         elements.push({
