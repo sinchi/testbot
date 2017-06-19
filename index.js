@@ -369,7 +369,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
           attachment: {
             type: "template",
             payload: {
-              template_type: "list",
+              template_type: "generic",
               elements: elements
             }
           }
