@@ -229,7 +229,7 @@ function receivedPostback(event) {
               break;
               case 'post_back_jewelry':
                 var numberOfPages = Math.round(COUNT_JEWELRY/5);
-                page = (page >= numberOfPages) ? numberOfPages : (page - 1);
+                page = page - 1;
                 jewelryQuickMessageChoosen(senderID, page);
               break;
           }
