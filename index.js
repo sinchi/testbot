@@ -150,7 +150,7 @@ function receiveIt(event) {
       var payl = payload.split(';')[0];
       var page  = parseInt(payload.split(';')[1]);
       var numberOfPages =  payl == "quick_reply_jewelry" ? Math.round(COUNT_JEWELRY/5) :  Math.round(COUNT/5);
-      page = (page > 0) ? numberOfPages : (page - 1);
+      page = (page == 1) ? page : page - 1;
       if(payl == "quick_reply_jewelry"){
         jewelryQuickMessageChoosen(senderID, page);
       }else{
@@ -229,7 +229,7 @@ function receivedPostback(event) {
               break;
               case 'post_back_jewelry':
                 var numberOfPages = Math.round(COUNT_JEWELRY/5);
-                page = page - 1;
+                page = (page == 1) ? page : page - 1;
                 jewelryQuickMessageChoosen(senderID, page);
               break;
           }
