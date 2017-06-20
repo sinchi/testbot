@@ -150,7 +150,7 @@ function receiveIt(event) {
       var payl = payload.split(';')[0];
       var page  = parseInt(payload.split(';')[1]);
       var numberOfPages =  payl == "quick_reply_jewelry" ? Math.round(COUNT_JEWELRY/5) :  Math.round(COUNT/5);
-      page = (page == 1) ? page : page - 1;
+      page = (page >= numberOfPages) ? numberOfPages : (page + 1);
       if(payl == "quick_reply_jewelry"){
         jewelryQuickMessageChoosen(senderID, page);
       }else{
@@ -224,12 +224,12 @@ function receivedPostback(event) {
               break;
               case 'payload_more_latest':
                 var numberOfPages = COUNT/5;
-                 page = (page == 1) ? page : page - 1;
+                page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 watchQuickMessageChoosen(senderID, page);
               break;
               case 'post_back_jewelry':
                 var numberOfPages = Math.round(COUNT_JEWELRY/5);
-                page = (page == 1) ? page : page - 1;
+                page = (page >= numberOfPages) ? numberOfPages : (page + 1);
                 jewelryQuickMessageChoosen(senderID, page);
               break;
           }
@@ -276,7 +276,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page, type){
 
   var reply = [];
   var counter = type == "jewelry" ? Math.round(COUNT_JEWELRY / 5) : Math.round(COUNT / 5);
-  if(page > 1){
+  if(page < counter){
 
     reply.push({
       content_type:"text",
@@ -318,7 +318,7 @@ function slugify(text){
 }
 
 function jewelryQuickMessageChoosen(recipientId, page){
-  var page = (page) ? page : Math.round(COUNT_JEWELRY/5);
+  var page = (page) ? page : 1;
   sendTextMessage(recipientId, 'You have choosen Jewelry');
   console.log("PAGE PAGE PAGE");
   console.log(page);
@@ -329,8 +329,8 @@ function jewelryQuickMessageChoosen(recipientId, page){
       var elements = [];
      // var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       console.log("SOORT ME SORT ME");
-      //console.log(sortMe);
-      var edges = JSON.parse(body).products;// sortMe//JSON.parse(body).products;
+    //  console.log(sortMe);
+      var edges = JSON.parse(body).products;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         var image = edge.image;
@@ -349,7 +349,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page > 1){
+      if(page < Math.round(COUNT_JEWELRY/5)){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
@@ -384,7 +384,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
 }
 
 function watchQuickMessageChoosen(recipientId, page){
-  var page = (page) ? page : Math.round(COUNT/5);
+  var page = (page) ? page : 1;
   sendTextMessage(recipientId, 'You have choosen Watches');
   console.log("PAGE PAGE PAGE");
   console.log(page);
@@ -393,7 +393,7 @@ function watchQuickMessageChoosen(recipientId, page){
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
-      //var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
+     // var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       var edges = JSON.parse(body).products;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
@@ -413,7 +413,7 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page > 1){
+      if(page < COUNT/5){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
