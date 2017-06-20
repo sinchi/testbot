@@ -276,7 +276,7 @@ function sendQuickMessageChooseOneAfter(recipientId, page, type){
 
   var reply = [];
   var counter = type == "jewelry" ? Math.round(COUNT_JEWELRY / 5) : Math.round(COUNT / 5);
-  if(page < counter){
+  if(page > 1){
 
     reply.push({
       content_type:"text",
@@ -349,7 +349,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page > 0){
+      if(page > 1){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
