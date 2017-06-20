@@ -389,7 +389,7 @@ function watchQuickMessageChoosen(recipientId, page){
   console.log("PAGE PAGE PAGE");
   console.log(page);
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443269459&order=created_at%20desclimit=5&page='+page,
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443269459&order=created_at%20desc&limit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
