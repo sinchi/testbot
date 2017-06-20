@@ -169,11 +169,11 @@ function receiveIt(event) {
      }else if(toLowerText == 'ok'){
       sendTextMessage(senderID, ":)");
      }else if(toLowerText == 'hi'){
-      sendTextMessage(senderID, "Hi there what do you looking for ? Watches or Jewelry ! ", true);
+      sendTextMessage(senderID, "Hi there what are you looking for ? Watches or Jewelry ", true);
      }else if(toLowerText == 'hello'){
-         sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
+         sendTextMessage(senderID, "Hello there what are you looking for ? Watches or Jewelry ", true);
      }else if(toLowerText == 'hey'){
-         sendTextMessage(senderID, "Hello there what do you looking for ? Watches or Jewelry ! ", true);
+         sendTextMessage(senderID, "Hello there what are you looking for ? Watches or Jewelry ", true);
      }else if(toLowerText !== 'watches' && toLowerText !== 'jewelry' && toLowerText !== 'more'
                && toLowerText !== 'more jewelry' && toLowerText !== 'more watches'){
        sendTextMessage(senderID, 'Please say "hi" to show the menu ');
@@ -319,7 +319,7 @@ function slugify(text){
 
 function jewelryQuickMessageChoosen(recipientId, page){
   var page = (page) ? page : 1;
-  sendTextMessage(recipientId, 'You have choosen Jewelry');
+  sendTextMessage(recipientId, 'You have chosen Jewelry');
   console.log("PAGE PAGE PAGE");
   console.log(page);
   request({
@@ -385,7 +385,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
 
 function watchQuickMessageChoosen(recipientId, page){
   var page = (page) ? page : 1;
-  sendTextMessage(recipientId, 'You have choosen Watches');
+  sendTextMessage(recipientId, 'You have chosen Watches');
   console.log("PAGE PAGE PAGE");
   console.log(page);
   request({
