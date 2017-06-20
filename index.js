@@ -327,10 +327,10 @@ function jewelryQuickMessageChoosen(recipientId, page){
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
-    //  var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
+      var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       console.log("SOORT ME SORT ME");
       //console.log(sortMe);
-      var edges = JSON.parse(body).products;
+      var edges = sortMe//JSON.parse(body).products;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         var image = edge.image;
@@ -393,8 +393,8 @@ function watchQuickMessageChoosen(recipientId, page){
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
-     // var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
-      var edges = JSON.parse(body).products ;//sortMe;
+      var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
+      var edges = sortMe;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         var image = edge.image;
