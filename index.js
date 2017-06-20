@@ -327,10 +327,10 @@ function jewelryQuickMessageChoosen(recipientId, page){
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
-      var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
+     // var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
       console.log("SOORT ME SORT ME");
       //console.log(sortMe);
-      var edges = sortMe//JSON.parse(body).products;
+      var edges = JSON.parse(body).products;// sortMe//JSON.parse(body).products;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         var image = edge.image;
@@ -389,12 +389,12 @@ function watchQuickMessageChoosen(recipientId, page){
   console.log("PAGE PAGE PAGE");
   console.log(page);
   request({
-    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443269459&&order=created_at%20desclimit=5&page='+page,
+    uri: 'https://bccfcf062de7926851b727550bfdbdf7:64ea7967cfa60317e1eaa6e639598718@testo-mania.myshopify.com/admin/products.json?collection_id=443269459&order=created_at%20desclimit=5&page='+page,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var elements = [];
-      var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
-      var edges = sortMe;
+      //var sortMe = _.sortBy(JSON.parse(body).products, 'created_at');
+      var edges = JSON.parse(body).products;
       for(var i=0; i< edges.length; i++){
         var edge = edges[i] ;
         var image = edge.image;
