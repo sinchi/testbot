@@ -224,7 +224,7 @@ function receivedPostback(event) {
               break;
               case 'payload_more_latest':
                 var numberOfPages = COUNT/5;
-                page = (page >= numberOfPages) ? numberOfPages : (page + 1);
+                 page = (page == 1) ? page : page - 1;
                 watchQuickMessageChoosen(senderID, page);
               break;
               case 'post_back_jewelry':
@@ -413,7 +413,7 @@ function watchQuickMessageChoosen(recipientId, page){
         });
       }
       // if not the last item
-      if(page < COUNT/5){
+      if(page > 1){
           elements.push({
             title: "Looking for more latest?" ,
             subtitle: "Press the button below to keep exploring",
