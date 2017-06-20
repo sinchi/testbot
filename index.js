@@ -384,7 +384,7 @@ function jewelryQuickMessageChoosen(recipientId, page){
 }
 
 function watchQuickMessageChoosen(recipientId, page){
-  var page = (page) ? page : 1;
+  var page = (page) ? page : Math.round(COUNT/5);
   sendTextMessage(recipientId, 'You have choosen Watches');
   console.log("PAGE PAGE PAGE");
   console.log(page);
